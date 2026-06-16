@@ -8,135 +8,300 @@
   :root{
     --bg:#fbfaf7; --card:#fff; --ink:#1f1e1b; --mut:#6b6a64; --line:#e7e5dd;
     --purple:#7F77DD; --coral:#D85A30; --teal:#1D9E75; --blue:#378ADD; --gray:#9b9a92;
-    --accent:#0F6E56;
+    --accent:#0F6E56; --accent-soft:rgba(15,110,86,.08);
+    --navbg:rgba(251,250,247,.82); --shadow:0 1px 2px rgba(31,30,27,.04),0 8px 24px rgba(31,30,27,.05);
+    --maxw:1060px;
   }
   @media (prefers-color-scheme:dark){
-    :root{ --bg:#15140f; --card:#1d1c17; --ink:#ecebe4; --mut:#a3a299; --line:#33312a; }
+    :root{ --bg:#15140f; --card:#1d1c17; --ink:#ecebe4; --mut:#a3a299; --line:#33312a;
+      --accent:#36b894; --accent-soft:rgba(54,184,148,.12); --navbg:rgba(21,20,15,.82);
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35); }
   }
   *{ box-sizing:border-box }
+  html{ scroll-behavior:smooth }
   body{ margin:0; background:var(--bg); color:var(--ink);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
-  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px 80px }
-  header.hero{ padding:60px 0 28px }
-  .eyebrow{ color:var(--accent); font-weight:600; letter-spacing:.04em; font-size:13px; text-transform:uppercase }
-  h1{ font-size:42px; line-height:1.1; margin:8px 0 10px; font-weight:600 }
-  .sub{ font-size:20px; color:var(--mut); max-width:680px; margin:0 }
-  .stats{ display:flex; flex-wrap:wrap; gap:14px; margin:28px 0 0 }
-  .stat{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 18px; min-width:150px }
-  .stat .n{ font-size:26px; font-weight:600 } .stat .l{ font-size:12px; color:var(--mut) }
-  h2{ font-size:24px; font-weight:600; margin:48px 0 6px } .lead{ color:var(--mut); margin:0 0 18px }
-  .panel{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px 20px }
-  .controls{ display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end; margin-bottom:10px }
-  .ctl label{ display:block; font-size:11px; color:var(--mut); text-transform:uppercase; letter-spacing:.03em; margin-bottom:4px }
-  select,input{ font:inherit; font-size:14px; padding:7px 9px; border:1px solid var(--line);
-    border-radius:9px; background:var(--card); color:var(--ink); min-width:120px }
-  input[type=number]{ width:64px; min-width:0 }
-  .seg{ display:inline-flex; border:1px solid var(--line); border-radius:9px; overflow:hidden }
-  .seg button{ border:0; background:transparent; color:var(--mut); padding:7px 12px; font:inherit; font-size:13px; cursor:pointer }
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  a{ color:var(--accent); text-decoration:none } a:hover{ text-decoration:underline }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 22px 90px }
+
+  /* ---- sticky nav ---- */
+  nav.top{ position:sticky; top:0; z-index:50; background:var(--navbg);
+    backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line); }
+  nav.top .inner{ max-width:var(--maxw); margin:0 auto; padding:0 22px;
+    display:flex; align-items:center; gap:18px; height:56px }
+  nav.top .brand{ font-weight:700; letter-spacing:-.01em; font-size:16px; color:var(--ink);
+    display:flex; align-items:center; gap:8px; margin-right:auto }
+  nav.top .brand:hover{ text-decoration:none }
+  nav.top .brand .mark{ width:11px; height:11px; border-radius:4px; background:var(--accent) }
+  nav.top .links{ display:flex; gap:4px }
+  nav.top .links a{ color:var(--mut); font-size:14px; font-weight:500;
+    padding:7px 12px; border-radius:8px; transition:color .15s, background .15s; white-space:nowrap }
+  nav.top .links a:hover{ color:var(--ink); background:var(--accent-soft); text-decoration:none }
+  nav.top .links a.active{ color:var(--accent); background:var(--accent-soft) }
+  @media (max-width:640px){
+    nav.top .brand span.txt{ display:none }
+    nav.top .links a{ padding:7px 9px; font-size:13px }
+    nav.top .inner{ gap:10px }
+  }
+
+  section{ scroll-margin-top:74px }
+  header.hero{ padding:54px 0 14px }
+  .eyebrow{ color:var(--accent); font-weight:600; letter-spacing:.06em; font-size:12.5px; text-transform:uppercase }
+  h1{ font-size:clamp(30px,5vw,44px); line-height:1.08; margin:10px 0 12px; font-weight:680; letter-spacing:-.02em }
+  .sub{ font-size:clamp(17px,2.4vw,21px); color:var(--mut); max-width:660px; margin:0; line-height:1.5 }
+  .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:14px; margin:30px 0 0 }
+  .stat{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:15px 18px; box-shadow:var(--shadow) }
+  .stat .n{ font-size:27px; font-weight:680; letter-spacing:-.01em; line-height:1.1 }
+  .stat .l{ font-size:12px; color:var(--mut); margin-top:3px }
+
+  h2{ font-size:25px; font-weight:660; margin:0 0 6px; letter-spacing:-.01em }
+  .sec-head{ margin:56px 0 18px }
+  .lead{ color:var(--mut); margin:0; max-width:700px }
+  .panel{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow) }
+
+  /* framing callout */
+  .callout{ background:var(--accent-soft); border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:12px; padding:15px 18px; margin:0 0 16px; font-size:14.5px; line-height:1.55; color:var(--ink) }
+  .callout strong{ font-weight:680 }
+  .callout .c-title{ display:block; font-weight:680; margin-bottom:5px; color:var(--accent); letter-spacing:.01em }
+  .callout + .callout{ margin-top:-4px }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end }
+  .ctl label{ display:block; font-size:11px; color:var(--mut); text-transform:uppercase; letter-spacing:.04em; margin-bottom:5px; font-weight:600 }
+  select,input{ font:inherit; font-size:14px; padding:8px 10px; border:1px solid var(--line);
+    border-radius:10px; background:var(--card); color:var(--ink); min-width:150px }
+  select:focus,input:focus{ outline:2px solid var(--accent-soft); border-color:var(--accent) }
+  input[type=number]{ width:70px; min-width:0 }
+  .seg{ display:inline-flex; border:1px solid var(--line); border-radius:10px; overflow:hidden }
+  .seg button{ border:0; background:transparent; color:var(--mut); padding:8px 13px; font:inherit; font-size:13px; cursor:pointer; transition:background .15s }
   .seg button.on{ background:var(--accent); color:#fff }
+  .more{ margin-top:14px; border-top:1px dashed var(--line); padding-top:6px }
+  .more summary{ cursor:pointer; font-size:13px; color:var(--mut); font-weight:600; list-style:none; padding:8px 0; user-select:none }
+  .more summary::-webkit-details-marker{ display:none }
+  .more summary::before{ content:"▸ "; color:var(--accent) }
+  .more[open] summary::before{ content:"▾ " }
+  .more .controls{ padding:8px 0 4px }
+  .note{ font-size:12.5px; color:var(--mut); margin:12px 2px 0; line-height:1.5; max-width:780px }
+  .note b{ color:var(--ink); font-weight:600 }
+
   svg{ width:100%; height:auto; display:block }
+  .legend{ display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--mut); margin:14px 2px 4px }
+  .legend .fr{ display:inline-flex; align-items:center; gap:7px }
+  .legend .frline{ width:22px; height:0; border-top:2px dashed var(--accent) }
+  .dot{ width:9px; height:9px; border-radius:3px; display:inline-block; margin-right:7px; vertical-align:1px }
+  #scatter circle[data-i]{ cursor:pointer }
+  .tip{ position:fixed; z-index:60; display:none; pointer-events:none; background:var(--card);
+    border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); padding:9px 11px;
+    font-size:12.5px; max-width:250px; color:var(--ink); line-height:1.45 }
+  .tip .t-m{ font-weight:680 } .tip .t-h{ color:var(--mut); font-size:11.5px }
+  .tip .row{ margin-top:3px; font-variant-numeric:tabular-nums }
+
   table{ width:100%; border-collapse:collapse; font-size:14px; margin-top:6px }
-  th,td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--line) }
-  th{ font-size:12px; color:var(--mut); text-transform:uppercase; letter-spacing:.03em; cursor:pointer; user-select:none }
+  th,td{ text-align:left; padding:9px 10px; border-bottom:1px solid var(--line) }
+  th{ font-size:11px; color:var(--mut); text-transform:uppercase; letter-spacing:.04em; cursor:pointer; user-select:none; font-weight:600 }
   td.num,th.num{ text-align:right; font-variant-numeric:tabular-nums }
-  .dot{ width:9px; height:9px; border-radius:3px; display:inline-block; margin-right:6px; vertical-align:1px }
-  .legend{ display:flex; gap:16px; flex-wrap:wrap; font-size:12px; color:var(--mut); margin:8px 2px 0 }
-  .prose{ max-width:720px } .prose h3{ font-size:17px; margin:22px 0 4px } .prose p{ margin:0 0 12px }
-  .samples details{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 16px; margin-bottom:10px }
-  .samples summary{ cursor:pointer; font-weight:500 } .samples pre{ white-space:pre-wrap; font-size:13px; color:var(--mut); margin:10px 0 0 }
-  .foot{ color:var(--mut); font-size:13px; margin-top:36px; border-top:1px solid var(--line); padding-top:16px }
-  .pill{ font-size:11px; color:var(--mut); border:1px solid var(--line); border-radius:999px; padding:2px 9px }
+  tbody tr{ transition:background .12s }
+  tbody tr:hover{ background:var(--accent-soft) }
+  .harness{ color:var(--mut); font-size:11.5px; font-weight:500 }
+
+  .prose{ max-width:720px } .prose h3{ font-size:17px; margin:24px 0 4px } .prose p{ margin:0 0 12px }
+  .prose ul{ margin:0 0 12px; padding-left:20px } .prose li{ margin:3px 0 }
+  .prose code{ background:var(--accent-soft); padding:1px 5px; border-radius:5px; font-size:13px }
+  .samples details{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:10px; box-shadow:var(--shadow) }
+  .samples summary{ cursor:pointer; font-weight:550; list-style:none } .samples summary::-webkit-details-marker{ display:none }
+  .samples summary::before{ content:"+ "; color:var(--accent); font-weight:700 }
+  .samples details[open] summary::before{ content:"– " }
+  .samples pre{ white-space:pre-wrap; font-size:13px; color:var(--mut); margin:12px 0 0; line-height:1.5 }
+  .pill{ font-size:11px; color:var(--mut); border:1px solid var(--line); border-radius:999px; padding:2px 9px; margin-left:4px }
+  .foot{ color:var(--mut); font-size:13px; margin-top:44px; border-top:1px solid var(--line); padding-top:18px; line-height:1.6 }
+  .empty{ color:var(--mut); padding:26px 8px; text-align:center }
+
+  /* side-by-side framing callouts */
+  .callouts{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:0 0 18px }
+  .callouts .callout{ margin:0 }
+  /* roadmap as Now / Next / Later tiers */
+  .roadmap-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 0 14px }
+  .rm-tier{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow) }
+  .rm-tier.now{ border-color:var(--accent) }
+  .rm-tier .rm-h{ font-weight:680; font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--accent); margin-bottom:10px }
+  .rm-tier ul{ margin:0; padding-left:18px } .rm-tier li{ margin:7px 0; font-size:14px }
+  .rm-foot{ font-size:12.5px; color:var(--mut); font-style:italic; margin:2px 2px 0 }
+  /* learnings rhythm: lead paragraph + ruled sections */
+  #learnings-body > p:first-of-type{ font-size:17px; color:var(--ink) }
+  #learnings-body h3{ color:var(--ink); margin-top:26px; padding-top:18px; border-top:1px solid var(--line) }
+  @media (max-width:720px){ .callouts{ grid-template-columns:1fr } .roadmap-grid{ grid-template-columns:1fr } }
 </style>
 </head>
 <body>
+<nav class="top">
+  <div class="inner">
+    <a class="brand" href="#top"><span class="mark"></span><span class="txt">InsureBench</span></a>
+    <div class="links" id="navlinks">
+      <a href="#leaderboard" data-s="leaderboard">Leaderboard</a>
+      <a href="#learnings" data-s="learnings">Learnings</a>
+      <a href="#roadmap" data-s="roadmap">Roadmap</a>
+      <a href="#questions" data-s="questions">Questions</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
-  <header class="hero">
-    <div class="eyebrow">InsureBench</div>
-    <h1 id="title">Insurance LLM cost &amp; quality</h1>
-    <p class="sub" id="subtitle"></p>
+  <header class="hero" id="top">
+    <div class="eyebrow">Model &times; harness benchmark</div>
+    <h1 id="title">The right tool isn't always the most expensive one</h1>
+    <p class="sub" id="subtitle">Not chat — real insurance work, with real tools. We score
+      model&nbsp;+&nbsp;harness combos on accuracy and on what they actually cost.</p>
     <div class="stats" id="stats"></div>
   </header>
 
-  <section>
-    <h2>Cost vs. quality</h2>
-    <p class="lead">Every point is a model + harness combination. Down-and-right is the goal:
-      high accuracy, low cost. Filter the task slice and the field re-scores live.</p>
+  <section id="leaderboard">
+    <div class="sec-head">
+      <h2>Cost vs. quality</h2>
+      <p class="lead">Each dot is a <strong>model + harness</strong> combo. Up and left wins — accurate and cheap.
+        The dashed line is the frontier: the cheapest combo at each accuracy level. Filter the slice; the
+        field re-scores live.</p>
+    </div>
+
+    <div class="callouts">
+      <div class="callout">
+        <span class="c-title">It's the model <em>and</em> the harness</span>
+        The harness is everything around the model — skills, prompts, reading tools, caching. It's where the
+        leverage is: a good harness pulls a cheap model toward frontier accuracy, and caching a document that
+        rides every prompt (an underwriting manual, say) slashes cost.
+        <em>The model is the talent. The harness is the operation.</em>
+        <a href="https://www.insure-thing.com/blog/mythos-madness-3-the-harness" target="_blank" rel="noopener">Why the harness matters →</a>
+      </div>
+      <div class="callout">
+        <span class="c-title">"Saturated" depends on the job</span>
+        94% is a victory lap for a benchmark and a liability for a claims bot. Easy items inflate the
+        headline — filter <b>Difficulty → Hard</b> to see where models actually split. The last few points
+        are where the differences, and the risk, live.
+      </div>
+    </div>
+
     <div class="panel">
       <div class="controls" id="controls"></div>
+      <details class="more" id="more"><summary>More filters</summary>
+        <div class="controls" id="controls-adv"></div>
+      </details>
       <div class="legend" id="legend"></div>
       <div id="scatter"></div>
+      <p class="note" id="drop-note"></p>
     </div>
-    <div class="panel" style="margin-top:14px; overflow-x:auto">
+
+    <div class="panel" style="margin-top:16px; overflow-x:auto">
       <table id="table"><thead></thead><tbody></tbody></table>
+      <p class="note" id="cost-note"><b>The reasoning tax.</b> A model can be cheap per token and
+        pricey per task — it just thinks more. Reasoning tokens bill like output, and you often never see them.
+        Compare <b>$/1M tok</b> with <b>$/100 tasks</b>; flip to <b>metered</b> for real billed cost.</p>
+      <p class="note" id="harness-note"><b>Harnesses.</b>
+        <b>tooled_reader</b> — the model plus a file-reading tool; it opens a task's attachments (loss runs,
+        a manual) on request, then answers. v3 retries a malformed answer, so a formatting slip isn't scored
+        as wrong. <b>claude_code</b> — Claude in its agentic CLI. <b>codex_plain</b> — the model in OpenAI's
+        Codex CLI.</p>
     </div>
   </section>
 
-  <section>
-    <h2>What we're learning</h2>
-    <div class="prose" id="learnings"></div>
+  <section id="learnings">
+    <div class="sec-head"><h2>What we're learning</h2></div>
+    <div class="prose" id="learnings-body"></div>
   </section>
 
-  <section>
-    <h2>Roadmap</h2>
-    <div class="prose" id="roadmap"></div>
+  <section id="roadmap">
+    <div class="sec-head"><h2>Roadmap</h2></div>
+    <div id="roadmap-body"></div>
   </section>
 
-  <section class="samples">
-    <h2>Sample questions</h2>
-    <p class="lead">A few public examples — the prompt a model sees. (Answer keys and the
-      private bank are never published.)</p>
+  <section id="questions" class="samples">
+    <div class="sec-head">
+      <h2>Sample questions</h2>
+      <p class="lead">A few public examples — the exact prompt a model sees. Keys and the private bank stay private.</p>
+    </div>
     <div id="samples"></div>
   </section>
 
   <div class="foot" id="foot"></div>
 </div>
+<div id="tip" class="tip"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
 <script>
 const LANE_COLOR = { 'Claude Code':'#7F77DD', 'Codex':'#D85A30', 'OpenRouter':'#1D9E75', 'Vision':'#378ADD', 'Other':'#9b9a92' };
-const F = { family:'', difficulty:'', status:'', capability:'', attach:'', minN:3, cost:'notional', sort:'accuracy', dir:-1 };
-let DATA = null;
+const F = { family:'', type:'', status:'', capability:'', category:'', attach:'', diff:'', minN:3, cost:'notional', sort:'accuracy', dir:-1, moreOpen:false };
+let DATA = null, DIFF = {}, DCOUNT = { easy:0, medium:0, hard:0 }, CATS = [], SC = [];
 
 fetch('data/report.json').then(r=>r.json()).then(d=>{ DATA=d; boot(); })
-  .catch(e=>{ document.getElementById('scatter').innerHTML = '<p style="color:#c0392b">Could not load data/report.json</p>'; });
+  .catch(e=>{ document.getElementById('scatter').innerHTML = '<p class="empty" style="color:#c0392b">Could not load data/report.json</p>'; });
 
 function boot(){
-  document.getElementById('title').textContent = DATA.meta.title || 'InsureBench';
-  document.getElementById('subtitle').textContent = DATA.meta.subtitle || '';
-  document.getElementById('learnings').innerHTML = marked.parse(DATA.learnings || '');
-  document.getElementById('roadmap').innerHTML = marked.parse(DATA.roadmap || '');
+  // Hero headline + subtitle are authored in index.html (IB-PublicApp owns the public
+  // copy); meta.title/subtitle no longer drive the visible hero.
+  document.getElementById('learnings-body').innerHTML = marked.parse(cleanMd(DATA.learnings));
+  renderRoadmap();
+  computeDifficulty();
+  CATS = Array.from(new Set(DATA.items.map(it=>it.module).filter(Boolean))).sort();
   renderSamples();
   document.getElementById('foot').innerHTML =
-    `Aggregate results only — no private prompts, answer keys, or model outputs. `
-    + `Generated ${escapeHtml(DATA.meta.generated_at||'')} · ${DATA.meta.n_combos} combos × ${DATA.meta.n_items} items`
-    + (DATA.meta.release ? ` · release ${escapeHtml(DATA.meta.release)}` : '');
-  renderControls(); render();
+    'Aggregate results only — no private prompts, keys, or outputs. '
+    + 'Difficulty is empirical: mean accuracy across the combos that tried each item. '
+    + 'Generated ' + escapeHtml(DATA.meta.generated_at||'') + ' &middot; ' + DATA.meta.n_combos + ' combos &times; ' + DATA.meta.n_items + ' items'
+    + (DATA.meta.release ? ' &middot; release ' + escapeHtml(DATA.meta.release) : '');
+  renderControls(); render(); bindTip(); initScrollSpy();
 }
 
-function opt(v,l,cur){ return `<option value="${escapeHtml(v)}"${v===cur?' selected':''}>${escapeHtml(l)}</option>`; }
+// Empirical item difficulty from the public score matrix (stable item property,
+// computed once over the full field — not slice-dependent).
+function computeDifficulty(){
+  const keys = DATA.combos.map(c=>c.key);
+  DCOUNT = { easy:0, medium:0, hard:0 };
+  DATA.items.forEach(it=>{
+    const vals = keys.map(k=>(DATA.scores[k]||{})[it.id]).filter(v=>v!=null);
+    if(!vals.length) return;
+    const m = vals.reduce((a,b)=>a+b,0)/vals.length;
+    const band = m<70 ? 'hard' : m<90 ? 'medium' : 'easy';
+    DIFF[it.id] = band; DCOUNT[band]++;
+  });
+}
+
+function opt(v,l,cur){ return '<option value="'+escapeHtml(v)+'"'+(v===cur?' selected':'')+'>'+escapeHtml(l)+'</option>'; }
+function selVals(id,label,vals,cur,allLabel){
+  return selOpts(id,label,vals.map(v=>[v,String(v).replace(/_/g,' ')]),cur,allLabel);
+}
+function selOpts(id,label,pairs,cur,allLabel){
+  return '<div class="ctl"><label>'+label+'</label><select onchange="setF(\''+id+'\',this.value)">'
+    + opt('',allLabel,cur) + pairs.map(p=>opt(p[0],p[1],cur)).join('') + '</select></div>';
+}
 function renderControls(){
   const f = DATA.filters;
-  const sel = (id,label,vals,cur,allLabel)=>`<div class="ctl"><label>${label}</label>
-    <select onchange="setF('${id}',this.value)">${opt('',allLabel,cur)}${vals.map(v=>opt(v,String(v).replace(/_/g,' '),cur)).join('')}</select></div>`;
+  // primary: capability + empirical difficulty + cost basis (lean)
+  const diffPairs = [['easy','Easy ('+DCOUNT.easy+')'],['medium','Medium ('+DCOUNT.medium+')'],['hard','Hard ('+DCOUNT.hard+')']];
   document.getElementById('controls').innerHTML =
-    sel('family','Family',f.families,F.family,'All families')
-    + sel('capability','Capability',f.capabilities,F.capability,'All capabilities')
-    + sel('difficulty','Difficulty',f.difficulties,F.difficulty,'All difficulty')
-    + sel('status','Status',f.statuses,F.status,'All status')
-    + `<div class="ctl"><label>Attachments</label><select onchange="setF('attach',this.value)">
-        ${opt('','All items',F.attach)}${opt('with','With files',F.attach)}${opt('without','No files',F.attach)}</select></div>`
-    + `<div class="ctl"><label>Min n</label><input type="number" min="1" value="${F.minN}" onchange="setF('minN',parseInt(this.value)||1)"></div>`
-    + `<div class="ctl"><label>Cost basis</label><span class="seg">
-        <button class="${F.cost==='notional'?'on':''}" onclick="setF('cost','notional')">notional</button>
-        <button class="${F.cost==='metered'?'on':''}" onclick="setF('cost','metered')">metered</button></span></div>`;
-  document.getElementById('legend').innerHTML = (DATA.filters.lanes||[]).map(l=>
-    `<span><span class="dot" style="background:${LANE_COLOR[l]||'#999'}"></span>${escapeHtml(l)}</span>`).join('');
+    selVals('category','Category',CATS,F.category,'All categories')
+    + selVals('capability','Capability',f.capabilities,F.capability,'All capabilities')
+    + selOpts('diff','Difficulty',diffPairs,F.diff,'All difficulty')
+    + '<div class="ctl"><label>Cost basis</label><span class="seg">'
+      + '<button class="'+(F.cost==='notional'?'on':'')+'" onclick="setF(\'cost\',\'notional\')">notional</button>'
+      + '<button class="'+(F.cost==='metered'?'on':'')+'" onclick="setF(\'cost\',\'metered\')">metered</button></span></div>';
+  // advanced drawer: task type + family + status + attachments + min n
+  document.getElementById('controls-adv').innerHTML =
+    selVals('type','Task type',f.difficulties,F.type,'All task types')
+    + selVals('family','Family',f.families,F.family,'All families')
+    + selVals('status','Status',f.statuses,F.status,'All status')
+    + '<div class="ctl"><label>Attachments</label><select onchange="setF(\'attach\',this.value)">'
+      + opt('','All items',F.attach)+opt('with','With files',F.attach)+opt('without','No files',F.attach)+'</select></div>'
+    + '<div class="ctl"><label>Min n</label><input type="number" min="1" value="'+F.minN+'" onchange="setF(\'minN\',parseInt(this.value)||1)"></div>';
+  const m = document.getElementById('more'); m.open = F.moreOpen;
+  m.ontoggle = ()=>{ F.moreOpen = m.open; };
 }
 function setF(k,v){ F[k]=v; if(k!=='sort'&&k!=='dir') renderControls(); render(); }
 
 function items(){ return DATA.items.filter(it=>
-  (!F.family||it.family===F.family) && (!F.capability||it.capability===F.capability) &&
-  (!F.difficulty||it.difficulty===F.difficulty) && (!F.status||it.status===F.status) &&
+  (!F.category||it.module===F.category) && (!F.family||it.family===F.family) &&
+  (!F.capability||it.capability===F.capability) &&
+  (!F.type||it.difficulty===F.type) && (!F.status||it.status===F.status) &&
+  (!F.diff||DIFF[it.id]===F.diff) &&
   (F.attach===''|| (F.attach==='with')===!!it.attach)); }
 
 function stats(){
@@ -146,12 +311,31 @@ function stats(){
     const vals = its.map(it=>sc[it.id]).filter(v=>v!=null);
     const acc = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
     const cost = F.cost==='metered' ? c.cost_metered : c.cost_notional;
-    return { ...c, accuracy: acc, n: vals.length, cost };
+    const tok = c.tokens_per_task;
+    return Object.assign({}, c, { accuracy: acc, n: vals.length, cost: cost,
+      cost100: (cost!=null ? cost*100 : null),
+      rate: (cost!=null && tok ? cost/tok*1e6 : null) });
   }).filter(c=>c.accuracy!=null && c.n>=F.minN);
+}
+
+// efficient frontier: cheapest combo achieving each accuracy level (non-dominated set)
+function frontier(priced){
+  const sorted = priced.slice().sort((a,b)=> (a.cost-b.cost) || (b.accuracy-a.accuracy));
+  let best=-Infinity; const out=[];
+  for(const p of sorted){ if(p.accuracy>best+1e-9){ out.push(p); best=p.accuracy; } }
+  return out;
 }
 
 function render(){
   const pts = stats();
+  // surface the drops: combos with data in this slice but below the Min n floor
+  const its = items();
+  const withData = DATA.combos.reduce((a,c)=>{ const sc=DATA.scores[c.key]||{}; return a + (its.some(it=>sc[it.id]!=null)?1:0); }, 0);
+  const hidden = withData - pts.length;
+  const dn = document.getElementById('drop-note');
+  if(dn) dn.innerHTML = hidden>0
+    ? '<b>'+hidden+'</b> combo'+(hidden>1?'s':'')+' hidden — fewer than Min n ('+F.minN+') items in this slice. Lower <b>Min n</b> in More filters to show '+(hidden>1?'them':'it')+'.'
+    : '';
   document.getElementById('stats').innerHTML = headlineStats(pts);
   renderScatter(pts);
   renderTable(pts);
@@ -161,64 +345,155 @@ function headlineStats(pts){
   if(!pts.length) return '';
   const priced = pts.filter(p=>p.cost!=null && p.cost>0);
   const top = pts.slice().sort((a,b)=>b.accuracy-a.accuracy)[0];
-  const best = priced.slice().sort((a,b)=> (b.accuracy/Math.log10(b.cost*1e6+10)) - (a.accuracy/Math.log10(a.cost*1e6+10)))[0];
   const cheapestClearing = priced.filter(p=>p.accuracy>=80).sort((a,b)=>a.cost-b.cost)[0];
   const cards = [['Combos shown', pts.length, ''],
     ['Top accuracy', top.accuracy.toFixed(1)+'%', top.short],
     ['Items in slice', items().length, '']];
-  if(cheapestClearing) cards.push(['Cheapest ≥80%', '$'+fmtCost(cheapestClearing.cost)+'/task', cheapestClearing.short]);
-  return cards.map(([l,n,s])=>`<div class="stat"><div class="n">${n}</div><div class="l">${escapeHtml(l)}${s?' · '+escapeHtml(s):''}</div></div>`).join('');
+  if(cheapestClearing) cards.push(['Cheapest ≥80%', '$'+fmtCost(cheapestClearing.cost*100)+'/100 tasks', cheapestClearing.short]);
+  return cards.map(c=>'<div class="stat"><div class="n">'+c[1]+'</div><div class="l">'+escapeHtml(c[0])+(c[2]?' · '+escapeHtml(c[2]):'')+'</div></div>').join('');
 }
 
 function renderScatter(pts){
-  const W=1000,H=460,P={l:64,r:30,t:24,b:54};
+  const W=1000,H=470,P={l:64,r:34,t:24,b:54};
   const priced = pts.filter(p=>p.cost!=null && p.cost>0);
-  if(!priced.length){ document.getElementById('scatter').innerHTML='<p style="color:var(--mut);padding:20px">No priced combos in this slice. Lower Min n or widen the filter.</p>'; return; }
+  if(!priced.length){ document.getElementById('scatter').innerHTML='<p class="empty">No priced combos in this slice. Lower Min n or widen the filter.</p>'; document.getElementById('legend').innerHTML=''; return; }
   const xs = priced.map(p=>Math.log10(p.cost));
-  let xmin=Math.min(...xs), xmax=Math.max(...xs); if(xmin===xmax){xmin-=0.5;xmax+=0.5;}
-  const ymin=Math.max(0, Math.min(...priced.map(p=>p.accuracy))-8), ymax=100;
+  let xmin=Math.min.apply(null,xs), xmax=Math.max.apply(null,xs); if(xmin===xmax){xmin-=0.5;xmax+=0.5;}
+  const ymin=Math.max(0, Math.min.apply(null,priced.map(p=>p.accuracy))-8), ymax=100;
   const X=v=>P.l+(Math.log10(v)-xmin)/(xmax-xmin)*(W-P.l-P.r);
   const Y=v=>H-P.b-(v-ymin)/(ymax-ymin)*(H-P.t-P.b);
-  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cost versus accuracy scatter">`;
-  // gridlines y
-  for(let g=Math.ceil(ymin/10)*10; g<=100; g+=10){ s+=`<line x1="${P.l}" y1="${Y(g)}" x2="${W-P.r}" y2="${Y(g)}" stroke="var(--line)"/>`+
-    `<text x="${P.l-8}" y="${Y(g)+4}" text-anchor="end" font-size="11" fill="var(--mut)">${g}%</text>`; }
-  // x ticks (decades)
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Cost versus accuracy scatter">';
+  for(let g=Math.ceil(ymin/10)*10; g<=100; g+=10){ s+='<line x1="'+P.l+'" y1="'+Y(g)+'" x2="'+(W-P.r)+'" y2="'+Y(g)+'" stroke="var(--line)"/>'
+    + '<text x="'+(P.l-8)+'" y="'+(Y(g)+4)+'" text-anchor="end" font-size="11" fill="var(--mut)">'+g+'%</text>'; }
   for(let d=Math.floor(xmin); d<=Math.ceil(xmax); d++){ const v=Math.pow(10,d); if(X(v)<P.l-1||X(v)>W-P.r+1) continue;
-    s+=`<text x="${X(v)}" y="${H-P.b+20}" text-anchor="middle" font-size="11" fill="var(--mut)">$${fmtCost(v)}</text>`; }
-  s+=`<text x="${(W)/2}" y="${H-8}" text-anchor="middle" font-size="12" fill="var(--mut)">cost per task (log)</text>`;
-  s+=`<text transform="translate(16 ${H/2}) rotate(-90)" text-anchor="middle" font-size="12" fill="var(--mut)">accuracy</text>`;
-  priced.slice().sort((a,b)=>a.accuracy-b.accuracy).forEach(p=>{
+    s+='<text x="'+X(v)+'" y="'+(H-P.b+20)+'" text-anchor="middle" font-size="11" fill="var(--mut)">$'+fmtCost(v*100)+'</text>'; }
+  s+='<text x="'+(W/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" fill="var(--mut)">cost per 100 tasks (log)</text>';
+  s+='<text transform="translate(16 '+(H/2)+') rotate(-90)" text-anchor="middle" font-size="12" fill="var(--mut)">accuracy</text>';
+  const fr = frontier(priced); const frkeys = {};
+  fr.forEach(p=>frkeys[p.key]=1);
+  if(fr.length>1){
+    const path = fr.map((p,i)=>(i?'L':'M')+X(p.cost)+' '+Y(p.accuracy)).join(' ');
+    s+='<path d="'+path+'" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="5 4" stroke-opacity="0.65"/>';
+  }
+  // draw dots (low→high so the strongest sit on top); SC index = data-i for hover lookup
+  SC = priced.slice().sort((a,b)=> a.accuracy-b.accuracy);
+  SC.forEach(p=>{ p._fr = !!frkeys[p.key]; });
+  SC.forEach((p,i)=>{
     const c=LANE_COLOR[p.lane]||'#999';
-    s+=`<circle cx="${X(p.cost)}" cy="${Y(p.accuracy)}" r="7" fill="${c}" fill-opacity="0.85" stroke="${c}"><title>${escapeHtml(p.short)} / ${escapeHtml(p.lane)} — ${p.accuracy.toFixed(1)}% · $${fmtCost(p.cost)}/task · n=${p.n}</title></circle>`;
-    s+=`<text x="${X(p.cost)+11}" y="${Y(p.accuracy)+4}" font-size="11" fill="var(--ink)">${escapeHtml(p.short)}</text>`;
+    if(p._fr) s+='<circle cx="'+X(p.cost)+'" cy="'+Y(p.accuracy)+'" r="11" fill="none" stroke="var(--accent)" stroke-opacity="0.45" stroke-width="1.5"/>';
+    s+='<circle data-i="'+i+'" cx="'+X(p.cost)+'" cy="'+Y(p.accuracy)+'" r="7" fill="'+c+'" fill-opacity="0.88" stroke="'+c+'"/>';
+  });
+  // priority-greedy labels: frontier first, then top score; nudge into a clear slot or drop to hover
+  const mid=P.l+(W-P.l-P.r)*0.5, GAP=13, TOP=P.t+8, BOT=H-P.b-6, CAP=14;
+  const cand = SC.map(p=>({ xx:X(p.cost), yy:Y(p.accuracy), on:p._fr, txt:p.short, mean:p.accuracy }))
+    .sort((a,b)=> (b.on-a.on) || (b.mean-a.mean));
+  const placed=[]; let labelled=0, dropped=0;
+  cand.forEach(c=>{
+    if(!c.on && labelled>=CAP){ dropped++; return; }
+    const right = c.xx<=mid, lx = right? c.xx+10 : c.xx-10;
+    const w = c.txt.length*6.2 + 4, x0 = right? lx : lx-w, x1 = right? lx+w : lx;
+    let y=null;
+    for(const dy of [0,GAP,-GAP,2*GAP,-2*GAP]){ const ty=c.yy+dy; if(ty<TOP||ty>BOT) continue;
+      if(!placed.some(q=>Math.abs(q.y-ty)<GAP && !(x1<q.x0||x0>q.x1))){ y=ty; break; } }
+    if(y===null){ dropped++; return; }
+    placed.push({y,x0,x1}); labelled++;
+    if(Math.abs(y-c.yy)>2) s+='<line x1="'+c.xx+'" y1="'+c.yy+'" x2="'+lx+'" y2="'+(y-3)+'" stroke="var(--mut)" stroke-opacity="0.4" stroke-width="0.7"/>';
+    s+='<text x="'+lx+'" y="'+y+'" text-anchor="'+(right?'start':'end')+'" font-size="11" fill="var(--ink)" stroke="var(--card)" stroke-width="3" paint-order="stroke">'+escapeHtml(c.txt)+'</text>';
   });
   s+='</svg>';
   document.getElementById('scatter').innerHTML=s;
+  let leg = (DATA.filters.lanes||[]).map(l=>
+    '<span class="fr"><span class="dot" style="background:'+(LANE_COLOR[l]||'#999')+'"></span>'+escapeHtml(l)+'</span>').join('')
+    + '<span class="fr"><span class="frline"></span>efficient frontier</span>';
+  if(dropped>0) leg += '<span class="fr" style="color:var(--mut)">+'+dropped+' more — hover any dot</span>';
+  document.getElementById('legend').innerHTML = leg;
+}
+
+function tipHTML(p){
+  return '<div class="t-m">'+escapeHtml(p.short)+'</div>'
+    + '<div class="t-h">'+escapeHtml(p.harness||p.lane)+' &middot; '+escapeHtml(p.lane)+' lane</div>'
+    + '<div class="row"><b>'+p.accuracy.toFixed(1)+'%</b> <span class="t-h">CI ['+p.ci_lo+'–'+p.ci_hi+']</span></div>'
+    + '<div class="row">$'+fmtCost(p.cost100)+' / 100 tasks'+(p.rate!=null?' &middot; $'+fmtCost(p.rate)+' / 1M tok':'')+'</div>'
+    + '<div class="t-h">'+(p.tokens_per_task!=null?p.tokens_per_task+' tok/task &middot; ':'')+'n='+p.n+(p._fr?' &middot; on frontier':'')+'</div>';
+}
+function bindTip(){
+  const sc=document.getElementById('scatter'), tip=document.getElementById('tip');
+  sc.addEventListener('mousemove', e=>{
+    const c = e.target.closest && e.target.closest('circle[data-i]');
+    if(!c){ tip.style.display='none'; return; }
+    const p = SC[+c.getAttribute('data-i')]; if(!p){ tip.style.display='none'; return; }
+    tip.innerHTML = tipHTML(p); tip.style.display='block';
+    const pad=14, r=tip.getBoundingClientRect();
+    let x=e.clientX+pad, y=e.clientY+pad;
+    if(x+r.width>window.innerWidth) x=e.clientX-r.width-pad;
+    if(y+r.height>window.innerHeight) y=e.clientY-r.height-pad;
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+  });
+  sc.addEventListener('mouseleave', ()=>{ document.getElementById('tip').style.display='none'; });
 }
 
 function renderTable(pts){
-  const cols=[['short','Combo',0],['lane','Lane',0],['accuracy','Accuracy',1],['cost','$/task',1],['tokens_per_task','Tokens',1],['n','n',1]];
+  const cols=[['short','Model + harness',0],['accuracy','Accuracy',1],['cost100','$/100 tasks',1],['rate','$/1M tok',1],['tokens_per_task','Tokens',1],['n','n',1]];
   const arr=pts.slice().sort((a,b)=>{ const k=F.sort; let av=a[k],bv=b[k]; if(av==null)av=-1; if(bv==null)bv=-1;
     return (av<bv?-1:av>bv?1:0)*F.dir; });
-  const thead=`<tr>${cols.map(([k,l,n])=>`<th class="${n?'num':''}" onclick="setSort('${k}')">${l}${F.sort===k?(F.dir<0?' ▾':' ▴'):''}</th>`).join('')}</tr>`;
-  const body=arr.map(p=>`<tr>
-    <td><span class="dot" style="background:${LANE_COLOR[p.lane]||'#999'}"></span>${escapeHtml(p.short)}</td>
-    <td>${escapeHtml(p.lane)}</td>
-    <td class="num"><b>${p.accuracy.toFixed(1)}%</b> <span style="color:var(--mut);font-size:11px">[${p.ci_lo}–${p.ci_hi}]</span></td>
-    <td class="num">${p.cost!=null?'$'+fmtCost(p.cost):'—'}</td>
-    <td class="num">${p.tokens_per_task??'—'}</td>
-    <td class="num">${p.n}</td></tr>`).join('');
+  const thead='<tr>'+cols.map(c=>'<th class="'+(c[2]?'num':'')+'" onclick="setSort(\''+c[0]+'\')">'+c[1]+(F.sort===c[0]?(F.dir<0?' ▾':' ▴'):'')+'</th>').join('')+'</tr>';
+  const body=arr.map(p=>'<tr>'
+    + '<td><span class="dot" style="background:'+(LANE_COLOR[p.lane]||'#999')+'"></span>'+escapeHtml(p.short)
+      + ' <span class="harness">'+escapeHtml(p.harness||p.lane)+'</span></td>'
+    + '<td class="num"><b>'+p.accuracy.toFixed(1)+'%</b> <span style="color:var(--mut);font-size:11px">['+p.ci_lo+'–'+p.ci_hi+']</span></td>'
+    + '<td class="num">'+(p.cost100!=null?'$'+fmtCost(p.cost100):'—')+'</td>'
+    + '<td class="num">'+(p.rate!=null?'$'+fmtCost(p.rate):'—')+'</td>'
+    + '<td class="num">'+(p.tokens_per_task==null?'—':p.tokens_per_task)+'</td>'
+    + '<td class="num">'+p.n+'</td></tr>').join('');
   const t=document.getElementById('table'); t.querySelector('thead').innerHTML=thead; t.querySelector('tbody').innerHTML=body;
 }
 function setSort(k){ if(F.sort===k) F.dir*=-1; else { F.sort=k; F.dir=-1; } render(); }
 
-function renderSamples(){
-  document.getElementById('samples').innerHTML = (DATA.samples||[]).map(s=>
-    `<details><summary>${escapeHtml(s.id)} — ${escapeHtml(s.title||'')} <span class="pill">${escapeHtml(s.module||'')}</span></summary>
-     <pre>${escapeHtml(s.prompt||'')}</pre></details>`).join('') || '<p class="lead">None selected.</p>';
+// Roadmap markdown (** Now / Next / Later ** + bullets) → three tier cards,
+// with a graceful fallback to plain markdown if the shape isn't recognized.
+function renderRoadmap(){
+  const md = cleanMd(DATA.roadmap);
+  const tiers = []; let cur = null, foot = '';
+  md.split('\n').forEach(raw=>{
+    const line = raw.trim();
+    const mh = line.match(/^\*\*(.+?)\*\*$/);
+    if(mh){ cur = { name: mh[1], items: [] }; tiers.push(cur); return; }
+    const mi = line.match(/^[-*]\s+(.+)$/);
+    if(mi && cur){ cur.items.push(mi[1]); return; }
+    const mf = line.match(/^_(.+)_$/);
+    if(mf){ foot = mf[1]; }
+  });
+  const el = document.getElementById('roadmap-body');
+  if(!tiers.length){ el.className='prose'; el.innerHTML = marked.parse(md); return; }
+  const inline = t => escapeHtml(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`(.+?)`/g,'<code>$1</code>');
+  el.innerHTML = '<div class="roadmap-grid">'
+    + tiers.map(t=>'<div class="rm-tier'+(/now/i.test(t.name)?' now':'')+'"><div class="rm-h">'+escapeHtml(t.name)+'</div><ul>'
+        + t.items.map(it=>'<li>'+inline(it)+'</li>').join('') + '</ul></div>').join('')
+    + '</div>' + (foot ? '<p class="rm-foot">'+inline(foot)+'</p>' : '');
 }
 
+function renderSamples(){
+  document.getElementById('samples').innerHTML = (DATA.samples||[]).map(s=>
+    '<details><summary>'+escapeHtml(s.id)+' — '+escapeHtml(s.title||'')+' <span class="pill">'+escapeHtml(s.module||'')+'</span></summary>'
+    + '<pre>'+escapeHtml(s.prompt||'')+'</pre></details>').join('') || '<p class="lead">None selected.</p>';
+}
+
+function initScrollSpy(){
+  const links = Array.prototype.slice.call(document.querySelectorAll('#navlinks a'));
+  const map = {}; links.forEach(a=>map[a.getAttribute('data-s')]=a);
+  const secs = Object.keys(map).map(id=>document.getElementById(id)).filter(Boolean);
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){
+      links.forEach(a=>a.classList.remove('active'));
+      const a=map[e.target.id]; if(a) a.classList.add('active');
+    }});
+  }, { rootMargin:'-45% 0px -50% 0px', threshold:0 });
+  secs.forEach(sx=>obs.observe(sx));
+}
+
+// The section already supplies the title, so drop a leading duplicate heading
+// from the learnings/roadmap markdown (e.g. a leading "## What we're learning").
+function cleanMd(md){ return String(md||'').replace(/^\s*#{1,6}[^\n]*\n+/, ''); }
 function fmtCost(v){ if(v>=1) return v.toFixed(2); if(v>=0.01) return v.toFixed(3); return v.toFixed(4); }
 function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 </script>
