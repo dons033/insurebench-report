@@ -150,6 +150,8 @@
   .samples .sample-block.wide{ grid-column:1 / -1 }
   .samples .sample-label{ font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--mut); margin-bottom:6px; font-weight:700 }
   .samples pre{ white-space:pre-wrap; font-size:13px; color:var(--mut); margin:0; line-height:1.5 }
+  .sample-files{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px }
+  .sample-files a{ font-size:12px; border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:var(--card) }
   .pill{ font-size:11px; color:var(--mut); border:1px solid var(--line); border-radius:999px; padding:2px 9px; margin-left:4px }
   .foot{ color:var(--mut); font-size:13px; margin-top:44px; border-top:1px solid var(--line); padding-top:18px; line-height:1.6 }
   .foot-brand{ color:var(--ink); font-size:14px; font-weight:500; margin-bottom:6px }
@@ -188,10 +190,10 @@
     <a class="brand" href="#top"><img class="mark" src="/favicon-32.png" alt="" width="20" height="20" /><span class="txt">Insure<span class="acc">Bench</span></span></a>
     <div class="links" id="navlinks">
       <a href="#leaderboard" data-s="leaderboard">Leaderboard</a>
-      <a href="#why" data-s="why">Why</a>
-      <a href="#learnings" data-s="learnings">Learnings</a>
-      <a href="#roadmap" data-s="roadmap">Roadmap</a>
-      <a href="#questions" data-s="questions">Questions</a>
+      <a href="#learnings" data-s="learnings">Findings</a>
+      <a href="#why" data-s="why">Method</a>
+      <a href="#questions" data-s="questions">Samples</a>
+      <a href="#contact" data-s="contact">Work with us</a>
     </div>
     <div class="ext-links">
       <a href="https://insure-thing.com/labs">Labs</a>
@@ -240,7 +242,7 @@
   </section>
 
   <section id="why">
-    <div class="sec-head"><h2>Why InsureBench</h2></div>
+    <div class="sec-head"><h2>Method</h2></div>
     <div class="prose" id="why-body">
       <p>InsureBench evaluates AI systems on insurance work — claims reasoning, actuarial analysis,
       underwriting review, coverage questions, document reading, form extraction, and workflow judgment.
@@ -291,11 +293,18 @@
       for the volume, controllable enough for your data and compliance needs, and reliable enough that failures
       can be detected and escalated. The highest-scoring model overall may be the right answer for some work —
       and unnecessary for other work.</p>
+      <h3>V1 snapshot</h3>
+      <p>V1 is built around a 160-task comparable core, with runs generated over roughly a week. Questions are
+      insurance-specific and SME-reviewed. We use objective keys where possible, rubric scoring for judgment
+      tasks, and attachment-aware harnesses for packets, spreadsheets, images, and documents.</p>
+      <p>InsureBench is a performance estimate, not a procurement recommendation. Scores vary by task specifics,
+      and your tasks may have different results. Procurement decisions may also reflect speed, existing
+      relationships, deployment, compliance, data control, and other concerns.</p>
     </div>
   </section>
 
   <section id="learnings">
-    <div class="sec-head"><h2>What we're learning</h2></div>
+    <div class="sec-head"><h2>Findings</h2></div>
     <div class="prose" id="learnings-body">
       <h3>The harness changes the result</h3>
       <p>File readers, retry policies, output repair, batching, and domain skills can move results enough to
@@ -390,7 +399,9 @@ function boot(){
   // owns the public V1 copy per InsureBench/docs/WEBSITE_COPY_INSUREBENCH_V1.md). report.json
   // drives only the interactive chart/table/filters + the public sample questions.
   computeDifficulty();
-  CATS = Array.from(new Set(DATA.items.map(it=>it.module).filter(Boolean))).sort();
+  CATS = Array.from(new Set(DATA.items.map(it=>it.module).filter(Boolean)))
+    .filter(m=>m!=='vehicle_asset_identity')
+    .sort();
   renderSamples();
   const verLabel = (DATA.meta.release || RELEASE) + ' · ' + monthYear(DATA.meta.generated_at);
   document.getElementById('ver').textContent = verLabel;
@@ -426,6 +437,24 @@ function modelFamily(c){
   return 'Other';
 }
 function modelColor(c){ return MODEL_FAMILY_COLOR[modelFamily(c)] || 'var(--mut)'; }
+function displayName(c){
+  const s = c.short || c.model || '';
+  const m = ((c.model||'') + ' ' + s).toLowerCase();
+  if(m.includes('claude-opus')) return 'Claude Opus';
+  if(m.includes('claude-haiku')) return 'Claude Haiku';
+  if(m.includes('gpt-5.5')) return 'GPT-5.5';
+  if(m.includes('gpt-5.4-mini')) return 'GPT-5.4 Mini';
+  if(m.includes('gpt-oss-120b')) return 'GPT-OSS 120B';
+  if(m.includes('nemotron-3-ultra')) return 'Nemotron Ultra';
+  if(m.includes('nemotron-3-super')) return 'Nemotron Super';
+  if(m.includes('gemini-3.5-flash-low')) return 'Gemini Flash Low';
+  if(m.includes('gemini-2.5-flash-lite')) return 'Gemini Flash Lite';
+  if(m.includes('gemma-4-26b')) return 'Gemma 4 26B';
+  if(m.includes('mimo-v2.5')) return 'Mimo v2.5';
+  if(m.includes('hy3-preview')) return 'Hy3 Preview';
+  if(m.includes('deepseek-v4-flash')) return 'DeepSeek V4 Flash';
+  return s;
+}
 function isOpenWeight(c){
   const m = ((c.model||'') + ' ' + (c.short||'')).toLowerCase();
   return /gemma|nemotron|gpt-oss|deepseek|mimo|hy3|qwen|llama|mistral|mixtral|yi-|kimi/.test(m);
@@ -540,7 +569,7 @@ function renderScatter(pts){
   });
   // priority-greedy labels: frontier first, then top score; nudge into a clear slot or drop to hover
   const mid=P.l+(W-P.l-P.r)*0.5, GAP=13, TOP=P.t+8, BOT=H-P.b-6, CAP=14;
-  const cand = SC.map(p=>({ xx:X(p.cost), yy:Y(p.accuracy), on:p._fr, txt:p.short, mean:p.accuracy }))
+  const cand = SC.map(p=>({ xx:X(p.cost), yy:Y(p.accuracy), on:p._fr, txt:displayName(p), mean:p.accuracy }))
     .sort((a,b)=> (b.on-a.on) || (b.mean-a.mean));
   const placed=[]; let labelled=0, dropped=0;
   cand.forEach(c=>{
@@ -566,8 +595,9 @@ function renderScatter(pts){
 }
 
 function tipHTML(p){
-  return '<div class="t-m">'+escapeHtml(p.short)+'</div>'
+  return '<div class="t-m">'+escapeHtml(displayName(p))+'</div>'
     + '<div class="t-h">'+escapeHtml(modelFamily(p))+' &middot; '+escapeHtml(p.harness||p.lane)+'</div>'
+    + (displayName(p)!==p.short ? '<div class="t-h">'+escapeHtml(p.short)+'</div>' : '')
     + '<div class="row"><b>'+p.accuracy.toFixed(1)+'% score</b> <span class="t-h">CI ['+p.ci_lo+'–'+p.ci_hi+']</span></div>'
     + '<div class="row">$'+fmtCost(p.cost100)+' / 100 tasks'+(p.rate!=null?' &middot; $'+fmtCost(p.rate)+' / 1M tok':'')+'</div>'
     + '<div class="t-h">'+(p.tokens_per_task!=null?p.tokens_per_task+' tok/task &middot; ':'')+'n='+p.n+(p._fr?' &middot; on frontier':'')+'</div>';
@@ -594,7 +624,7 @@ function renderTable(pts){
     return (av<bv?-1:av>bv?1:0)*F.dir; });
   const thead='<tr>'+cols.map(c=>'<th class="'+(c[2]?'num':'')+'" onclick="setSort(\''+c[0]+'\')">'+c[1]+(F.sort===c[0]?(F.dir<0?' ▾':' ▴'):'')+'</th>').join('')+'</tr>';
   const body=arr.map(p=>'<tr>'
-    + '<td><span class="dot" style="background:'+modelColor(p)+'"></span>'+escapeHtml(p.short)
+    + '<td><span class="dot" style="background:'+modelColor(p)+'"></span>'+escapeHtml(displayName(p))
       + ' <span class="harness">'+escapeHtml(p.harness||p.lane)+'</span></td>'
     + '<td class="num"><b style="color:'+rampVar(p.accuracy)+'">'+p.accuracy.toFixed(1)+'%</b> <span style="color:var(--mut);font-size:11px">['+p.ci_lo+'–'+p.ci_hi+']</span></td>'
     + '<td class="num">'+money(p.cost100)+'</td>'
@@ -613,11 +643,18 @@ function renderSamples(){
     + sampleBlock('Supplied facts', s.provided_data)
     + sampleBlock('Expected answer key', s.answer_key)
     + sampleBlock('Scoring rubric', s.rubric, true)
+    + sampleFiles(s.attachments)
     + '</div></details>').join('') || '<p class="lead">None selected.</p>';
 }
 function sampleBlock(label, text, wide){
   if(!text) return '';
   return '<div class="sample-block'+(wide?' wide':'')+'"><div class="sample-label">'+escapeHtml(label)+'</div><pre>'+escapeHtml(text)+'</pre></div>';
+}
+function sampleFiles(files){
+  if(!files || !files.length) return '';
+  return '<div class="sample-block wide"><div class="sample-label">Attachments</div><div class="sample-files">'
+    + files.map(f=>'<a href="'+escapeAttr(f.href)+'" target="_blank" rel="noopener">'+escapeHtml(f.label)+'</a>').join('')
+    + '</div></div>';
 }
 
 function initScrollSpy(){
@@ -639,6 +676,7 @@ function fmtCost(v){ if(v>=1) return v.toFixed(2); if(v>=0.01) return v.toFixed(
 function money(v){ return v==null ? '—' : v===0 ? '$0' : '$'+fmtCost(v); }
 function rampVar(p){ return 'var(--ramp-'+(p>=90?4:p>=75?3:p>=60?2:p>=40?1:0)+')'; }
 function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function escapeAttr(s){ return escapeHtml(s).replace(/'/g,'&#39;'); }
 </script>
 </body>
 </html>
