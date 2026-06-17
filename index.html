@@ -47,7 +47,7 @@
   body{ margin:0; background:var(--bg); color:var(--ink);
     font:16px/1.65 "Space Grotesk",system-ui,-apple-system,sans-serif;
     -webkit-font-smoothing:antialiased; }
-  h1,h2,h3,.stat .n,.brand{ font-family:"Questrial",system-ui,sans-serif }
+  h1,h2,h3,.brand{ font-family:"Questrial",system-ui,sans-serif }
   a{ color:var(--accent); text-decoration:none } a:hover{ text-decoration:underline }
   .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 22px 90px }
 
@@ -81,11 +81,6 @@
   h1{ font-size:clamp(44px,8vw,76px); line-height:1.0; margin:2px 0 14px; font-weight:400; letter-spacing:-.03em }
   .acc{ color:var(--accent) }
   .tagline{ font-size:clamp(18px,2.5vw,23px); color:var(--mut); max-width:720px; margin:0; line-height:1.45 }
-  .sub{ font-size:clamp(17px,2.4vw,21px); color:var(--mut); max-width:660px; margin:0; line-height:1.5 }
-  .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:14px; margin:22px 0 0 }
-  .stat{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:15px 18px; box-shadow:var(--shadow) }
-  .stat .n{ font-size:28px; font-weight:400; letter-spacing:-.01em; line-height:1.1; font-variant-numeric:tabular-nums }
-  .stat .l{ font-size:12px; color:var(--mut); margin-top:3px }
 
   h2{ font-size:26px; font-weight:400; margin:0 0 6px; letter-spacing:-.015em }
   .sec-head{ margin:56px 0 18px }
@@ -195,7 +190,6 @@
     <h1 id="title">Insure<span class="acc">Bench</span></h1>
     <p class="tagline">The first LLM&nbsp;+&nbsp;harness leaderboard built for insurance-specific tasks.
       <span class="ver" id="ver"></span></p>
-    <div class="stats" id="stats"></div>
   </header>
 
   <section id="leaderboard">
@@ -392,21 +386,8 @@ function render(){
   if(unpriced>0 && F.cost==='metered') msgs.push('<b>'+unpriced+'</b> combo'+(unpriced>1?'s are':' is')+' not plotted on the <b>metered</b> basis — free models bill $0 and the Codex lane reports no per-call cost. They’re in the table; switch to <b>notional</b> to plot them all.');
   const dn = document.getElementById('drop-note');
   if(dn) dn.innerHTML = msgs.join('<br>');
-  document.getElementById('stats').innerHTML = headlineStats(pts);
   renderScatter(pts);
   renderTable(pts);
-}
-
-function headlineStats(pts){
-  if(!pts.length) return '';
-  const priced = pts.filter(p=>p.cost!=null && p.cost>0);
-  const top = pts.slice().sort((a,b)=>b.accuracy-a.accuracy)[0];
-  const cheapestClearing = priced.filter(p=>p.accuracy>=80).sort((a,b)=>a.cost-b.cost)[0];
-  const cards = [['Combos shown', pts.length, ''],
-    ['Top accuracy', top.accuracy.toFixed(1)+'%', top.short],
-    ['Items in slice', items().length, '']];
-  if(cheapestClearing) cards.push(['Cheapest ≥80%', '$'+fmtCost(cheapestClearing.cost*100)+'/100 tasks', cheapestClearing.short]);
-  return cards.map(c=>'<div class="stat"><div class="n">'+c[1]+'</div><div class="l">'+escapeHtml(c[0])+(c[2]?' · '+escapeHtml(c[2]):'')+'</div></div>').join('');
 }
 
 function renderScatter(pts){
