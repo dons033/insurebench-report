@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>InsureBench — cost &amp; quality report</title>
 <meta name="description" content="The first LLM + harness leaderboard built for insurance-specific tasks — helping insurance decision-makers find the model that's actually worth it for the job." />
-<!-- InsureThing branding — all assets self-hosted in the repo root. NOTE: at deploy,
-     set og:image + twitter:image (below) to the ABSOLUTE https://<deployed-domain>/og-image.png —
-     LinkedIn/Facebook require an absolute URL for the link-preview card. -->
+<!-- InsureThing branding — all assets self-hosted in the repo root. -->
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png" />
@@ -20,11 +18,12 @@
 <meta property="og:site_name" content="InsureThing" />
 <meta property="og:title" content="InsureBench — the first LLM + harness leaderboard for insurance" />
 <meta property="og:description" content="Helping insurance decision-makers find the model that's actually worth it for the job — scored on real insurance work, by accuracy and true cost." />
-<meta property="og:image" content="/og-image.png" />
+<meta property="og:image" content="https://insurebench.insure-thing.com/og-image.png" />
+<meta property="og:url" content="https://insurebench.insure-thing.com" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="InsureBench — the first LLM + harness leaderboard for insurance" />
 <meta name="twitter:description" content="The first LLM + harness leaderboard built for insurance-specific tasks." />
-<meta name="twitter:image" content="/og-image.png" />
+<meta name="twitter:image" content="https://insurebench.insure-thing.com/og-image.png" />
 <style>
   /* InsureThing design tokens (docs/STYLE_GUIDE.md): cream paper, near-black ink, one decisive red. */
   :root{
@@ -67,6 +66,11 @@
     padding:7px 12px; border-radius:8px; transition:color .15s, background .15s; white-space:nowrap }
   nav.top .links a:hover{ color:var(--ink); background:var(--accent-soft); text-decoration:none }
   nav.top .links a.active{ color:var(--accent); background:var(--accent-soft) }
+  nav.top .ext-links{ display:flex; gap:2px; align-items:center; padding-left:14px; margin-left:4px; border-left:1px solid var(--line) }
+  nav.top .ext-links a{ color:var(--mut); font-size:14px; font-weight:500; padding:7px 10px; border-radius:8px; transition:color .15s, background .15s; white-space:nowrap }
+  nav.top .ext-links a:hover{ color:var(--ink); background:var(--accent-soft); text-decoration:none }
+  /* nav back-links only fit on wide screens; the footer carries them everywhere */
+  @media (max-width:920px){ nav.top .ext-links{ display:none } }
   @media (max-width:640px){
     nav.top .brand span.txt{ display:none }
     nav.top .links a{ padding:7px 9px; font-size:13px }
@@ -143,8 +147,10 @@
   .samples pre{ white-space:pre-wrap; font-size:13px; color:var(--mut); margin:12px 0 0; line-height:1.5 }
   .pill{ font-size:11px; color:var(--mut); border:1px solid var(--line); border-radius:999px; padding:2px 9px; margin-left:4px }
   .foot{ color:var(--mut); font-size:13px; margin-top:44px; border-top:1px solid var(--line); padding-top:18px; line-height:1.6 }
-  .foot-brand{ color:var(--ink); font-size:14px; font-weight:500; margin-bottom:8px }
+  .foot-brand{ color:var(--ink); font-size:14px; font-weight:500; margin-bottom:6px }
   .foot-brand a{ color:var(--accent); font-weight:600 }
+  .foot-links{ font-size:13px; margin-bottom:10px }
+  .foot-links a{ color:var(--accent); font-weight:600 }
   .empty{ color:var(--mut); padding:26px 8px; text-align:center }
   /* radar motif — empty state (STYLE_GUIDE §8) */
   .radar-empty{ display:flex; flex-direction:column; align-items:center; gap:12px; padding:38px 16px; color:var(--mut); font-size:14px; text-align:center }
@@ -181,6 +187,10 @@
       <a href="#learnings" data-s="learnings">Learnings</a>
       <a href="#roadmap" data-s="roadmap">Roadmap</a>
       <a href="#questions" data-s="questions">Questions</a>
+    </div>
+    <div class="ext-links">
+      <a href="https://insure-thing.com/labs">Labs</a>
+      <a href="https://insure-thing.com">InsureThing&nbsp;&#8599;</a>
     </div>
   </div>
 </nav>
@@ -293,6 +303,7 @@ function boot(){
   document.getElementById('ver').textContent = verLabel;
   document.getElementById('foot').innerHTML =
     '<div class="foot-brand">A project of <a href="https://insure-thing.com">InsureThing</a> — insurance consulting for the AI era. &copy; 2026 InsureThing.</div>'
+    + '<div class="foot-links"><a href="https://insure-thing.com">InsureThing</a> &middot; <a href="https://insure-thing.com/labs">Labs</a> &middot; <a href="https://insure-thing.com/blog">Blog</a></div>'
     + 'Aggregate results only — no private prompts, keys, or outputs. '
     + 'Difficulty is empirical: mean accuracy across the combos that tried each item. '
     + '<b>InsureBench ' + escapeHtml(verLabel) + '</b> &middot; generated ' + escapeHtml(DATA.meta.generated_at||'') + ' &middot; ' + DATA.meta.n_combos + ' combos &times; ' + DATA.meta.n_items + ' items';
