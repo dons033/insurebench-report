@@ -4,6 +4,24 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>InsureBench — cost &amp; quality report</title>
+<meta name="description" content="The right tool isn't always the most expensive one. InsureBench scores model + harness combos on real insurance work — by accuracy and by what they actually cost." />
+<!-- InsureThing branding. og-image self-hosted (./og-image.png). Favicon hotlinked
+     from insure-thing.com (stable paths). NOTE: at deploy, set og:image + twitter:image
+     to the ABSOLUTE https://<deployed-domain>/og-image.png — LinkedIn/Facebook require
+     an absolute URL for the link-preview card. -->
+<link rel="icon" href="https://insure-thing.com/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="https://insure-thing.com/icon-192.png" sizes="192x192" type="image/png" />
+<link rel="apple-touch-icon" href="https://insure-thing.com/apple-icon.png" />
+<meta name="theme-color" content="#0F6E56" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="InsureThing" />
+<meta property="og:title" content="InsureBench — cost &amp; quality for insurance LLMs" />
+<meta property="og:description" content="The right tool isn't always the most expensive one. Model + harness combos scored on real insurance work — by accuracy and true cost." />
+<meta property="og:image" content="/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="InsureBench — cost &amp; quality for insurance LLMs" />
+<meta name="twitter:description" content="The right tool isn't always the most expensive one." />
+<meta name="twitter:image" content="/og-image.png" />
 <style>
   :root{
     --bg:#fbfaf7; --card:#fff; --ink:#1f1e1b; --mut:#6b6a64; --line:#e7e5dd;
@@ -49,6 +67,8 @@
   section{ scroll-margin-top:74px }
   header.hero{ padding:54px 0 14px }
   .eyebrow{ color:var(--accent); font-weight:600; letter-spacing:.06em; font-size:12.5px; text-transform:uppercase }
+  .ver{ text-transform:none; letter-spacing:0; color:var(--mut); border:1px solid var(--line);
+    border-radius:999px; padding:2px 9px; font-size:11px; font-weight:600; margin-left:8px; vertical-align:1.5px }
   h1{ font-size:clamp(30px,5vw,44px); line-height:1.08; margin:10px 0 12px; font-weight:680; letter-spacing:-.02em }
   .sub{ font-size:clamp(17px,2.4vw,21px); color:var(--mut); max-width:660px; margin:0; line-height:1.5 }
   .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:14px; margin:30px 0 0 }
@@ -116,6 +136,8 @@
   .samples pre{ white-space:pre-wrap; font-size:13px; color:var(--mut); margin:12px 0 0; line-height:1.5 }
   .pill{ font-size:11px; color:var(--mut); border:1px solid var(--line); border-radius:999px; padding:2px 9px; margin-left:4px }
   .foot{ color:var(--mut); font-size:13px; margin-top:44px; border-top:1px solid var(--line); padding-top:18px; line-height:1.6 }
+  .foot-brand{ color:var(--ink); font-size:14px; font-weight:500; margin-bottom:8px }
+  .foot-brand a{ color:var(--accent); font-weight:600 }
   .empty{ color:var(--mut); padding:26px 8px; text-align:center }
 
   /* side-by-side framing callouts */
@@ -149,7 +171,7 @@
 
 <div class="wrap">
   <header class="hero" id="top">
-    <div class="eyebrow">Model &times; harness benchmark</div>
+    <div class="eyebrow">Model &times; harness benchmark <span class="ver" id="ver"></span></div>
     <h1 id="title">The right tool isn't always the most expensive one</h1>
     <p class="sub" id="subtitle">Not chat — real insurance work, with real tools. We score
       model&nbsp;+&nbsp;harness combos on accuracy and on what they actually cost.</p>
@@ -229,6 +251,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
 <script>
 const LANE_COLOR = { 'Claude Code':'#7F77DD', 'Codex':'#D85A30', 'OpenRouter':'#1D9E75', 'Vision':'#378ADD', 'Other':'#9b9a92' };
+const RELEASE = 'v0.1';   // citable snapshot label; overridden by meta.release if IB-core sets it
 const F = { family:'', type:'', status:'', capability:'', category:'', attach:'', diff:'', minN:3, cost:'notional', sort:'accuracy', dir:-1, moreOpen:false };
 let DATA = null, DIFF = {}, DCOUNT = { easy:0, medium:0, hard:0 }, CATS = [], SC = [];
 
@@ -243,11 +266,13 @@ function boot(){
   computeDifficulty();
   CATS = Array.from(new Set(DATA.items.map(it=>it.module).filter(Boolean))).sort();
   renderSamples();
+  const verLabel = (DATA.meta.release || RELEASE) + ' · ' + monthYear(DATA.meta.generated_at);
+  document.getElementById('ver').textContent = verLabel;
   document.getElementById('foot').innerHTML =
-    'Aggregate results only — no private prompts, keys, or outputs. '
+    '<div class="foot-brand">A project of <a href="https://insure-thing.com">InsureThing</a> — insurance consulting for the AI era. &copy; 2026 InsureThing.</div>'
+    + 'Aggregate results only — no private prompts, keys, or outputs. '
     + 'Difficulty is empirical: mean accuracy across the combos that tried each item. '
-    + 'Generated ' + escapeHtml(DATA.meta.generated_at||'') + ' &middot; ' + DATA.meta.n_combos + ' combos &times; ' + DATA.meta.n_items + ' items'
-    + (DATA.meta.release ? ' &middot; release ' + escapeHtml(DATA.meta.release) : '');
+    + '<b>InsureBench ' + escapeHtml(verLabel) + '</b> &middot; generated ' + escapeHtml(DATA.meta.generated_at||'') + ' &middot; ' + DATA.meta.n_combos + ' combos &times; ' + DATA.meta.n_items + ' items';
   renderControls(); render(); bindTip(); initScrollSpy();
 }
 
@@ -332,10 +357,12 @@ function render(){
   const its = items();
   const withData = DATA.combos.reduce((a,c)=>{ const sc=DATA.scores[c.key]||{}; return a + (its.some(it=>sc[it.id]!=null)?1:0); }, 0);
   const hidden = withData - pts.length;
+  const unpriced = pts.length - pts.filter(p=>p.cost!=null && p.cost>0).length;
+  const msgs = [];
+  if(hidden>0) msgs.push('<b>'+hidden+'</b> combo'+(hidden>1?'s':'')+' hidden — fewer than Min n ('+F.minN+') items in this slice. Lower <b>Min n</b> in More filters to show '+(hidden>1?'them':'it')+'.');
+  if(unpriced>0 && F.cost==='metered') msgs.push('<b>'+unpriced+'</b> combo'+(unpriced>1?'s are':' is')+' not plotted on the <b>metered</b> basis — free models bill $0 and the Codex lane reports no per-call cost. They’re in the table; switch to <b>notional</b> to plot them all.');
   const dn = document.getElementById('drop-note');
-  if(dn) dn.innerHTML = hidden>0
-    ? '<b>'+hidden+'</b> combo'+(hidden>1?'s':'')+' hidden — fewer than Min n ('+F.minN+') items in this slice. Lower <b>Min n</b> in More filters to show '+(hidden>1?'them':'it')+'.'
-    : '';
+  if(dn) dn.innerHTML = msgs.join('<br>');
   document.getElementById('stats').innerHTML = headlineStats(pts);
   renderScatter(pts);
   renderTable(pts);
@@ -441,8 +468,8 @@ function renderTable(pts){
     + '<td><span class="dot" style="background:'+(LANE_COLOR[p.lane]||'#999')+'"></span>'+escapeHtml(p.short)
       + ' <span class="harness">'+escapeHtml(p.harness||p.lane)+'</span></td>'
     + '<td class="num"><b>'+p.accuracy.toFixed(1)+'%</b> <span style="color:var(--mut);font-size:11px">['+p.ci_lo+'–'+p.ci_hi+']</span></td>'
-    + '<td class="num">'+(p.cost100!=null?'$'+fmtCost(p.cost100):'—')+'</td>'
-    + '<td class="num">'+(p.rate!=null?'$'+fmtCost(p.rate):'—')+'</td>'
+    + '<td class="num">'+money(p.cost100)+'</td>'
+    + '<td class="num">'+money(p.rate)+'</td>'
     + '<td class="num">'+(p.tokens_per_task==null?'—':p.tokens_per_task)+'</td>'
     + '<td class="num">'+p.n+'</td></tr>').join('');
   const t=document.getElementById('table'); t.querySelector('thead').innerHTML=thead; t.querySelector('tbody').innerHTML=body;
@@ -494,7 +521,10 @@ function initScrollSpy(){
 // The section already supplies the title, so drop a leading duplicate heading
 // from the learnings/roadmap markdown (e.g. a leading "## What we're learning").
 function cleanMd(md){ return String(md||'').replace(/^\s*#{1,6}[^\n]*\n+/, ''); }
+function monthYear(s){ const M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const m=String(s||'').match(/^(\d{4})-(\d{2})/); return m ? M[+m[2]-1]+' '+m[1] : ''; }
 function fmtCost(v){ if(v>=1) return v.toFixed(2); if(v>=0.01) return v.toFixed(3); return v.toFixed(4); }
+function money(v){ return v==null ? '—' : v===0 ? '$0' : '$'+fmtCost(v); }
 function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 </script>
 </body>
