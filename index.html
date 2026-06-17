@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>InsureBench — cost &amp; quality report</title>
-<meta name="description" content="The right tool isn't always the most expensive one. InsureBench scores model + harness combos on real insurance work — by accuracy and by what they actually cost." />
+<meta name="description" content="The first LLM + harness leaderboard built for insurance-specific tasks — helping insurance decision-makers find the model that's actually worth it for the job." />
 <!-- InsureThing branding — all assets self-hosted in the repo root. NOTE: at deploy,
      set og:image + twitter:image (below) to the ABSOLUTE https://<deployed-domain>/og-image.png —
      LinkedIn/Facebook require an absolute URL for the link-preview card. -->
@@ -18,12 +18,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="InsureThing" />
-<meta property="og:title" content="InsureBench — cost &amp; quality for insurance LLMs" />
-<meta property="og:description" content="The right tool isn't always the most expensive one. Model + harness combos scored on real insurance work — by accuracy and true cost." />
+<meta property="og:title" content="InsureBench — the first LLM + harness leaderboard for insurance" />
+<meta property="og:description" content="Helping insurance decision-makers find the model that's actually worth it for the job — scored on real insurance work, by accuracy and true cost." />
 <meta property="og:image" content="/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="InsureBench — cost &amp; quality for insurance LLMs" />
-<meta name="twitter:description" content="The right tool isn't always the most expensive one." />
+<meta name="twitter:title" content="InsureBench — the first LLM + harness leaderboard for insurance" />
+<meta name="twitter:description" content="The first LLM + harness leaderboard built for insurance-specific tasks." />
 <meta name="twitter:image" content="/og-image.png" />
 <style>
   /* InsureThing design tokens (docs/STYLE_GUIDE.md): cream paper, near-black ink, one decisive red. */
@@ -74,19 +74,22 @@
   }
 
   section{ scroll-margin-top:74px }
-  header.hero{ padding:54px 0 14px }
+  header.hero{ padding:34px 0 6px }
   .eyebrow{ color:var(--accent); font-weight:600; letter-spacing:.06em; font-size:12.5px; text-transform:uppercase }
   .ver{ text-transform:none; letter-spacing:0; color:var(--mut); border:1px solid var(--line);
     border-radius:999px; padding:2px 9px; font-size:11px; font-weight:600; margin-left:8px; vertical-align:1.5px }
-  h1{ font-size:clamp(32px,5.2vw,46px); line-height:1.08; margin:10px 0 12px; font-weight:400; letter-spacing:-.02em }
+  h1{ font-size:clamp(44px,8vw,76px); line-height:1.0; margin:2px 0 14px; font-weight:400; letter-spacing:-.03em }
+  .acc{ color:var(--accent) }
+  .tagline{ font-size:clamp(18px,2.5vw,23px); color:var(--mut); max-width:720px; margin:0; line-height:1.45 }
   .sub{ font-size:clamp(17px,2.4vw,21px); color:var(--mut); max-width:660px; margin:0; line-height:1.5 }
-  .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:14px; margin:30px 0 0 }
+  .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:14px; margin:22px 0 0 }
   .stat{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:15px 18px; box-shadow:var(--shadow) }
   .stat .n{ font-size:28px; font-weight:400; letter-spacing:-.01em; line-height:1.1; font-variant-numeric:tabular-nums }
   .stat .l{ font-size:12px; color:var(--mut); margin-top:3px }
 
   h2{ font-size:26px; font-weight:400; margin:0 0 6px; letter-spacing:-.015em }
   .sec-head{ margin:56px 0 18px }
+  #leaderboard > .sec-head{ margin-top:20px }
   .lead{ color:var(--mut); margin:0; max-width:700px }
   .panel{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow) }
 
@@ -179,6 +182,7 @@
     <a class="brand" href="#top"><img class="mark" src="/favicon-32.png" alt="" width="20" height="20" /><span class="txt">Insure<span class="acc">Bench</span></span></a>
     <div class="links" id="navlinks">
       <a href="#leaderboard" data-s="leaderboard">Leaderboard</a>
+      <a href="#why" data-s="why">Why</a>
       <a href="#learnings" data-s="learnings">Learnings</a>
       <a href="#roadmap" data-s="roadmap">Roadmap</a>
       <a href="#questions" data-s="questions">Questions</a>
@@ -188,36 +192,17 @@
 
 <div class="wrap">
   <header class="hero" id="top">
-    <div class="eyebrow">Model &times; harness benchmark <span class="ver" id="ver"></span></div>
-    <h1 id="title">The right tool isn't always the most expensive one</h1>
-    <p class="sub" id="subtitle">Not chat — real insurance work, with real tools. We score
-      model&nbsp;+&nbsp;harness combos on accuracy and on what they actually cost.</p>
+    <h1 id="title">Insure<span class="acc">Bench</span></h1>
+    <p class="tagline">The first LLM&nbsp;+&nbsp;harness leaderboard built for insurance-specific tasks.
+      <span class="ver" id="ver"></span></p>
     <div class="stats" id="stats"></div>
   </header>
 
   <section id="leaderboard">
     <div class="sec-head">
       <h2>Cost vs. quality</h2>
-      <p class="lead">Each dot is a <strong>model + harness</strong> combo. Up and left wins — accurate and cheap.
-        The dashed line is the frontier: the cheapest combo at each accuracy level. Filter the slice; the
-        field re-scores live.</p>
-    </div>
-
-    <div class="callouts">
-      <div class="callout">
-        <span class="c-title">It's the model <em>and</em> the harness</span>
-        The harness is everything around the model — skills, prompts, reading tools, caching. It's where the
-        leverage is: a good harness pulls a cheap model toward frontier accuracy, and caching a document that
-        rides every prompt (an underwriting manual, say) slashes cost.
-        <em>The model is the talent. The harness is the operation.</em>
-        <a href="https://www.insure-thing.com/blog/mythos-madness-3-the-harness" target="_blank" rel="noopener">Why the harness matters →</a>
-      </div>
-      <div class="callout">
-        <span class="c-title">"Saturated" depends on the job</span>
-        94% is a victory lap for a benchmark and a liability for a claims bot. Easy items inflate the
-        headline — filter <b>Difficulty → Hard</b> to see where models actually split. The last few points
-        are where the differences, and the risk, live.
-      </div>
+      <p class="lead">Each dot is a <strong>model + harness</strong> combo — up and left wins (accurate and cheap).
+        The dashed line is the efficient frontier; filters re-score the field live.</p>
     </div>
 
     <div class="panel">
@@ -240,6 +225,32 @@
         a manual) on request, then answers. v3 retries a malformed answer, so a formatting slip isn't scored
         as wrong. <b>claude_code</b> — Claude in its agentic CLI. <b>codex_plain</b> — the model in OpenAI's
         Codex CLI.</p>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="sec-head"><h2>Why InsureBench</h2></div>
+    <div class="prose">
+      <p>We're not just rating models for insurance — interesting, but academic. You don't need a benchmark to
+      tell you Opus beats DeepSeek Flash. <strong>We built InsureBench to help insurance decision-makers find
+      the model that's actually worth it for the job</strong> — where a cheaper one clears your bar, and where
+      "cheap" quietly fails the work.</p>
+    </div>
+    <div class="callouts">
+      <div class="callout">
+        <span class="c-title">It's the model <em>and</em> the harness</span>
+        The harness is everything around the model — skills, prompts, reading tools, caching. It's where the
+        leverage is: a good harness pulls a cheap model toward frontier accuracy, and caching a document that
+        rides every prompt (an underwriting manual, say) slashes cost.
+        <em>The model is the talent. The harness is the operation.</em>
+        <a href="https://www.insure-thing.com/blog/mythos-madness-3-the-harness" target="_blank" rel="noopener">Why the harness matters →</a>
+      </div>
+      <div class="callout">
+        <span class="c-title">"Saturated" depends on the job</span>
+        94% is a victory lap for a benchmark and a liability for a claims bot. Easy items inflate the
+        headline — filter <b>Difficulty → Hard</b> to see where models actually split. The last few points
+        are where the differences, and the risk, live.
+      </div>
     </div>
   </section>
 
