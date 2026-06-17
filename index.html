@@ -172,8 +172,8 @@
   .rm-tier ul{ margin:0; padding-left:18px } .rm-tier li{ margin:7px 0; font-size:14px }
   .rm-foot{ font-size:12.5px; color:var(--mut); font-style:italic; margin:2px 2px 0 }
   /* learnings rhythm: lead paragraph + ruled sections */
-  #learnings-body > p:first-of-type{ font-size:17px; color:var(--ink) }
-  #learnings-body h3{ color:var(--ink); margin-top:26px; padding-top:18px; border-top:1px solid var(--line) }
+  #why-body > p:first-of-type{ font-size:17px; color:var(--ink) }
+  #learnings-body h3, #why-body h3{ color:var(--ink); margin-top:26px; padding-top:18px; border-top:1px solid var(--line) }
   @media (max-width:720px){ .callouts{ grid-template-columns:1fr } .roadmap-grid{ grid-template-columns:1fr } }
 </style>
 </head>
@@ -198,15 +198,18 @@
 <div class="wrap">
   <header class="hero" id="top">
     <h1 id="title">Insure<span class="acc">Bench</span></h1>
-    <p class="tagline">The first LLM&nbsp;+&nbsp;harness leaderboard built for insurance-specific tasks.
+    <p class="tagline">Insurance AI benchmarks for model&nbsp;+&nbsp;harness performance.
       <span class="ver" id="ver"></span></p>
   </header>
 
   <section id="leaderboard">
     <div class="sec-head">
       <h2>Cost vs. quality</h2>
-      <p class="lead">Each dot is a <strong>model + harness</strong> combo — up and left wins (accurate and cheap).
-        The dashed line is the efficient frontier; filters re-score the field live.</p>
+      <p class="lead">Each point is a <strong>model + harness</strong> combination, compared on quality and
+        <strong>cost per completed task</strong> — not price per token. Filter by task area, capability,
+        difficulty, and harness. The headline ranking matters less than the routing pattern: where a
+        lower-cost combination clears the bar, where frontier models stay necessary, and where the harness
+        changes the result. Up and left wins; the dashed line is the efficient frontier.</p>
     </div>
 
     <div class="panel">
@@ -221,9 +224,9 @@
 
     <div class="panel" style="margin-top:16px; overflow-x:auto">
       <table id="table"><thead></thead><tbody></tbody></table>
-      <p class="note" id="cost-note"><b>The reasoning tax.</b> A model can be cheap per token and
-        pricey per task — it just thinks more. Reasoning tokens bill like output, and you often never see them.
-        Compare <b>$/1M tok</b> with <b>$/100 tasks</b>; flip to <b>metered</b> for real billed cost.</p>
+      <p class="note" id="cost-note">Cost is per <b>completed task</b> — tool calls and hidden reasoning
+        tokens included — not per token. A model can be cheap per token yet expensive per answer. Compare
+        <b>$/1M tok</b> with <b>$/100 tasks</b>; switch the basis to <b>metered</b> for billed cost.</p>
       <p class="note" id="harness-note"><b>Harnesses.</b>
         <b>tooled_reader</b> — the model plus a file-reading tool; it opens a task's attachments (loss runs,
         a manual) on request, then answers. v3 retries a malformed answer, so a formatting slip isn't scored
@@ -234,38 +237,107 @@
 
   <section id="why">
     <div class="sec-head"><h2>Why InsureBench</h2></div>
-    <div class="prose">
-      <p>We're not just rating models for insurance — interesting, but academic. You don't need a benchmark to
-      tell you Opus beats DeepSeek Flash. <strong>We built InsureBench to help insurance decision-makers find
-      the model that's actually worth it for the job</strong> — where a cheaper one clears your bar, and where
-      "cheap" quietly fails the work.</p>
-    </div>
-    <div class="callouts">
-      <div class="callout">
-        <span class="c-title">It's the model <em>and</em> the harness</span>
-        The harness is everything around the model — skills, prompts, reading tools, caching. It's where the
-        leverage is: a good harness pulls a cheap model toward frontier accuracy, and caching a document that
-        rides every prompt (an underwriting manual, say) slashes cost.
-        <em>The model is the talent. The harness is the operation.</em>
-        <a href="https://www.insure-thing.com/blog/mythos-madness-3-the-harness" target="_blank" rel="noopener">Why the harness matters →</a>
-      </div>
-      <div class="callout">
-        <span class="c-title">"Saturated" depends on the job</span>
-        94% is a victory lap for a benchmark and a liability for a claims bot. Easy items inflate the
-        headline — filter <b>Difficulty → Hard</b> to see where models actually split. The last few points
-        are where the differences, and the risk, live.
-      </div>
+    <div class="prose" id="why-body">
+      <p>InsureBench evaluates AI systems on insurance work — claims reasoning, actuarial analysis,
+      underwriting review, coverage questions, document reading, form extraction, and workflow judgment.
+      The unit of measurement is not just the model. It is the <strong>model plus the harness</strong> around
+      it: tools, prompts, file readers, retries, skills, routing, structured-output handling.</p>
+      <p>Most benchmarks ask which model is best. Useful — but not the deployment question most insurance teams
+      face. An insurer deciding how to use AI in production needs more specific answers:</p>
+      <ul>
+        <li>Can this model classify this risk, read this claim file, or check this form reliably enough?</li>
+        <li>What does it cost per completed task — including tool calls and hidden reasoning tokens?</li>
+        <li>How fast is it?</li>
+        <li>Can it run behind a firewall, or on an open-weights model?</li>
+        <li>Does a better harness let a cheaper model perform well enough?</li>
+        <li>When should the workflow escalate to a stronger model or a human reviewer?</li>
+      </ul>
+      <p>InsureBench is built around those questions — a public benchmark and lab project, maintained by
+      InsureThing, and expanding with more tasks, models, harnesses, and workflow types.</p>
+
+      <h3>Model + harness</h3>
+      <p>In production, no one deploys a raw model in isolation; the deployed system is a model plus a harness —
+      file reading, retrieval, output repair, domain skills, retries, caching, calculators, escalation rules,
+      workflow-specific instructions. Those details materially change accuracy and cost. That is why InsureBench
+      scores combinations: a smaller model with the right file reader or task-specific harness may outperform a
+      larger model in a simpler setup on a specific workflow; on other tasks, the model's underlying capability
+      is the limiting factor. Both results matter.
+      <a href="https://www.insure-thing.com/blog/mythos-madness-3-the-harness" target="_blank" rel="noopener">Why the harness matters →</a></p>
+
+      <h3>Cost per task, not cost per token</h3>
+      <p>Token price is only part of the economics; what matters operationally is the cost of a completed task.
+      A model may be inexpensive per token but expensive per answer if it uses many output tokens, hidden
+      reasoning tokens, or repeated tool calls. InsureBench tracks cost at the task level, closer to how these
+      systems are actually deployed. That does not make frontier models a bad choice — for high-value,
+      low-volume, expert-facing work, the strongest model may be the right tool. A senior actuary running one
+      difficult analysis in an agentic environment has different economics from an automated scan run thousands
+      of times a month.</p>
+
+      <h3>Reliability is not benchmark saturation</h3>
+      <p>In many benchmarks, a score above 85% suggests a task family is starting to saturate. In insurance
+      operations, 85% success may be undeployable if the failures are silent, costly, or hard to detect. We care
+      about where repeated processes can be made reliable — and what has to happen around the model to make them
+      so: confidence calibration, error detection, escalation, retries, human review. The benchmark looks not
+      only for tasks that separate frontier models, but for task families where many models succeed consistently
+      — the areas where lower-cost deployment becomes realistic.</p>
+
+      <h3>How to use the results</h3>
+      <p>Start with the task type, not the model. For a repeated business process, look for model-plus-harness
+      combinations that are accurate enough for the control environment, fast enough for the SLA, cheap enough
+      for the volume, controllable enough for your data and compliance needs, and reliable enough that failures
+      can be detected and escalated. The highest-scoring model overall may be the right answer for some work —
+      and unnecessary for other work.</p>
     </div>
   </section>
 
   <section id="learnings">
     <div class="sec-head"><h2>What we're learning</h2></div>
-    <div class="prose" id="learnings-body"></div>
+    <div class="prose" id="learnings-body">
+      <h3>The harness changes the result</h3>
+      <p>File readers, retry policies, output repair, batching, and domain skills can move results enough to
+      change deployment decisions. On some tasks, harness design is the difference between an unusable cheap
+      model and an economical production candidate.</p>
+      <h3>Model choice varies by task</h3>
+      <p>Frontier models are broadly ahead, as expected — but the interesting results are task-specific. In the
+      current V1 results, Mimo v2.5 was especially strong on actuarial tasks, outperforming even the frontier
+      models in that slice at roughly 1/400th of the cost. Gemini 3.5 Flash Low did well on claims reasoning
+      while struggling more on actuarial; Nemotron led the tested claims set. There is no single answer to
+      "which model should we use?" — it depends on the work.</p>
+      <h3>Cost can move independently of quality</h3>
+      <p>Two models with similar accuracy can have very different per-task cost. Hidden reasoning tokens,
+      verbose outputs, and repeated tool calls all matter; for high-volume workflows, small differences in
+      per-task cost become material.</p>
+      <h3>The best deployment may be a route, not a model</h3>
+      <p>Many workflows should not be assigned to one model forever. A lower-cost model can handle routine
+      cases, with uncertain or high-risk cases escalated to a stronger model or a human reviewer — routing
+      that is hard to design from model leaderboards alone.</p>
+      <h3>Open-weights and firewall-friendly deployment matter</h3>
+      <p>For some carriers and MGAs, cost is only one constraint. Data control, latency, auditability, and the
+      ability to run in a controlled environment may matter as much. InsureBench is designed to make those
+      tradeoffs visible.</p>
+      <h3>What's in V1</h3>
+      <p>V1 covers insurance-specific tasks across claims, underwriting, actuarial, coverage, forms, document
+      reading, and workflow judgment, with deeper runs across a wider selection of industry models and
+      harnesses. The question bank keeps growing; new tasks are reviewed for objective keys, self-containment,
+      attachment handling, scoring reliability, and SME validity. Where answers can be checked by code, they
+      are; where judgment is required, scoring uses concrete rubrics.</p>
+    </div>
   </section>
 
   <section id="roadmap">
     <div class="sec-head"><h2>Roadmap</h2></div>
-    <div id="roadmap-body"></div>
+    <div class="prose">
+      <p>InsureBench will keep expanding in four directions:</p>
+      <ul>
+        <li>more insurance task families,</li>
+        <li>more models and deployment modes,</li>
+        <li>more harness variants,</li>
+        <li>more analysis of cost, latency, calibration, and escalation behavior.</li>
+      </ul>
+      <p>We are particularly interested in repeated workflows where cost, reliability, latency, and data-control
+      constraints matter: underwriting intake, claims triage, forms processing, coverage checks, loss-run
+      analysis, agency management, and portfolio monitoring.</p>
+    </div>
   </section>
 
   <section id="questions" class="samples">
@@ -276,11 +348,23 @@
     <div id="samples"></div>
   </section>
 
+  <section id="contact">
+    <div class="sec-head"><h2>Work with us</h2></div>
+    <div class="prose">
+      <p>InsureBench is a public benchmark and an InsureThing lab project. We welcome suggestions for tasks,
+      models, harnesses, and workflows to test, and we are glad to work with model providers, carriers, MGAs,
+      brokers, and builders who want to know how their systems perform on realistic insurance work.</p>
+      <p>InsureThing also helps insurance organizations apply this analysis to their own workflows — selecting
+      the model, designing the harness, reducing cost, improving reliability, and building escalation paths
+      around real business processes.</p>
+      <p>Contact: <a href="mailto:don@insure-thing.com">don@insure-thing.com</a></p>
+    </div>
+  </section>
+
   <div class="foot" id="foot"></div>
 </div>
 <div id="tip" class="tip"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
 <script>
 // Categorical palette per docs/STYLE_GUIDE.md §4.2 (cat-1 red reserved for the accent/frontier).
 const LANE_COLOR = { 'Claude Code':'var(--cat-5)', 'Codex':'var(--cat-3)', 'OpenRouter':'var(--cat-6)', 'Vision':'var(--cat-2)', 'Other':'var(--mut)' };
@@ -292,10 +376,9 @@ fetch('data/report.json').then(r=>r.json()).then(d=>{ DATA=d; boot(); })
   .catch(e=>{ document.getElementById('scatter').innerHTML = '<p class="empty" style="color:#c0392b">Could not load data/report.json</p>'; });
 
 function boot(){
-  // Hero headline + subtitle are authored in index.html (IB-PublicApp owns the public
-  // copy); meta.title/subtitle no longer drive the visible hero.
-  document.getElementById('learnings-body').innerHTML = marked.parse(cleanMd(DATA.learnings));
-  renderRoadmap();
+  // Hero, "why", learnings, roadmap, and contact copy are authored in index.html (IB-PublicApp
+  // owns the public V1 copy per InsureBench/docs/WEBSITE_COPY_INSUREBENCH_V1.md). report.json
+  // drives only the interactive chart/table/filters + the public sample questions.
   computeDifficulty();
   CATS = Array.from(new Set(DATA.items.map(it=>it.module).filter(Boolean))).sort();
   renderSamples();
@@ -497,29 +580,6 @@ function renderTable(pts){
 }
 function setSort(k){ if(F.sort===k) F.dir*=-1; else { F.sort=k; F.dir=-1; } render(); }
 
-// Roadmap markdown (** Now / Next / Later ** + bullets) → three tier cards,
-// with a graceful fallback to plain markdown if the shape isn't recognized.
-function renderRoadmap(){
-  const md = cleanMd(DATA.roadmap);
-  const tiers = []; let cur = null, foot = '';
-  md.split('\n').forEach(raw=>{
-    const line = raw.trim();
-    const mh = line.match(/^\*\*(.+?)\*\*$/);
-    if(mh){ cur = { name: mh[1], items: [] }; tiers.push(cur); return; }
-    const mi = line.match(/^[-*]\s+(.+)$/);
-    if(mi && cur){ cur.items.push(mi[1]); return; }
-    const mf = line.match(/^_(.+)_$/);
-    if(mf){ foot = mf[1]; }
-  });
-  const el = document.getElementById('roadmap-body');
-  if(!tiers.length){ el.className='prose'; el.innerHTML = marked.parse(md); return; }
-  const inline = t => escapeHtml(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`(.+?)`/g,'<code>$1</code>');
-  el.innerHTML = '<div class="roadmap-grid">'
-    + tiers.map(t=>'<div class="rm-tier'+(/now/i.test(t.name)?' now':'')+'"><div class="rm-h">'+escapeHtml(t.name)+'</div><ul>'
-        + t.items.map(it=>'<li>'+inline(it)+'</li>').join('') + '</ul></div>').join('')
-    + '</div>' + (foot ? '<p class="rm-foot">'+inline(foot)+'</p>' : '');
-}
-
 function renderSamples(){
   document.getElementById('samples').innerHTML = (DATA.samples||[]).map(s=>
     '<details><summary>'+escapeHtml(s.id)+' — '+escapeHtml(s.title||'')+' <span class="pill">'+escapeHtml(s.module||'')+'</span></summary>'
@@ -539,9 +599,6 @@ function initScrollSpy(){
   secs.forEach(sx=>obs.observe(sx));
 }
 
-// The section already supplies the title, so drop a leading duplicate heading
-// from the learnings/roadmap markdown (e.g. a leading "## What we're learning").
-function cleanMd(md){ return String(md||'').replace(/^\s*#{1,6}[^\n]*\n+/, ''); }
 function monthYear(s){ const M=['January','February','March','April','May','June','July','August','September','October','November','December'];
   const m=String(s||'').match(/^(\d{4})-(\d{2})/); return m ? M[+m[2]-1]+' '+m[1] : ''; }
 function fmtCost(v){ if(v>=1) return v.toFixed(2); if(v>=0.01) return v.toFixed(3); return v.toFixed(4); }
