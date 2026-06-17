@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>InsureBench — cost &amp; quality report</title>
-<meta name="description" content="The first LLM + harness leaderboard built for insurance-specific tasks — helping insurance decision-makers find the model that's actually worth it for the job." />
+<title>InsureBench — score &amp; cost report</title>
+<meta name="description" content="An insurance-specific benchmark for finding which LLM + harness can do a task reliably and efficiently." />
 <!-- InsureThing branding — all assets self-hosted in the repo root. -->
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
@@ -17,12 +17,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="InsureThing" />
 <meta property="og:title" content="InsureBench — the first LLM + harness leaderboard for insurance" />
-<meta property="og:description" content="Helping insurance decision-makers find the model that's actually worth it for the job — scored on real insurance work, by accuracy and true cost." />
+<meta property="og:description" content="Helping insurance decision-makers find which LLM + harness can do a task reliably and efficiently." />
 <meta property="og:image" content="https://insurebench.insure-thing.com/og-image.png" />
 <meta property="og:url" content="https://insurebench.insure-thing.com" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="InsureBench — the first LLM + harness leaderboard for insurance" />
-<meta name="twitter:description" content="The first LLM + harness leaderboard built for insurance-specific tasks." />
+<meta name="twitter:description" content="An insurance-specific benchmark for task fit, score, and cost." />
 <meta name="twitter:image" content="https://insurebench.insure-thing.com/og-image.png" />
 <style>
   /* InsureThing design tokens (docs/STYLE_GUIDE.md): cream paper, near-black ink, one decisive red. */
@@ -81,10 +81,11 @@
   header.hero{ padding:34px 0 6px }
   .eyebrow{ color:var(--accent); font-weight:600; letter-spacing:.06em; font-size:12.5px; text-transform:uppercase }
   .ver{ text-transform:none; letter-spacing:0; color:var(--mut); border:1px solid var(--line);
-    border-radius:999px; padding:2px 9px; font-size:11px; font-weight:600; margin-left:8px; vertical-align:1.5px }
+    border-radius:999px; padding:2px 9px; font-size:11px; font-weight:600; margin-left:8px; vertical-align:1.5px; white-space:nowrap }
   h1{ font-size:clamp(44px,8vw,76px); line-height:1.0; margin:2px 0 14px; font-weight:400; letter-spacing:-.03em }
   .acc{ color:var(--accent) }
   .tagline{ font-size:clamp(18px,2.5vw,23px); color:var(--mut); max-width:720px; margin:0; line-height:1.45 }
+  .hero-note{ margin:10px 0 0; max-width:780px; color:var(--ink); font-size:17px; line-height:1.55 }
 
   h2{ font-size:26px; font-weight:400; margin:0 0 6px; letter-spacing:-.015em }
   .sec-head{ margin:56px 0 18px }
@@ -144,7 +145,11 @@
   .samples summary{ cursor:pointer; font-weight:550; list-style:none } .samples summary::-webkit-details-marker{ display:none }
   .samples summary::before{ content:"+ "; color:var(--accent); font-weight:700 }
   .samples details[open] summary::before{ content:"– " }
-  .samples pre{ white-space:pre-wrap; font-size:13px; color:var(--mut); margin:12px 0 0; line-height:1.5 }
+  .samples .sample-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px }
+  .samples .sample-block{ border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:var(--bg) }
+  .samples .sample-block.wide{ grid-column:1 / -1 }
+  .samples .sample-label{ font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--mut); margin-bottom:6px; font-weight:700 }
+  .samples pre{ white-space:pre-wrap; font-size:13px; color:var(--mut); margin:0; line-height:1.5 }
   .pill{ font-size:11px; color:var(--mut); border:1px solid var(--line); border-radius:999px; padding:2px 9px; margin-left:4px }
   .foot{ color:var(--mut); font-size:13px; margin-top:44px; border-top:1px solid var(--line); padding-top:18px; line-height:1.6 }
   .foot-brand{ color:var(--ink); font-size:14px; font-weight:500; margin-bottom:6px }
@@ -174,7 +179,7 @@
   /* learnings rhythm: lead paragraph + ruled sections */
   #why-body > p:first-of-type{ font-size:17px; color:var(--ink) }
   #learnings-body h3, #why-body h3{ color:var(--ink); margin-top:26px; padding-top:18px; border-top:1px solid var(--line) }
-  @media (max-width:720px){ .callouts{ grid-template-columns:1fr } .roadmap-grid{ grid-template-columns:1fr } }
+  @media (max-width:720px){ .callouts{ grid-template-columns:1fr } .roadmap-grid{ grid-template-columns:1fr } .samples .sample-grid{ grid-template-columns:1fr } .samples .sample-block.wide{ grid-column:auto } }
 </style>
 </head>
 <body>
@@ -200,16 +205,16 @@
     <h1 id="title">Insure<span class="acc">Bench</span></h1>
     <p class="tagline">Insurance AI benchmarks for model&nbsp;+&nbsp;harness performance.
       <span class="ver" id="ver"></span></p>
+    <p class="hero-note">Not a general model-power contest: InsureBench is about finding which model + harness can do the insurance task you need, at the reliability and cost you can deploy.</p>
   </header>
 
   <section id="leaderboard">
     <div class="sec-head">
-      <h2>Cost vs. quality</h2>
-      <p class="lead">Each point is a <strong>model + harness</strong> combination, compared on quality and
-        <strong>cost per completed task</strong> — not price per token. Filter by task area, capability,
-        difficulty, and harness. The headline ranking matters less than the routing pattern: where a
-        lower-cost combination clears the bar, where frontier models stay necessary, and where the harness
-        changes the result. Up and left wins; the dashed line is the efficient frontier.</p>
+      <h2>Score vs. cost</h2>
+      <p class="lead">Each point is a <strong>model + harness</strong> combination, scored on insurance tasks and
+        priced per completed task. The useful question is not which model is strongest overall, but which
+        combination clears the bar for a specific workflow. Up and left is better; the dashed line is the
+        efficient frontier.</p>
     </div>
 
     <div class="panel">
@@ -224,9 +229,8 @@
 
     <div class="panel" style="margin-top:16px; overflow-x:auto">
       <table id="table"><thead></thead><tbody></tbody></table>
-      <p class="note" id="cost-note">Cost is per <b>completed task</b> — tool calls and hidden reasoning
-        tokens included — not per token. A model can be cheap per token yet expensive per answer. Compare
-        <b>$/1M tok</b> with <b>$/100 tasks</b>; switch the basis to <b>metered</b> for billed cost.</p>
+      <p class="note" id="cost-note">Cost is per <b>completed task</b>, not token list price. Where direct
+        metering is available we use it; otherwise we estimate from observed tokens and published pricing.</p>
       <p class="note" id="harness-note"><b>Harnesses.</b>
         <b>tooled_reader</b> — the model plus a file-reading tool; it opens a task's attachments (loss runs,
         a manual) on request, then answers. v3 retries a malformed answer, so a formatting slip isn't scored
@@ -258,7 +262,7 @@
       <h3>Model + harness</h3>
       <p>In production, no one deploys a raw model in isolation; the deployed system is a model plus a harness —
       file reading, retrieval, output repair, domain skills, retries, caching, calculators, escalation rules,
-      workflow-specific instructions. Those details materially change accuracy and cost. That is why InsureBench
+      workflow-specific instructions. Those details materially change score and cost. That is why InsureBench
       scores combinations: a smaller model with the right file reader or task-specific harness may outperform a
       larger model in a simpler setup on a specific workflow; on other tasks, the model's underlying capability
       is the limiting factor. Both results matter.
@@ -304,7 +308,7 @@
       while struggling more on actuarial; Nemotron led the tested claims set. There is no single answer to
       "which model should we use?" — it depends on the work.</p>
       <h3>Cost can move independently of quality</h3>
-      <p>Two models with similar accuracy can have very different per-task cost. Hidden reasoning tokens,
+      <p>Two models with similar scores can have very different per-task cost. Hidden reasoning tokens,
       verbose outputs, and repeated tool calls all matter; for high-volume workflows, small differences in
       per-task cost become material.</p>
       <h3>The best deployment may be a route, not a model</h3>
@@ -343,7 +347,7 @@
   <section id="questions" class="samples">
     <div class="sec-head">
       <h2>Sample questions</h2>
-      <p class="lead">A few public examples — the exact prompt a model sees. Keys and the private bank stay private.</p>
+      <p class="lead">A few public examples with the supplied facts, expected key, and scoring rubric.</p>
     </div>
     <div id="samples"></div>
   </section>
@@ -366,10 +370,16 @@
 <div id="tip" class="tip"></div>
 
 <script>
-// Categorical palette per docs/STYLE_GUIDE.md §4.2 (cat-1 red reserved for the accent/frontier).
-const LANE_COLOR = { 'Claude Code':'var(--cat-5)', 'Codex':'var(--cat-3)', 'OpenRouter':'var(--cat-6)', 'Vision':'var(--cat-2)', 'Other':'var(--mut)' };
+// Model-family palette per docs/STYLE_GUIDE.md §4.2 (cat-1 red reserved for the accent/frontier).
+const MODEL_FAMILY_COLOR = {
+  'Gemini / Gemma':'var(--cat-2)',
+  'Claude':'var(--cat-5)',
+  'ChatGPT / OpenAI':'var(--cat-3)',
+  'Nvidia / Nemotron':'var(--cat-4)',
+  'Other':'var(--cat-6)'
+};
 const RELEASE = 'v0.1';   // citable snapshot label; overridden by meta.release if IB-core sets it
-const F = { family:'', type:'', status:'', capability:'', category:'', attach:'', diff:'', minN:3, cost:'notional', sort:'accuracy', dir:-1, moreOpen:false };
+const F = { family:'', type:'', status:'', capability:'', category:'', attach:'', diff:'', open:'', minN:3, sort:'accuracy', dir:-1, moreOpen:false };
 let DATA = null, DIFF = {}, DCOUNT = { easy:0, medium:0, hard:0 }, CATS = [], SC = [];
 
 fetch('data/report.json').then(r=>r.json()).then(d=>{ DATA=d; boot(); })
@@ -387,8 +397,8 @@ function boot(){
   document.getElementById('foot').innerHTML =
     '<div class="foot-brand">A project of <a href="https://insure-thing.com">InsureThing</a> — insurance consulting for the AI era. &copy; 2026 InsureThing.</div>'
     + '<div class="foot-links"><a href="https://insure-thing.com">InsureThing</a> &middot; <a href="https://insure-thing.com/labs">Labs</a> &middot; <a href="https://insure-thing.com/blog">Blog</a></div>'
-    + 'Aggregate results only — no private prompts, keys, or outputs. '
-    + 'Difficulty is empirical: mean accuracy across the combos that tried each item. '
+    + 'Aggregate results only — no private-bank prompts, keys, or outputs. '
+    + 'Difficulty is empirical: mean score across the combos that tried each item. '
     + '<b>InsureBench ' + escapeHtml(verLabel) + '</b> &middot; generated ' + escapeHtml(DATA.meta.generated_at||'') + ' &middot; ' + DATA.meta.n_combos + ' combos &times; ' + DATA.meta.n_items + ' items';
   renderControls(); render(); bindTip(); initScrollSpy();
 }
@@ -407,6 +417,22 @@ function computeDifficulty(){
   });
 }
 
+function modelFamily(c){
+  const m = ((c.model||'') + ' ' + (c.short||'')).toLowerCase();
+  if(m.includes('claude')) return 'Claude';
+  if(m.includes('nemotron') || m.includes('nvidia/')) return 'Nvidia / Nemotron';
+  if(m.includes('gemini') || m.includes('gemma') || m.includes('google/')) return 'Gemini / Gemma';
+  if(m.includes('gpt') || m.includes('openai/')) return 'ChatGPT / OpenAI';
+  return 'Other';
+}
+function modelColor(c){ return MODEL_FAMILY_COLOR[modelFamily(c)] || 'var(--mut)'; }
+function isOpenWeight(c){
+  const m = ((c.model||'') + ' ' + (c.short||'')).toLowerCase();
+  return /gemma|nemotron|gpt-oss|deepseek|mimo|hy3|qwen|llama|mistral|mixtral|yi-|kimi/.test(m);
+}
+function displayCost(c){ return c.cost_metered!=null && c.cost_metered>0 ? c.cost_metered : c.cost_notional; }
+function combos(){ return DATA.combos.filter(c=>F.open!=='only' || isOpenWeight(c)); }
+
 function opt(v,l,cur){ return '<option value="'+escapeHtml(v)+'"'+(v===cur?' selected':'')+'>'+escapeHtml(l)+'</option>'; }
 function selVals(id,label,vals,cur,allLabel){
   return selOpts(id,label,vals.map(v=>[v,String(v).replace(/_/g,' ')]),cur,allLabel);
@@ -417,19 +443,19 @@ function selOpts(id,label,pairs,cur,allLabel){
 }
 function renderControls(){
   const f = DATA.filters;
-  // primary: capability + empirical difficulty + cost basis (lean)
+  // primary: task area + capability + empirical difficulty + open-weights toggle.
   const diffPairs = [['easy','Easy ('+DCOUNT.easy+')'],['medium','Medium ('+DCOUNT.medium+')'],['hard','Hard ('+DCOUNT.hard+')']];
   document.getElementById('controls').innerHTML =
     selVals('category','Category',CATS,F.category,'All categories')
     + selVals('capability','Capability',f.capabilities,F.capability,'All capabilities')
     + selOpts('diff','Difficulty',diffPairs,F.diff,'All difficulty')
-    + '<div class="ctl"><label>Cost basis</label><span class="seg">'
-      + '<button class="'+(F.cost==='notional'?'on':'')+'" onclick="setF(\'cost\',\'notional\')">notional</button>'
-      + '<button class="'+(F.cost==='metered'?'on':'')+'" onclick="setF(\'cost\',\'metered\')">metered</button></span></div>';
-  // advanced drawer: task type + family + status + attachments + min n
+    + '<div class="ctl"><label>Open weights</label><span class="seg">'
+      + '<button class="'+(F.open===''?'on':'')+'" onclick="setF(\'open\',\'\')">all</button>'
+      + '<button class="'+(F.open==='only'?'on':'')+'" onclick="setF(\'open\',\'only\')">only</button></span></div>';
+  // advanced drawer: task type + question family + status + attachments + min n
   document.getElementById('controls-adv').innerHTML =
     selVals('type','Task type',f.difficulties,F.type,'All task types')
-    + selVals('family','Family',f.families,F.family,'All families')
+    + selVals('family','Question family',f.families,F.family,'All families')
     + selVals('status','Status',f.statuses,F.status,'All status')
     + '<div class="ctl"><label>Attachments</label><select onchange="setF(\'attach\',this.value)">'
       + opt('','All items',F.attach)+opt('with','With files',F.attach)+opt('without','No files',F.attach)+'</select></div>'
@@ -448,11 +474,11 @@ function items(){ return DATA.items.filter(it=>
 
 function stats(){
   const its = items();
-  return DATA.combos.map(c=>{
+  return combos().map(c=>{
     const sc = DATA.scores[c.key]||{};
     const vals = its.map(it=>sc[it.id]).filter(v=>v!=null);
     const acc = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
-    const cost = F.cost==='metered' ? c.cost_metered : c.cost_notional;
+    const cost = displayCost(c);
     const tok = c.tokens_per_task;
     return Object.assign({}, c, { accuracy: acc, n: vals.length, cost: cost,
       cost100: (cost!=null ? cost*100 : null),
@@ -460,7 +486,7 @@ function stats(){
   }).filter(c=>c.accuracy!=null && c.n>=F.minN);
 }
 
-// efficient frontier: cheapest combo achieving each accuracy level (non-dominated set)
+// efficient frontier: cheapest combo achieving each score level (non-dominated set)
 function frontier(priced){
   const sorted = priced.slice().sort((a,b)=> (a.cost-b.cost) || (b.accuracy-a.accuracy));
   let best=-Infinity; const out=[];
@@ -472,12 +498,10 @@ function render(){
   const pts = stats();
   // surface the drops: combos with data in this slice but below the Min n floor
   const its = items();
-  const withData = DATA.combos.reduce((a,c)=>{ const sc=DATA.scores[c.key]||{}; return a + (its.some(it=>sc[it.id]!=null)?1:0); }, 0);
+  const withData = combos().reduce((a,c)=>{ const sc=DATA.scores[c.key]||{}; return a + (its.some(it=>sc[it.id]!=null)?1:0); }, 0);
   const hidden = withData - pts.length;
-  const unpriced = pts.length - pts.filter(p=>p.cost!=null && p.cost>0).length;
   const msgs = [];
   if(hidden>0) msgs.push('<b>'+hidden+'</b> combo'+(hidden>1?'s':'')+' hidden — fewer than Min n ('+F.minN+') items in this slice. Lower <b>Min n</b> in More filters to show '+(hidden>1?'them':'it')+'.');
-  if(unpriced>0 && F.cost==='metered') msgs.push('<b>'+unpriced+'</b> combo'+(unpriced>1?'s are':' is')+' not plotted on the <b>metered</b> basis — free models bill $0 and the Codex lane reports no per-call cost. They’re in the table; switch to <b>notional</b> to plot them all.');
   const dn = document.getElementById('drop-note');
   if(dn) dn.innerHTML = msgs.join('<br>');
   renderScatter(pts);
@@ -493,13 +517,13 @@ function renderScatter(pts){
   const ymin=Math.max(0, Math.min.apply(null,priced.map(p=>p.accuracy))-8), ymax=100;
   const X=v=>P.l+(Math.log10(v)-xmin)/(xmax-xmin)*(W-P.l-P.r);
   const Y=v=>H-P.b-(v-ymin)/(ymax-ymin)*(H-P.t-P.b);
-  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Cost versus accuracy scatter">';
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Score versus cost scatter">';
   for(let g=Math.ceil(ymin/10)*10; g<=100; g+=10){ s+='<line x1="'+P.l+'" y1="'+Y(g)+'" x2="'+(W-P.r)+'" y2="'+Y(g)+'" stroke="var(--line)"/>'
     + '<text x="'+(P.l-8)+'" y="'+(Y(g)+4)+'" text-anchor="end" font-size="11" fill="var(--mut)">'+g+'%</text>'; }
   for(let d=Math.floor(xmin); d<=Math.ceil(xmax); d++){ const v=Math.pow(10,d); if(X(v)<P.l-1||X(v)>W-P.r+1) continue;
     s+='<text x="'+X(v)+'" y="'+(H-P.b+20)+'" text-anchor="middle" font-size="11" fill="var(--mut)">$'+fmtCost(v*100)+'</text>'; }
   s+='<text x="'+(W/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" fill="var(--mut)">cost per 100 tasks (log)</text>';
-  s+='<text transform="translate(16 '+(H/2)+') rotate(-90)" text-anchor="middle" font-size="12" fill="var(--mut)">accuracy</text>';
+  s+='<text transform="translate(16 '+(H/2)+') rotate(-90)" text-anchor="middle" font-size="12" fill="var(--mut)">score</text>';
   const fr = frontier(priced); const frkeys = {};
   fr.forEach(p=>frkeys[p.key]=1);
   if(fr.length>1){
@@ -510,7 +534,7 @@ function renderScatter(pts){
   SC = priced.slice().sort((a,b)=> a.accuracy-b.accuracy);
   SC.forEach(p=>{ p._fr = !!frkeys[p.key]; });
   SC.forEach((p,i)=>{
-    const c=LANE_COLOR[p.lane]||'#999';
+    const c=modelColor(p);
     if(p._fr) s+='<circle cx="'+X(p.cost)+'" cy="'+Y(p.accuracy)+'" r="11" fill="none" stroke="var(--accent)" stroke-opacity="0.45" stroke-width="1.5"/>';
     s+='<circle data-i="'+i+'" cx="'+X(p.cost)+'" cy="'+Y(p.accuracy)+'" r="7" fill="'+c+'" fill-opacity="0.88" stroke="'+c+'"/>';
   });
@@ -533,8 +557,9 @@ function renderScatter(pts){
   });
   s+='</svg>';
   document.getElementById('scatter').innerHTML=s;
-  let leg = (DATA.filters.lanes||[]).map(l=>
-    '<span class="fr"><span class="dot" style="background:'+(LANE_COLOR[l]||'#999')+'"></span>'+escapeHtml(l)+'</span>').join('')
+  const families = Array.from(new Set(pts.map(modelFamily))).sort();
+  let leg = families.map(f=>
+    '<span class="fr"><span class="dot" style="background:'+(MODEL_FAMILY_COLOR[f]||'var(--mut)')+'"></span>'+escapeHtml(f)+'</span>').join('')
     + '<span class="fr"><span class="frline"></span>efficient frontier</span>';
   if(dropped>0) leg += '<span class="fr" style="color:var(--mut)">+'+dropped+' more — hover any dot</span>';
   document.getElementById('legend').innerHTML = leg;
@@ -542,8 +567,8 @@ function renderScatter(pts){
 
 function tipHTML(p){
   return '<div class="t-m">'+escapeHtml(p.short)+'</div>'
-    + '<div class="t-h">'+escapeHtml(p.harness||p.lane)+' &middot; '+escapeHtml(p.lane)+' lane</div>'
-    + '<div class="row"><b>'+p.accuracy.toFixed(1)+'%</b> <span class="t-h">CI ['+p.ci_lo+'–'+p.ci_hi+']</span></div>'
+    + '<div class="t-h">'+escapeHtml(modelFamily(p))+' &middot; '+escapeHtml(p.harness||p.lane)+'</div>'
+    + '<div class="row"><b>'+p.accuracy.toFixed(1)+'% score</b> <span class="t-h">CI ['+p.ci_lo+'–'+p.ci_hi+']</span></div>'
     + '<div class="row">$'+fmtCost(p.cost100)+' / 100 tasks'+(p.rate!=null?' &middot; $'+fmtCost(p.rate)+' / 1M tok':'')+'</div>'
     + '<div class="t-h">'+(p.tokens_per_task!=null?p.tokens_per_task+' tok/task &middot; ':'')+'n='+p.n+(p._fr?' &middot; on frontier':'')+'</div>';
 }
@@ -564,12 +589,12 @@ function bindTip(){
 }
 
 function renderTable(pts){
-  const cols=[['short','Model + harness',0],['accuracy','Accuracy',1],['cost100','$/100 tasks',1],['rate','$/1M tok',1],['tokens_per_task','Tokens',1],['n','n',1]];
+  const cols=[['short','Model + harness',0],['accuracy','Score',1],['cost100','$/100 tasks',1],['rate','$/1M tok',1],['tokens_per_task','Tokens',1],['n','n',1]];
   const arr=pts.slice().sort((a,b)=>{ const k=F.sort; let av=a[k],bv=b[k]; if(av==null)av=-1; if(bv==null)bv=-1;
     return (av<bv?-1:av>bv?1:0)*F.dir; });
   const thead='<tr>'+cols.map(c=>'<th class="'+(c[2]?'num':'')+'" onclick="setSort(\''+c[0]+'\')">'+c[1]+(F.sort===c[0]?(F.dir<0?' ▾':' ▴'):'')+'</th>').join('')+'</tr>';
   const body=arr.map(p=>'<tr>'
-    + '<td><span class="dot" style="background:'+(LANE_COLOR[p.lane]||'#999')+'"></span>'+escapeHtml(p.short)
+    + '<td><span class="dot" style="background:'+modelColor(p)+'"></span>'+escapeHtml(p.short)
       + ' <span class="harness">'+escapeHtml(p.harness||p.lane)+'</span></td>'
     + '<td class="num"><b style="color:'+rampVar(p.accuracy)+'">'+p.accuracy.toFixed(1)+'%</b> <span style="color:var(--mut);font-size:11px">['+p.ci_lo+'–'+p.ci_hi+']</span></td>'
     + '<td class="num">'+money(p.cost100)+'</td>'
@@ -583,7 +608,16 @@ function setSort(k){ if(F.sort===k) F.dir*=-1; else { F.sort=k; F.dir=-1; } rend
 function renderSamples(){
   document.getElementById('samples').innerHTML = (DATA.samples||[]).map(s=>
     '<details><summary>'+escapeHtml(s.id)+' — '+escapeHtml(s.title||'')+' <span class="pill">'+escapeHtml(s.module||'')+'</span></summary>'
-    + '<pre>'+escapeHtml(s.prompt||'')+'</pre></details>').join('') || '<p class="lead">None selected.</p>';
+    + '<div class="sample-grid">'
+    + sampleBlock('Prompt', s.prompt, true)
+    + sampleBlock('Supplied facts', s.provided_data)
+    + sampleBlock('Expected answer key', s.answer_key)
+    + sampleBlock('Scoring rubric', s.rubric, true)
+    + '</div></details>').join('') || '<p class="lead">None selected.</p>';
+}
+function sampleBlock(label, text, wide){
+  if(!text) return '';
+  return '<div class="sample-block'+(wide?' wide':'')+'"><div class="sample-label">'+escapeHtml(label)+'</div><pre>'+escapeHtml(text)+'</pre></div>';
 }
 
 function initScrollSpy(){
