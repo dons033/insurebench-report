@@ -66,6 +66,7 @@
     padding:7px 12px; border-radius:8px; transition:color .15s, background .15s; white-space:nowrap }
   nav.top .links a:hover{ color:var(--ink); background:var(--accent-soft); text-decoration:none }
   nav.top .links a.active{ color:var(--accent); background:var(--accent-soft) }
+  nav.top .links .nav-short{ display:none }
   nav.top .ext-links{ display:flex; gap:2px; align-items:center; padding-left:14px; margin-left:4px; border-left:1px solid var(--line) }
   nav.top .ext-links a{ color:var(--mut); font-size:14px; font-weight:500; padding:7px 10px; border-radius:8px; transition:color .15s, background .15s; white-space:nowrap }
   nav.top .ext-links a:hover{ color:var(--ink); background:var(--accent-soft); text-decoration:none }
@@ -73,6 +74,9 @@
   @media (max-width:920px){ nav.top .ext-links{ display:none } }
   @media (max-width:640px){
     nav.top .brand span.txt{ display:none }
+    nav.top .links .nav-long{ display:none }
+    nav.top .links .nav-short{ display:inline }
+    nav.top .links a[data-s]:not([data-s="leaderboard"]){ display:none }
     nav.top .links a{ padding:7px 9px; font-size:13px }
     nav.top .inner{ gap:10px }
   }
@@ -86,6 +90,13 @@
   .acc{ color:var(--accent) }
   .tagline{ font-size:clamp(18px,2.5vw,23px); color:var(--mut); max-width:720px; margin:0; line-height:1.45 }
   .hero-note{ margin:10px 0 0; max-width:780px; color:var(--ink); font-size:17px; line-height:1.55 }
+  .track-links{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:26px 0 34px }
+  .track-link{ display:block; border:1px solid var(--line); border-top:2px solid var(--accent); border-radius:10px;
+    background:var(--card); padding:18px 20px; color:var(--ink) }
+  .track-link:hover{ text-decoration:none; background:var(--hover) }
+  .track-link .track-name{ display:block; font:22px/1.2 "Questrial",system-ui,sans-serif; margin:6px 0 }
+  .track-link .track-desc{ display:block; color:var(--mut); font-size:13px; line-height:1.5 }
+  @media (max-width:640px){ .track-links{ grid-template-columns:1fr } }
 
   h2{ font-size:26px; font-weight:400; margin:0 0 6px; letter-spacing:-.015em }
   .sec-head{ margin:56px 0 18px }
@@ -189,7 +200,8 @@
   <div class="inner">
     <a class="brand" href="#top"><img class="mark" src="/favicon-32.png" alt="" width="20" height="20" /><span class="txt">Insure<span class="acc">Bench</span></span></a>
     <div class="links" id="navlinks">
-      <a href="#leaderboard" data-s="leaderboard">Leaderboard</a>
+      <a href="#leaderboard" data-s="leaderboard"><span class="nav-long">Multi-functional LLMs</span><span class="nav-short">LLMs</span></a>
+      <a href="/decisions"><span class="nav-long">Decisioning models</span><span class="nav-short">Decisioning</span></a>
       <a href="#learnings" data-s="learnings">Findings</a>
       <a href="#why" data-s="why">Method</a>
       <a href="#questions" data-s="questions">Samples</a>
@@ -209,6 +221,19 @@
       <span class="ver" id="ver"></span></p>
     <p class="hero-note">Not a general model-power contest: InsureBench is about finding which model + harness can do the insurance task you need, at the reliability and cost you can deploy.</p>
   </header>
+
+  <div class="track-links" aria-label="InsureBench benchmark tracks">
+    <a class="track-link" href="#leaderboard">
+      <span class="eyebrow">Track 01</span>
+      <span class="track-name">Multi-functional LLMs</span>
+      <span class="track-desc">Model + harness comparisons across insurance tasks, scored for quality and cost.</span>
+    </a>
+    <a class="track-link" href="/decisions">
+      <span class="eyebrow">Track 02 · Provisional</span>
+      <span class="track-name">Decisioning models</span>
+      <span class="track-desc">Choices, ordinal scores, and yes/no binary checks on insurance evidence.</span>
+    </a>
+  </div>
 
   <section id="leaderboard">
     <div class="sec-head">
@@ -258,8 +283,8 @@
         <li>Does a better harness let a cheaper model perform well enough?</li>
         <li>When should the workflow escalate to a stronger model or a human reviewer?</li>
       </ul>
-      <p>InsureBench is built around those questions — a public benchmark and lab project, maintained by
-      InsureThing, and expanding with more tasks, models, harnesses, and workflow types.</p>
+      <p>InsureBench is built around those questions. This public benchmark from
+      InsureThing is expanding with more tasks, models, harnesses, and workflow types.</p>
 
       <h3>Model + harness</h3>
       <p>In production, no one deploys a raw model in isolation; the deployed system is a model plus a harness —
@@ -364,7 +389,7 @@
   <section id="contact">
     <div class="sec-head"><h2>Work with us</h2></div>
     <div class="prose">
-      <p>InsureBench is a public benchmark and an InsureThing lab project. We welcome suggestions for tasks,
+      <p>InsureBench is a public benchmark from InsureThing. We welcome suggestions for tasks,
       models, harnesses, and workflows to test, and we are glad to work with model providers, carriers, MGAs,
       brokers, and builders who want to know how their systems perform on realistic insurance work.</p>
       <p>InsureThing also helps insurance organizations apply this analysis to their own workflows — selecting

@@ -28,6 +28,18 @@ outputs. The export is the privacy boundary; nothing private lives in this repo.
    `samples`, learnings/roadmap), then run the `export-report` command above.
 2. Commit the refreshed `data/report.json` here and push — Vercel redeploys.
 
+## Decision models
+
+`/decisions` contains **General decisions** and **Yes/No binary models**, with separate full-benchmark and exploratory cohorts. Binary scores include only yes/no answers, even for general models. Cost and latency remain those of the entire measured request; the page labels request sizes explicitly. WC classification is a separate decisioning family in development, with no scores published here yet.
+
+Refresh its aggregate-only data from the private InsureBench checkout:
+
+```bash
+python scripts/export_decision_report.py --out C:/AI/Projects/insurebench-report/data/decisions.json
+```
+
+The exporter publishes counts and source hashes, never prompts, labels per case, business evidence or raw model responses. Adapted Laya inputs remain a separate diagnostic. Local cost is unmeasured, not zero. To preview with Python's static server, open `/decisions.html`; Vercel exposes the clean `/decisions` URL.
+
 ## Deploy
 
 Static site, no build step:
