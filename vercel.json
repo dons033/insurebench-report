@@ -13,15 +13,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/decisions",
-      "destination": "/decision-models/index.html"
-    },
-    {
-      "source": "/decisions/",
-      "destination": "/decision-models/index.html"
-    }
   ]
 }
