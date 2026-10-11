@@ -6,7 +6,22 @@
   "headers": [
     {
       "source": "/data/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/decisions",
+      "destination": "/decision-models/index.html"
+    },
+    {
+      "source": "/decisions/",
+      "destination": "/decision-models/index.html"
     }
   ]
 }

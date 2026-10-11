@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decisioning models | InsureBench</title>
+<meta name="description" content="Insurance evidence benchmarks for general decision models and binary checks. Accuracy, latency, actual cost and local model findings.">
+<link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/decisions.css">
+<link href="https://fonts.googleapis.com/css2?family=Questrial&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav><a class="brand" href="/">Insure<span>Bench</span></a><a href="/">Multi-functional LLMs</a><a href="/decisions" aria-current="page">Decisioning models</a><a href="https://www.insure-thing.com/blog/jev-gets-competition">Field notes ↗</a></nav>
+<main>
+<header><p class="eyebrow">DECISIONING MODELS / INSURANCE EVIDENCE</p><h1>Ask what the evidence supports.</h1><p class="intro">Compare models that return choices, scores and yes/no answers. The underwriting platform determines what happens next.</p><p class="meta">Snapshot: <span id="date">September 28, 2026</span> · Provisional author labels · Existing runs, no new inference</p></header>
+<div class="tabs" aria-label="Decision benchmark sections"><a id="general-tab" href="#general">General decisions</a><a id="binary-tab" href="#binary">Yes/No binary models</a></div>
+<section aria-labelledby="section-title">
+<div class="heading"><div><h2 id="section-title">General decisions</h2><p id="description"></p></div><label>Test set<select id="cohort"><option value="core">180-packet benchmark</option><option value="smoke">8-packet exploratory tests</option></select></label></div>
+<div class="context" id="context"></div>
+<div class="metrics"><article><span id="scope-label">Questions per packet</span><strong id="scope"></strong></article><article><span>Packets in this comparison</span><strong id="packets"></strong></article><article><span>Evidence</span><strong class="small">Public websites + synthetic submissions</strong></article></div>
+<div class="chart-head"><h3>Answer accuracy</h3><span>Correct answers / evaluated answers</span></div>
+<div id="bars" aria-label="Model accuracy comparison"></div>
+<p id="timing-note" class="note"></p>
+<div class="table-wrap" tabindex="0" aria-label="Detailed model results, scroll horizontally on small screens"><table><caption id="caption">Detailed results</caption><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+<p class="note">Local GPU: AMD RX 6800 XT. Memory is peak PyTorch GPU allocation, not total system memory. Local cost is unmeasured, not zero. Decider uses eager reference kernels on Windows/AMD; its timing does not represent optimized serving. API prices and provider versions may change.</p>
+</section>
+<section class="diagnostic"><p class="eyebrow">SEPARATE DIAGNOSTIC</p><h3>Laya: adapted inputs</h3><p id="laya"></p><p>These inputs were changed during exploration. This result is shown separately from the unchanged-input comparisons.</p></section>
+<section><h2>How to read these results</h2><div class="method-grid"><article><h3>General decisions</h3><p>Ten questions per packet: five choices, three yes/no checks and two ordinal scores. Scores are graded by the most likely level, using the same frozen rubric for every model.</p></article><article><h3>Yes/No binary models</h3><p>Only the three yes/no questions are scored: declared activity, subcontractor disclosure and document conflict. General models appear here using only their binary answers.</p></article><article><h3>The test set matters</h3><p>The 180 packets are related scenarios grounded in 30 archived business profiles. The eight-packet tests use a fixed subset. Neither answer counts nor packet counts represent independent businesses. Labels await independent review.</p></article><article><h3>Observe, then act</h3><p>Procedural outcomes are shown only for the full question set. “Clear” means passing this focused scenario rule, not accepting a policy. Binary false positives and false negatives describe individual evidence checks.</p></article></div><p class="note">WC classification is a separate decisioning family in development; no scored results for it are published here yet.</p></section>
+<section class="notes"><h2>What we are learning</h2><ul><li>Actual cost per packet can differ sharply from advertised token pricing. Solar reported far more input tokens on the same requests.</li><li>Cheap additional questions can uncover rare, valuable findings. Test their effect on referrals and missed issues.</li><li>Absence of supporting evidence is not proof an exposure is absent. Confidence is not a substitute for evidence.</li><li>Smaller local models need their own validation. KEV-0.8B saved memory but lost substantial accuracy on these packets.</li></ul><p>These results are a snapshot in time. The models are changing quickly. I’ll keep testing.</p></section>
+<footer><a href="/data/decisions.json" download>Download aggregate results (JSON)</a><a href="https://www.insure-thing.com/blog/jev-gets-competition">Read the experiment notes ↗</a><p>Only aggregate results are published here. Private prompts, answer keys and raw model responses stay outside this site.</p><p>A project of <a href="https://www.insure-thing.com">InsureThing</a>.</p></footer>
+</main><script src="/decisions.js"></script>
+</body></html>
