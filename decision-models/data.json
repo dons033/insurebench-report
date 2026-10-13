@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10",
+  "updated": "2026-10-13",
   "rows": [
     {
       "workload": "broader150",
@@ -316,6 +316,60 @@
         "accuracy": 0.92
       },
       "confident_errors": 4,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "drex_v2",
+      "name": "Drex v2.0",
+      "correct": 138,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.41466949999448843,
+      "cost": 0.053751600000000004,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-13",
+      "source": "current_run/decision_drex_v2_accuracy_20261013_v01/summary.json",
+      "model_id": "nace-ai/drex-v2.0",
+      "provider": "DeepInfra",
+      "diagnostics": {
+        "correct": 45,
+        "total": 50,
+        "accuracy": 0.9
+      },
+      "confident_errors": 0,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150_textstate",
+      "id": "classify",
+      "name": "Classify-1 \u00b7 Text-state",
+      "correct": 101,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.6714915499906056,
+      "cost": 0.14979199999999998,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-13",
+      "source": "current_run/decision_classify_textstate_accuracy_20261013_v01/summary.json",
+      "model_id": "scaledown/classify-1",
+      "provider": "ScaleDown",
+      "diagnostics": {
+        "correct": 43,
+        "total": 50,
+        "accuracy": 0.86
+      },
+      "confident_errors": 0,
       "hidden_reason": ""
     },
     {
@@ -1242,6 +1296,13 @@
       "timing": "Median request-to-validated completion. Reported charges exclude unresolved failed-call charges. Runs occurred at different times."
     },
     {
+      "id": "broader150_textstate",
+      "view": "text",
+      "label": "Classify text-state \u00b7 150 findings",
+      "note": "Same 50 packets, questions and keys as the broader comparison, but the complete structured evidence is losslessly serialized as JSON text to meet the ScaleDown API contract. Original object-state requests were rejected. Separate input-format diagnostic; not a matched-format leaderboard. No image evaluation.",
+      "timing": "Median end-to-end completion; reported charges. Original rejected attempts remain reserved separately."
+    },
+    {
       "id": "quick",
       "view": "text",
       "label": "Quick screen \u00b7 30 findings",
@@ -1810,6 +1871,117 @@
       "failed_attempts": 0,
       "unknown_charge_attempts": 0,
       "accounted_usd": 0.00032278
+    },
+    {
+      "id": "drex_v2",
+      "size": 1,
+      "seconds": 0.4544935000012629,
+      "cost": 0.0929544,
+      "requests": 50,
+      "native": true,
+      "correct": 41,
+      "total": 50,
+      "source": "current_run/decision_drex_v2_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "drex_v2",
+      "size": 10,
+      "seconds": 0.48877684999024495,
+      "cost": 0.012319799999999999,
+      "requests": 10,
+      "native": true,
+      "correct": 84,
+      "total": 100,
+      "source": "current_run/decision_drex_v2_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 84,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "classify",
+      "size": 1,
+      "seconds": 0.6218912499898579,
+      "cost": 0.06664160000000001,
+      "requests": 50,
+      "native": true,
+      "correct": 33,
+      "total": 50,
+      "source": "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "classify",
+      "size": 10,
+      "seconds": 0.6942612499697134,
+      "cost": 0.0666296,
+      "requests": 10,
+      "native": true,
+      "correct": 58,
+      "total": 100,
+      "source": "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 58,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "classify",
+      "size": 25,
+      "seconds": 1.0372026999830268,
+      "cost": 0.0666224,
+      "requests": 10,
+      "native": true,
+      "correct": 143,
+      "total": 250,
+      "source": "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 58,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "classify",
+      "size": 50,
+      "seconds": 1.875302600004943,
+      "cost": 0.0666196,
+      "requests": 10,
+      "native": true,
+      "correct": 298,
+      "total": 500,
+      "source": "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 59,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "classify",
+      "size": 100,
+      "seconds": 2.8995305999706034,
+      "cost": 0.06662,
+      "requests": 10,
+      "native": true,
+      "correct": 595,
+      "total": 1000,
+      "source": "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 60,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
     }
   ],
   "models": {
@@ -1900,6 +2072,16 @@
       "open_weights": false,
       "local_deployable": false,
       "icon": "assets/inception.svg"
+    },
+    "drex_v2": {
+      "name": "Drex v2.0",
+      "open_weights": false,
+      "local_deployable": false
+    },
+    "classify": {
+      "name": "Classify-1 \u00b7 Text-state",
+      "open_weights": false,
+      "local_deployable": false
     },
     "qwen9": {
       "name": "Qwen 3.5 9B + schema (FP4)",
@@ -2119,6 +2301,24 @@
       "open_weights": false,
       "locally_deployable": false,
       "official_source": "https://openrouter.ai/inception/mercury-decide"
+    },
+    {
+      "requested_model_id": "scaledown/classify-1",
+      "display_name": "Classify-1",
+      "status": "evaluated",
+      "provider": "ScaleDown",
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/scaledown/classify-1"
+    },
+    {
+      "requested_model_id": "nace-ai/drex-v2.0",
+      "display_name": "Drex v2.0",
+      "status": "evaluated",
+      "provider": "DeepInfra",
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/nace-ai/drex-v2.0"
     }
   ],
   "sources": {
@@ -2127,12 +2327,16 @@
     "data/exports/decision_perplexity_v11_v01/summary.json": "0b96c273fc20f106f0a13b008e5560e92c4709b21ba57e83a459b5acb1b5a48e",
     "current_run/summary.json": "610509d073cec8491d1910797796f5f83a4fbc533a4f80db40e36879a2a485b8",
     "current_run/mercury_paid_accuracy/summary.json": "50719f5fcf11d0b69d54fac0e1c119230591eaa3e2997e46de76170e1f0d94aa",
+    "current_run/decision_drex_v2_accuracy_20261013_v01/summary.json": "be35829809529fc308b5bd37ece2c7b2da530b0752366ae7a22ad669862ef7c8",
+    "current_run/decision_classify_textstate_accuracy_20261013_v01/summary.json": "de307262f9a309b3de8eaa91a4dbff72ba49cab6790c0326a62c7857525a0751",
     "data/exports/decision_quick_frontier_v01/matched-results.json": "02f72868bdd94d66ed935a57eb475ebb97230aec24c16e58fea62cc263cb3340",
     "reproduced/base-general-binary.json": "2d106d7428ae5516e3bee27500f1722012312ee71aadca20a495263c97e84243",
     "data/exports/decision_image_inputs_v01_20261007/benchmark.json": "d7e76d71678f2aa942339e1ac276a593b672e44bed1cdf58afeb48c74a89a473",
     "data/exports/decision_scaling_four_v01/summary.json": "2a64a6f34ecc846cd38e50d035932f7c403d1e3a49230e170598b637a0123f7e",
     "data/exports/decision_clef_full_v01/summary.json": "537ed286bc3d3e613693436b44d7b9fe201a1ca6da10aff088810941aad8fa3e",
     "current_run/microsoft_scaling/summary.json": "59b672fd8d6fdf668fbdd5aced1a2cf2fc95b73972c04eee48cdf5849ea1143b",
-    "current_run/mercury_paid_scaling/summary.json": "ddf692a7a3d1728aabc2ea93f4abe4613cc64f9115b1d9a53e38e2308dc8c44e"
+    "current_run/mercury_paid_scaling/summary.json": "ddf692a7a3d1728aabc2ea93f4abe4613cc64f9115b1d9a53e38e2308dc8c44e",
+    "current_run/decision_drex_v2_scaling_20261013_v01/summary.json": "33241bab13b5026ad55573c9ff91e4080a94f0b78637501bfbcb93fe6944d88c",
+    "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json": "12c23469b56aedf1b9bd6339dbba50cbb05182c586422768c6bb17e75394526d"
   }
 }
