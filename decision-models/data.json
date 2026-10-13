@@ -2059,7 +2059,8 @@
     "drex": {
       "name": "Drex v1.5",
       "open_weights": true,
-      "local_deployable": true
+      "local_deployable": true,
+      "icon": "assets/nace-ai.png"
     },
     "clef_omni": {
       "name": "Clef Omni",
@@ -2076,7 +2077,8 @@
     "drex_v2": {
       "name": "Drex v2.0",
       "open_weights": false,
-      "local_deployable": false
+      "local_deployable": false,
+      "icon": "assets/nace-ai.png"
     },
     "classify": {
       "name": "Classify-1 \u00b7 Text-state",
