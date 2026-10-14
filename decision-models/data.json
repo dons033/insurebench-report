@@ -1782,127 +1782,6 @@
       "accounted_usd": 0.020672631
     },
     {
-      "id": "mercury_paid",
-      "size": 1,
-      "seconds": 0.48301494999032,
-      "cost": 0.0320968,
-      "requests": 50,
-      "native": true,
-      "correct": 49,
-      "total": 50,
-      "source": "current_run/mercury_paid_scaling/summary.json",
-      "fixed_ten_quality": null,
-      "failed_attempts": 0,
-      "unknown_charge_attempts": 0,
-      "accounted_usd": 0.00160484
-    },
-    {
-      "id": "mercury_paid",
-      "size": 10,
-      "seconds": 0.8374758999998448,
-      "cost": 0.00323,
-      "requests": 10,
-      "native": true,
-      "correct": 98,
-      "total": 100,
-      "source": "current_run/mercury_paid_scaling/summary.json",
-      "fixed_ten_quality": {
-        "size": 10,
-        "correct": 98,
-        "total": 100
-      },
-      "failed_attempts": 0,
-      "unknown_charge_attempts": 0,
-      "accounted_usd": 0.000323
-    },
-    {
-      "id": "mercury_paid",
-      "size": 25,
-      "seconds": 1.1745656000130111,
-      "cost": 0.00128864,
-      "requests": 10,
-      "native": true,
-      "correct": 246,
-      "total": 250,
-      "source": "current_run/mercury_paid_scaling/summary.json",
-      "fixed_ten_quality": {
-        "size": 25,
-        "correct": 98,
-        "total": 100
-      },
-      "failed_attempts": 0,
-      "unknown_charge_attempts": 0,
-      "accounted_usd": 0.00032216
-    },
-    {
-      "id": "mercury_paid",
-      "size": 50,
-      "seconds": 1.546954100005678,
-      "cost": 0.0006382,
-      "requests": 10,
-      "native": true,
-      "correct": 488,
-      "total": 500,
-      "source": "current_run/mercury_paid_scaling/summary.json",
-      "fixed_ten_quality": {
-        "size": 50,
-        "correct": 98,
-        "total": 100
-      },
-      "failed_attempts": 0,
-      "unknown_charge_attempts": 0,
-      "accounted_usd": 0.0003191
-    },
-    {
-      "id": "mercury_paid",
-      "size": 100,
-      "seconds": 1.5228332999977283,
-      "cost": 0.00032278,
-      "requests": 10,
-      "native": true,
-      "correct": 980,
-      "total": 1000,
-      "source": "current_run/mercury_paid_scaling/summary.json",
-      "fixed_ten_quality": {
-        "size": 100,
-        "correct": 98,
-        "total": 100
-      },
-      "failed_attempts": 0,
-      "unknown_charge_attempts": 0,
-      "accounted_usd": 0.00032278
-    },
-    {
-      "id": "drex_v2",
-      "size": 1,
-      "seconds": 0.4544935000012629,
-      "cost": 0.0929544,
-      "requests": 50,
-      "native": true,
-      "correct": 41,
-      "total": 50,
-      "source": "current_run/decision_drex_v2_scaling_20261013_v01/summary.json",
-      "fixed_ten_quality": null,
-      "unknown_charge_attempts": 0
-    },
-    {
-      "id": "drex_v2",
-      "size": 10,
-      "seconds": 0.48877684999024495,
-      "cost": 0.012319799999999999,
-      "requests": 10,
-      "native": true,
-      "correct": 84,
-      "total": 100,
-      "source": "current_run/decision_drex_v2_scaling_20261013_v01/summary.json",
-      "fixed_ten_quality": {
-        "size": 10,
-        "correct": 84,
-        "total": 100
-      },
-      "unknown_charge_attempts": 0
-    },
-    {
       "id": "classify",
       "size": 1,
       "seconds": 0.6218912499898579,
@@ -1979,6 +1858,178 @@
       "fixed_ten_quality": {
         "size": 100,
         "correct": 60,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "drex_v2",
+      "size": 1,
+      "seconds": 0.4477096500340849,
+      "cost": 0.0929544,
+      "requests": 50,
+      "native": true,
+      "workflow_calls": 1,
+      "correct": 41,
+      "total": 50,
+      "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "drex_v2",
+      "size": 10,
+      "seconds": 0.46644345004460774,
+      "cost": 0.012319799999999999,
+      "requests": 10,
+      "native": true,
+      "workflow_calls": 1,
+      "correct": 84,
+      "total": 100,
+      "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 84,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "drex_v2",
+      "size": 25,
+      "seconds": 1.1295180000015534,
+      "cost": 0.010517519999999999,
+      "requests": 10,
+      "native": false,
+      "workflow_calls": 2,
+      "correct": 223,
+      "total": 250,
+      "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 84,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "drex_v2",
+      "size": 50,
+      "seconds": 2.0766170500137378,
+      "cost": 0.01051332,
+      "requests": 10,
+      "native": false,
+      "workflow_calls": 4,
+      "correct": 450,
+      "total": 500,
+      "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 84,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "drex_v2",
+      "size": 100,
+      "seconds": 3.9265795499959495,
+      "cost": 0.00961818,
+      "requests": 10,
+      "native": false,
+      "workflow_calls": 7,
+      "correct": 921,
+      "total": 1000,
+      "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 84,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "mercury_paid",
+      "size": 1,
+      "seconds": 0.5004946999833919,
+      "cost": 0.0321636,
+      "requests": 50,
+      "native": true,
+      "workflow_calls": 1,
+      "correct": 49,
+      "total": 50,
+      "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "mercury_paid",
+      "size": 10,
+      "seconds": 0.8960727000085171,
+      "cost": 0.0032286,
+      "requests": 10,
+      "native": true,
+      "workflow_calls": 1,
+      "correct": 98,
+      "total": 100,
+      "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 98,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "mercury_paid",
+      "size": 25,
+      "seconds": 1.351849200000288,
+      "cost": 0.00128976,
+      "requests": 10,
+      "native": true,
+      "workflow_calls": 1,
+      "correct": 246,
+      "total": 250,
+      "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 98,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "mercury_paid",
+      "size": 50,
+      "seconds": 1.0437769499840215,
+      "cost": 0.0006408,
+      "requests": 10,
+      "native": true,
+      "workflow_calls": 1,
+      "correct": 488,
+      "total": 500,
+      "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 98,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "mercury_paid",
+      "size": 100,
+      "seconds": 1.3312893999973312,
+      "cost": 0.00032021999999999997,
+      "requests": 10,
+      "native": true,
+      "workflow_calls": 1,
+      "correct": 980,
+      "total": 1000,
+      "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 98,
         "total": 100
       },
       "unknown_charge_attempts": 0
@@ -2339,6 +2390,171 @@
     "current_run/microsoft_scaling/summary.json": "59b672fd8d6fdf668fbdd5aced1a2cf2fc95b73972c04eee48cdf5849ea1143b",
     "current_run/mercury_paid_scaling/summary.json": "ddf692a7a3d1728aabc2ea93f4abe4613cc64f9115b1d9a53e38e2308dc8c44e",
     "current_run/decision_drex_v2_scaling_20261013_v01/summary.json": "33241bab13b5026ad55573c9ff91e4080a94f0b78637501bfbcb93fe6944d88c",
-    "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json": "12c23469b56aedf1b9bd6339dbba50cbb05182c586422768c6bb17e75394526d"
-  }
+    "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json": "12c23469b56aedf1b9bd6339dbba50cbb05182c586422768c6bb17e75394526d",
+    "current_run/decision_drex_split_scaling_20261013_v01/summary.json": "b77474c439ad1c38afd2b6e78a6f48a66a6c78e172322a3c361553e10047ca38",
+    "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json": "eb467f59943bfdcd2ba3a5d5d4ce02f8a564b3bb75ca7f4bb563a18aa7d4cef8",
+    "derived/power-ranking-with-drex.json": "3d8a20df7de058c089beec0ce36f4fff1aef6d29bdc5b9cbc44bc4fb4fbfe827"
+  },
+  "power_ranking": [
+    {
+      "id": "mercury_paid",
+      "name": "Mercury Decide \u00b7 Paid",
+      "accuracy": 0.9266666666666666,
+      "cost_regular": 1.5926799999999998e-05,
+      "cost_100": 3.2022e-05,
+      "time_regular": 0.5881346499809297,
+      "time_100": 1.3312893999973312,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
+      "components": {
+        "accuracy": 2.0099660866272004,
+        "cost_regular": 2.4786745851813525,
+        "cost_100": 8.224426260154885,
+        "time_regular": 0.9018510084106613,
+        "time_100": 1.0802420062673663
+      },
+      "score": 14.695159946641466
+    },
+    {
+      "id": "jev",
+      "name": "JEV 1.13",
+      "accuracy": 0.92,
+      "cost_regular": 5.647152e-05,
+      "cost_100": 0.00047278140000000005,
+      "time_regular": 0.25322409998625517,
+      "time_100": 0.3613525499822572,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "data/exports/decision_scaling_four_v01/summary.json",
+      "components": {
+        "accuracy": 2.0027229420369927,
+        "cost_regular": 1.316342909075698,
+        "cost_100": 2.140423184597588,
+        "time_regular": 1.374423779370264,
+        "time_100": 2.073441259769918
+      },
+      "score": 8.90735407485046
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft Decision-1",
+      "accuracy": 0.92,
+      "cost_regular": 3.7695e-05,
+      "cost_100": 0.0003230514,
+      "time_regular": 0.49482685000111815,
+      "time_100": 1.1744899500044994,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/microsoft_scaling/summary.json",
+      "components": {
+        "accuracy": 2.0027229420369927,
+        "cost_regular": 1.6111719903178965,
+        "cost_100": 2.5893694748231644,
+        "time_regular": 0.9832105954601644,
+        "time_100": 1.1500921676259768
+      },
+      "score": 8.336567170264194
+    },
+    {
+      "id": "luna",
+      "name": "Luna Decisions",
+      "accuracy": 0.9266666666666666,
+      "cost_regular": 0.000129632,
+      "cost_100": 0.0015598000000000003,
+      "time_regular": 0.3299103499739431,
+      "time_100": 0.3994669999810867,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "data/exports/decision_scaling_four_v01/summary.json",
+      "components": {
+        "accuracy": 2.0099660866272004,
+        "cost_regular": 0.8688157120377049,
+        "cost_100": 1.1784071791759099,
+        "time_regular": 1.204135078468256,
+        "time_100": 1.9720451062989177
+      },
+      "score": 7.233369162607989
+    },
+    {
+      "id": "drex_v2",
+      "name": "Drex v2.0",
+      "accuracy": 0.92,
+      "cost_regular": 5.37516e-05,
+      "cost_100": 0.000961818,
+      "time_regular": 0.41466949999448843,
+      "time_100": 3.9265795499959495,
+      "native_100": false,
+      "workflow_calls": 7,
+      "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
+      "components": {
+        "accuracy": 2.0027229420369927,
+        "cost_regular": 1.349236492431975,
+        "cost_100": 1.5006637348150216,
+        "time_regular": 1.0740441451353826,
+        "time_100": 0.6289992072295421
+      },
+      "score": 6.555666521648914
+    },
+    {
+      "id": "perplexity_v11",
+      "name": "Perplexity Decider v1.1",
+      "accuracy": 0.94,
+      "cost_regular": 6.65944e-05,
+      "cost_100": 0.0033202,
+      "time_regular": 0.41886819999854197,
+      "time_100": 2.1163545999988855,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "data/exports/decision_perplexity_v11_v01/summary.json",
+      "components": {
+        "accuracy": 2.0243746301146364,
+        "cost_regular": 1.2121738807698619,
+        "cost_100": 0.8076955963572646,
+        "time_regular": 1.068647522653178,
+        "time_100": 0.8567676896117502
+      },
+      "score": 5.969659319506691
+    },
+    {
+      "id": "d1",
+      "name": "Liquid d1",
+      "accuracy": 0.8866666666666667,
+      "cost_regular": 0.0001329792,
+      "cost_100": 0.0072414,
+      "time_regular": 0.6861290500382893,
+      "time_100": 1.3477004999876954,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "data/exports/decision_scaling_four_v01/summary.json",
+      "components": {
+        "accuracy": 1.9661070032962438,
+        "cost_regular": 0.8578116084238614,
+        "cost_100": 0.546913405835904,
+        "time_regular": 0.8349688523552383,
+        "time_100": 1.0736447468870538
+      },
+      "score": 5.279445616798301
+    },
+    {
+      "id": "clef",
+      "name": "Clef",
+      "accuracy": 0.9,
+      "cost_regular": 0.0002897616,
+      "cost_100": 0.003416976,
+      "time_regular": 0.6410424000350758,
+      "time_100": 1.770862000004854,
+      "native_100": false,
+      "workflow_calls": 2,
+      "source": "data/exports/decision_clef_full_v01/summary.json",
+      "components": {
+        "accuracy": 1.9808346024014334,
+        "cost_regular": 0.5811167070032714,
+        "cost_100": 0.7961756176457973,
+        "time_regular": 0.8638330195196002,
+        "time_100": 0.9366232602244265
+      },
+      "score": 5.158583206794529
+    }
+  ]
 }
