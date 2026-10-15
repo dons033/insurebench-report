@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "rows": [
     {
       "workload": "broader150",
@@ -18,7 +18,7 @@
       "source": "data/exports/decision_new_three_150_v01/summary.json",
       "date": "2026-10-06 or earlier",
       "questions": 4,
-      "hidden_reason": ""
+      "hidden_reason": "Earlier version; retained for comparison"
     },
     {
       "workload": "broader150",
@@ -294,7 +294,7 @@
     {
       "workload": "broader150",
       "id": "mercury_paid",
-      "name": "Mercury Decide \u00b7 Paid",
+      "name": "Mercury Decide",
       "correct": 139,
       "total": 150,
       "packets": 50,
@@ -316,6 +316,33 @@
         "accuracy": 0.92
       },
       "confident_errors": 4,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "jev114",
+      "name": "JEV 1.14",
+      "correct": 144,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.3114681500082952,
+      "cost": 0.05647152,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-14",
+      "source": "current_run/decision_jev114_accuracy_20261014_v01/summary.json",
+      "model_id": "typesafe/jev-1.14",
+      "provider": "TypeSafe",
+      "diagnostics": {
+        "correct": 46,
+        "total": 50,
+        "accuracy": 0.92
+      },
+      "confident_errors": 0,
       "hidden_reason": ""
     },
     {
@@ -1782,6 +1809,87 @@
       "accounted_usd": 0.020672631
     },
     {
+      "id": "jev114",
+      "size": 1,
+      "seconds": 0.2938709999943967,
+      "cost": 0.09047807999999999,
+      "requests": 50,
+      "native": true,
+      "correct": 47,
+      "total": 50,
+      "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "jev114",
+      "size": 10,
+      "seconds": 0.30753804999403656,
+      "cost": 0.01253196,
+      "requests": 10,
+      "native": true,
+      "correct": 94,
+      "total": 100,
+      "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 94,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "jev114",
+      "size": 25,
+      "seconds": 0.31734660000074655,
+      "cost": 0.00732816,
+      "requests": 10,
+      "native": true,
+      "correct": 238,
+      "total": 250,
+      "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 95,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "jev114",
+      "size": 50,
+      "seconds": 0.3567250999985845,
+      "cost": 0.005593308,
+      "requests": 10,
+      "native": true,
+      "correct": 469,
+      "total": 500,
+      "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 93,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "jev114",
+      "size": 100,
+      "seconds": 0.4034944499944686,
+      "cost": 0.004727814,
+      "requests": 10,
+      "native": true,
+      "correct": 939,
+      "total": 1000,
+      "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 93,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
       "id": "classify",
       "size": 1,
       "seconds": 0.6218912499898579,
@@ -2120,10 +2228,16 @@
       "icon": "assets/cloudflare.png"
     },
     "mercury_paid": {
-      "name": "Mercury Decide \u00b7 Paid",
+      "name": "Mercury Decide",
       "open_weights": false,
       "local_deployable": false,
       "icon": "assets/inception.svg"
+    },
+    "jev114": {
+      "name": "JEV 1.14",
+      "open_weights": false,
+      "local_deployable": false,
+      "icon": "assets/typesafe.png"
     },
     "drex_v2": {
       "name": "Drex v2.0",
@@ -2198,6 +2312,16 @@
     }
   },
   "candidates": [
+    {
+      "requested_model_id": "typesafe/jev-1.14",
+      "display_name": "JEV 1.14",
+      "status": "evaluated",
+      "provider": "TypeSafe",
+      "input_usd_per_million": 0.042,
+      "open_weights": false,
+      "locally_deployable": false,
+      "official_source": "https://openrouter.ai/typesafe/jev-1.14"
+    },
     {
       "requested_model_id": "microsoft/microsoft-decision-1",
       "display_name": "Microsoft Decision-1",
@@ -2347,7 +2471,7 @@
     },
     {
       "requested_model_id": "inception/mercury-decide",
-      "display_name": "Mercury Decide \u00b7 Paid",
+      "display_name": "Mercury Decide",
       "status": "evaluated",
       "provider": "Inception",
       "input_usd_per_million": 0.02,
@@ -2380,6 +2504,7 @@
     "data/exports/decision_perplexity_v11_v01/summary.json": "0b96c273fc20f106f0a13b008e5560e92c4709b21ba57e83a459b5acb1b5a48e",
     "current_run/summary.json": "610509d073cec8491d1910797796f5f83a4fbc533a4f80db40e36879a2a485b8",
     "current_run/mercury_paid_accuracy/summary.json": "50719f5fcf11d0b69d54fac0e1c119230591eaa3e2997e46de76170e1f0d94aa",
+    "current_run/decision_jev114_accuracy_20261014_v01/summary.json": "9154094b588852cc0a8614de40a696559b4ac1c7d7df81d81269fc5f839c22ea",
     "current_run/decision_drex_v2_accuracy_20261013_v01/summary.json": "be35829809529fc308b5bd37ece2c7b2da530b0752366ae7a22ad669862ef7c8",
     "current_run/decision_classify_textstate_accuracy_20261013_v01/summary.json": "de307262f9a309b3de8eaa91a4dbff72ba49cab6790c0326a62c7857525a0751",
     "data/exports/decision_quick_frontier_v01/matched-results.json": "02f72868bdd94d66ed935a57eb475ebb97230aec24c16e58fea62cc263cb3340",
@@ -2389,16 +2514,17 @@
     "data/exports/decision_clef_full_v01/summary.json": "537ed286bc3d3e613693436b44d7b9fe201a1ca6da10aff088810941aad8fa3e",
     "current_run/microsoft_scaling/summary.json": "59b672fd8d6fdf668fbdd5aced1a2cf2fc95b73972c04eee48cdf5849ea1143b",
     "current_run/mercury_paid_scaling/summary.json": "ddf692a7a3d1728aabc2ea93f4abe4613cc64f9115b1d9a53e38e2308dc8c44e",
+    "current_run/decision_jev114_scaling_20261014_v01/summary.json": "3fa6e91875d2de72e68b824365c54fb4a98609b033b1795a580ebd8c748f2220",
     "current_run/decision_drex_v2_scaling_20261013_v01/summary.json": "33241bab13b5026ad55573c9ff91e4080a94f0b78637501bfbcb93fe6944d88c",
     "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json": "12c23469b56aedf1b9bd6339dbba50cbb05182c586422768c6bb17e75394526d",
     "current_run/decision_drex_split_scaling_20261013_v01/summary.json": "b77474c439ad1c38afd2b6e78a6f48a66a6c78e172322a3c361553e10047ca38",
     "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json": "eb467f59943bfdcd2ba3a5d5d4ce02f8a564b3bb75ca7f4bb563a18aa7d4cef8",
-    "derived/power-ranking-with-drex.json": "3d8a20df7de058c089beec0ce36f4fff1aef6d29bdc5b9cbc44bc4fb4fbfe827"
+    "derived/power-ranking-with-drex.json": "8d45f14ce0e9b8e0e2cd36237d584bddb61ef09a25dd067dbd697f7cfef4d15e"
   },
   "power_ranking": [
     {
       "id": "mercury_paid",
-      "name": "Mercury Decide \u00b7 Paid",
+      "name": "Mercury Decide",
       "accuracy": 0.9266666666666666,
       "cost_regular": 1.5926799999999998e-05,
       "cost_100": 3.2022e-05,
@@ -2408,33 +2534,33 @@
       "workflow_calls": 1,
       "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
       "components": {
-        "accuracy": 2.0099660866272004,
+        "accuracy": 2.004511623147928,
         "cost_regular": 2.4786745851813525,
         "cost_100": 8.224426260154885,
-        "time_regular": 0.9018510084106613,
-        "time_100": 1.0802420062673663
+        "time_regular": 0.9086881863338805,
+        "time_100": 1.0820719296390315
       },
-      "score": 14.695159946641466
+      "score": 14.698372584457077
     },
     {
-      "id": "jev",
-      "name": "JEV 1.13",
-      "accuracy": 0.92,
+      "id": "jev114",
+      "name": "JEV 1.14",
+      "accuracy": 0.96,
       "cost_regular": 5.647152e-05,
       "cost_100": 0.00047278140000000005,
-      "time_regular": 0.25322409998625517,
-      "time_100": 0.3613525499822572,
+      "time_regular": 0.3114681500082952,
+      "time_100": 0.4034944499944686,
       "native_100": true,
       "workflow_calls": 1,
-      "source": "data/exports/decision_scaling_four_v01/summary.json",
+      "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
       "components": {
-        "accuracy": 2.0027229420369927,
+        "accuracy": 2.0402454818026823,
         "cost_regular": 1.316342909075698,
         "cost_100": 2.140423184597588,
-        "time_regular": 1.374423779370264,
-        "time_100": 2.073441259769918
+        "time_regular": 1.2486664517270312,
+        "time_100": 1.9655024311243219
       },
-      "score": 8.90735407485046
+      "score": 8.711180458327322
     },
     {
       "id": "microsoft",
@@ -2448,13 +2574,13 @@
       "workflow_calls": 1,
       "source": "current_run/microsoft_scaling/summary.json",
       "components": {
-        "accuracy": 2.0027229420369927,
+        "accuracy": 1.9972881343458977,
         "cost_regular": 1.6111719903178965,
         "cost_100": 2.5893694748231644,
-        "time_regular": 0.9832105954601644,
-        "time_100": 1.1500921676259768
+        "time_regular": 0.9906645825538888,
+        "time_100": 1.1520404167450606
       },
-      "score": 8.336567170264194
+      "score": 8.340534598785908
     },
     {
       "id": "luna",
@@ -2468,13 +2594,13 @@
       "workflow_calls": 1,
       "source": "data/exports/decision_scaling_four_v01/summary.json",
       "components": {
-        "accuracy": 2.0099660866272004,
+        "accuracy": 2.004511623147928,
         "cost_regular": 0.8688157120377049,
         "cost_100": 1.1784071791759099,
-        "time_regular": 1.204135078468256,
-        "time_100": 1.9720451062989177
+        "time_regular": 1.213263954189741,
+        "time_100": 1.9753857386841214
       },
-      "score": 7.233369162607989
+      "score": 7.2403842072354045
     },
     {
       "id": "drex_v2",
@@ -2488,13 +2614,13 @@
       "workflow_calls": 7,
       "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
       "components": {
-        "accuracy": 2.0027229420369927,
+        "accuracy": 1.9972881343458977,
         "cost_regular": 1.349236492431975,
         "cost_100": 1.5006637348150216,
-        "time_regular": 1.0740441451353826,
-        "time_100": 0.6289992072295421
+        "time_regular": 1.0821867660885087,
+        "time_100": 0.6300647280511636
       },
-      "score": 6.555666521648914
+      "score": 6.559439855732567
     },
     {
       "id": "perplexity_v11",
@@ -2508,13 +2634,13 @@
       "workflow_calls": 1,
       "source": "data/exports/decision_perplexity_v11_v01/summary.json",
       "components": {
-        "accuracy": 2.0243746301146364,
+        "accuracy": 2.018881066038212,
         "cost_regular": 1.2121738807698619,
         "cost_100": 0.8076955963572646,
-        "time_regular": 1.068647522653178,
-        "time_100": 0.8567676896117502
+        "time_regular": 1.0767492303426371,
+        "time_100": 0.8582190488536718
       },
-      "score": 5.969659319506691
+      "score": 5.973718822361648
     },
     {
       "id": "d1",
@@ -2528,13 +2654,13 @@
       "workflow_calls": 1,
       "source": "data/exports/decision_scaling_four_v01/summary.json",
       "components": {
-        "accuracy": 1.9661070032962438,
+        "accuracy": 1.9607715606153096,
         "cost_regular": 0.8578116084238614,
         "cost_100": 0.546913405835904,
-        "time_regular": 0.8349688523552383,
-        "time_100": 1.0736447468870538
+        "time_regular": 0.8412989784521859,
+        "time_100": 1.0754634945415567
       },
-      "score": 5.279445616798301
+      "score": 5.282259047868817
     },
     {
       "id": "clef",
@@ -2548,13 +2674,13 @@
       "workflow_calls": 2,
       "source": "data/exports/decision_clef_full_v01/summary.json",
       "components": {
-        "accuracy": 1.9808346024014334,
+        "accuracy": 1.9754591932991794,
         "cost_regular": 0.5811167070032714,
         "cost_100": 0.7961756176457973,
-        "time_regular": 0.8638330195196002,
-        "time_100": 0.9366232602244265
+        "time_regular": 0.8703819727228745,
+        "time_100": 0.9382098943160337
       },
-      "score": 5.158583206794529
+      "score": 5.161343384987156
     }
   ]
 }
