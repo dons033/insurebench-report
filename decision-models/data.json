@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14",
+  "updated": "2026-10-15",
   "rows": [
     {
       "workload": "broader150",
@@ -316,6 +316,60 @@
         "accuracy": 0.92
       },
       "confident_errors": 4,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "span02",
+      "name": "Span-02",
+      "correct": 126,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.5300824500154704,
+      "cost": 0.0334296,
+      "deployment": "API",
+      "open_weights": true,
+      "local_deployable": null,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-15",
+      "source": "current_run/decision_span02_accuracy_20261015_v01/summary.json",
+      "model_id": "respan/span-02",
+      "provider": "Respan",
+      "diagnostics": {
+        "correct": 46,
+        "total": 50,
+        "accuracy": 0.92
+      },
+      "confident_errors": 11,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "d1_ultra",
+      "name": "Liquid d1-ultra",
+      "correct": 145,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.4604162499890663,
+      "cost": 0.13962816,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-15",
+      "source": "current_run/decision_d1_ultra_accuracy_20261015_v01/summary.json",
+      "model_id": "liquid/d1-ultra",
+      "provider": "Liquid",
+      "diagnostics": {
+        "correct": 47,
+        "total": 50,
+        "accuracy": 0.94
+      },
+      "confident_errors": 1,
       "hidden_reason": ""
     },
     {
@@ -1809,6 +1863,168 @@
       "accounted_usd": 0.020672631
     },
     {
+      "id": "span02",
+      "size": 1,
+      "seconds": 0.4131875499879243,
+      "cost": 0.0168812,
+      "requests": 50,
+      "native": true,
+      "correct": 44,
+      "total": 50,
+      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "span02",
+      "size": 10,
+      "seconds": 1.0236900500021875,
+      "cost": 0.0168781,
+      "requests": 10,
+      "native": true,
+      "correct": 89,
+      "total": 100,
+      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 89,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "span02",
+      "size": 25,
+      "seconds": 1.2145155500038527,
+      "cost": 0.01687652,
+      "requests": 10,
+      "native": true,
+      "correct": 227,
+      "total": 250,
+      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 88,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "span02",
+      "size": 50,
+      "seconds": 2.2434557999949902,
+      "cost": 0.01687574,
+      "requests": 10,
+      "native": true,
+      "correct": 467,
+      "total": 500,
+      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 90,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "span02",
+      "size": 100,
+      "seconds": 2.307708250009455,
+      "cost": 0.016876,
+      "requests": 10,
+      "native": true,
+      "correct": 929,
+      "total": 1000,
+      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 89,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d1_ultra",
+      "size": 1,
+      "seconds": 0.41803394998714793,
+      "cost": 0.07605780000000001,
+      "requests": 50,
+      "native": true,
+      "correct": 49,
+      "total": 50,
+      "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d1_ultra",
+      "size": 10,
+      "seconds": 0.5017346499953419,
+      "cost": 0.07604646,
+      "requests": 10,
+      "native": true,
+      "correct": 99,
+      "total": 100,
+      "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 99,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d1_ultra",
+      "size": 25,
+      "seconds": 0.6602359000098659,
+      "cost": 0.076037304,
+      "requests": 10,
+      "native": true,
+      "correct": 248,
+      "total": 250,
+      "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 98,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d1_ultra",
+      "size": 50,
+      "seconds": 0.8090429000003496,
+      "cost": 0.076033944,
+      "requests": 10,
+      "native": true,
+      "correct": 497,
+      "total": 500,
+      "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 99,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d1_ultra",
+      "size": 100,
+      "seconds": 1.1956261500017717,
+      "cost": 0.0760347,
+      "requests": 10,
+      "native": true,
+      "correct": 998,
+      "total": 1000,
+      "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 100,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
       "id": "jev114",
       "size": 1,
       "seconds": 0.2938709999943967,
@@ -2233,6 +2449,17 @@
       "local_deployable": false,
       "icon": "assets/inception.svg"
     },
+    "span02": {
+      "name": "Span-02",
+      "open_weights": true,
+      "local_deployable": null
+    },
+    "d1_ultra": {
+      "name": "Liquid d1-ultra",
+      "open_weights": false,
+      "local_deployable": false,
+      "icon": "assets/liquid.png"
+    },
     "jev114": {
       "name": "JEV 1.14",
       "open_weights": false,
@@ -2312,6 +2539,26 @@
     }
   },
   "candidates": [
+    {
+      "requested_model_id": "liquid/d1-ultra",
+      "display_name": "Liquid d1-ultra",
+      "status": "evaluated",
+      "provider": "Liquid",
+      "input_usd_per_million": 0.042,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/liquid/d1-ultra"
+    },
+    {
+      "requested_model_id": "respan/span-02",
+      "display_name": "Span-02",
+      "status": "evaluated",
+      "provider": "Respan",
+      "input_usd_per_million": 0.01,
+      "open_weights": true,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/respan/span-02"
+    },
     {
       "requested_model_id": "typesafe/jev-1.14",
       "display_name": "JEV 1.14",
@@ -2504,6 +2751,8 @@
     "data/exports/decision_perplexity_v11_v01/summary.json": "0b96c273fc20f106f0a13b008e5560e92c4709b21ba57e83a459b5acb1b5a48e",
     "current_run/summary.json": "610509d073cec8491d1910797796f5f83a4fbc533a4f80db40e36879a2a485b8",
     "current_run/mercury_paid_accuracy/summary.json": "50719f5fcf11d0b69d54fac0e1c119230591eaa3e2997e46de76170e1f0d94aa",
+    "current_run/decision_span02_accuracy_20261015_v01/summary.json": "eb86ddfa44a8e6e19a1199288004f97d6bc6bb1d7b8711903885d6a05a8f9be9",
+    "current_run/decision_d1_ultra_accuracy_20261015_v01/summary.json": "1a4fc626259af06767448e8eafedeb5b5ceb5a38cbebda6c49cc3d727b07cc6e",
     "current_run/decision_jev114_accuracy_20261014_v01/summary.json": "9154094b588852cc0a8614de40a696559b4ac1c7d7df81d81269fc5f839c22ea",
     "current_run/decision_drex_v2_accuracy_20261013_v01/summary.json": "be35829809529fc308b5bd37ece2c7b2da530b0752366ae7a22ad669862ef7c8",
     "current_run/decision_classify_textstate_accuracy_20261013_v01/summary.json": "de307262f9a309b3de8eaa91a4dbff72ba49cab6790c0326a62c7857525a0751",
@@ -2514,34 +2763,16 @@
     "data/exports/decision_clef_full_v01/summary.json": "537ed286bc3d3e613693436b44d7b9fe201a1ca6da10aff088810941aad8fa3e",
     "current_run/microsoft_scaling/summary.json": "59b672fd8d6fdf668fbdd5aced1a2cf2fc95b73972c04eee48cdf5849ea1143b",
     "current_run/mercury_paid_scaling/summary.json": "ddf692a7a3d1728aabc2ea93f4abe4613cc64f9115b1d9a53e38e2308dc8c44e",
+    "current_run/decision_span02_scaling_20261015_v01/summary.json": "7878692253962cc95220085ac79337060a104d8256b533a3b099d8189742a292",
+    "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json": "1c141b50dab578726620a192a670d52c4939f0bb62f2df3850ac79971f146130",
     "current_run/decision_jev114_scaling_20261014_v01/summary.json": "3fa6e91875d2de72e68b824365c54fb4a98609b033b1795a580ebd8c748f2220",
     "current_run/decision_drex_v2_scaling_20261013_v01/summary.json": "33241bab13b5026ad55573c9ff91e4080a94f0b78637501bfbcb93fe6944d88c",
     "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json": "12c23469b56aedf1b9bd6339dbba50cbb05182c586422768c6bb17e75394526d",
     "current_run/decision_drex_split_scaling_20261013_v01/summary.json": "b77474c439ad1c38afd2b6e78a6f48a66a6c78e172322a3c361553e10047ca38",
     "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json": "eb467f59943bfdcd2ba3a5d5d4ce02f8a564b3bb75ca7f4bb563a18aa7d4cef8",
-    "derived/power-ranking-with-drex.json": "8d45f14ce0e9b8e0e2cd36237d584bddb61ef09a25dd067dbd697f7cfef4d15e"
+    "derived/power-ranking-with-drex.json": "074985a546053238494181f97742c7bfa13a9408f43b593e2dbb9966fa221697"
   },
   "power_ranking": [
-    {
-      "id": "mercury_paid",
-      "name": "Mercury Decide",
-      "accuracy": 0.9266666666666666,
-      "cost_regular": 1.5926799999999998e-05,
-      "cost_100": 3.2022e-05,
-      "time_regular": 0.5881346499809297,
-      "time_100": 1.3312893999973312,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
-      "components": {
-        "accuracy": 2.004511623147928,
-        "cost_regular": 2.4786745851813525,
-        "cost_100": 8.224426260154885,
-        "time_regular": 0.9086881863338805,
-        "time_100": 1.0820719296390315
-      },
-      "score": 14.698372584457077
-    },
     {
       "id": "jev114",
       "name": "JEV 1.14",
@@ -2553,14 +2784,19 @@
       "native_100": true,
       "workflow_calls": 1,
       "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
-      "components": {
-        "accuracy": 2.0402454818026823,
-        "cost_regular": 1.316342909075698,
-        "cost_100": 2.140423184597588,
-        "time_regular": 1.2486664517270312,
-        "time_100": 1.9655024311243219
+      "metric_components": {
+        "accuracy": 1.0449927431059507,
+        "cost_regular": 1.6926583169711034,
+        "cost_100": 2.0,
+        "time_regular": 1.5653439524732689,
+        "time_100": 2.0
       },
-      "score": 8.711180458327322
+      "components": {
+        "accuracy": 1.0449927431059507,
+        "speed": 1.7826719762366343,
+        "cost": 1.8463291584855517
+      },
+      "score": 1.5579979592760456
     },
     {
       "id": "microsoft",
@@ -2573,14 +2809,44 @@
       "native_100": true,
       "workflow_calls": 1,
       "source": "current_run/microsoft_scaling/summary.json",
-      "components": {
-        "accuracy": 1.9972881343458977,
-        "cost_regular": 1.6111719903178965,
-        "cost_100": 2.5893694748231644,
-        "time_regular": 0.9906645825538888,
-        "time_100": 1.1520404167450606
+      "metric_components": {
+        "accuracy": 1.0014513788098696,
+        "cost_regular": 2.0,
+        "cost_100": 2.0,
+        "time_regular": 0.9853038189063914,
+        "time_100": 1.3600432979366748
       },
-      "score": 8.340534598785908
+      "components": {
+        "accuracy": 1.0014513788098696,
+        "speed": 1.172673558421533,
+        "cost": 2.0
+      },
+      "score": 1.3913749790771341
+    },
+    {
+      "id": "mercury_paid",
+      "name": "Mercury Decide",
+      "accuracy": 0.9266666666666666,
+      "cost_regular": 1.5926799999999998e-05,
+      "cost_100": 3.2022e-05,
+      "time_regular": 0.5881346499809297,
+      "time_100": 1.3312893999973312,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.0087082728592163,
+        "cost_regular": 2.0,
+        "cost_100": 2.0,
+        "time_regular": 0.828984969716256,
+        "time_100": 1.199857209860457
+      },
+      "components": {
+        "accuracy": 1.0087082728592163,
+        "speed": 1.0144210897883565,
+        "cost": 2.0
+      },
+      "score": 1.3410431208825244
     },
     {
       "id": "luna",
@@ -2593,14 +2859,19 @@
       "native_100": true,
       "workflow_calls": 1,
       "source": "data/exports/decision_scaling_four_v01/summary.json",
-      "components": {
-        "accuracy": 2.004511623147928,
-        "cost_regular": 0.8688157120377049,
-        "cost_100": 1.1784071791759099,
-        "time_regular": 1.213263954189741,
-        "time_100": 1.9753857386841214
+      "metric_components": {
+        "accuracy": 1.0087082728592163,
+        "cost_regular": 0.7373718526289805,
+        "cost_100": 1.70657256058469,
+        "time_regular": 1.4778402224787122,
+        "time_100": 2.0
       },
-      "score": 7.2403842072354045
+      "components": {
+        "accuracy": 1.0087082728592163,
+        "speed": 1.7389201112393562,
+        "cost": 1.2219722066068353
+      },
+      "score": 1.3232001969018026
     },
     {
       "id": "drex_v2",
@@ -2613,14 +2884,44 @@
       "native_100": false,
       "workflow_calls": 7,
       "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
-      "components": {
-        "accuracy": 1.9972881343458977,
-        "cost_regular": 1.349236492431975,
-        "cost_100": 1.5006637348150216,
-        "time_regular": 1.0821867660885087,
-        "time_100": 0.6300647280511636
+      "metric_components": {
+        "accuracy": 1.0014513788098696,
+        "cost_regular": 1.7783096317132885,
+        "cost_100": 2.0,
+        "time_regular": 1.1757671712291407,
+        "time_100": 0.5
       },
-      "score": 6.559439855732567
+      "components": {
+        "accuracy": 1.0014513788098696,
+        "speed": 0.8378835856145703,
+        "cost": 1.8891548158566442
+      },
+      "score": 1.2428299267603613
+    },
+    {
+      "id": "span02",
+      "name": "Span-02",
+      "accuracy": 0.84,
+      "cost_regular": 3.3429599999999996e-05,
+      "cost_100": 0.0016875999999999998,
+      "time_regular": 0.5300824500154704,
+      "time_100": 2.307708250009455,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
+      "metric_components": {
+        "accuracy": 0.9143686502177069,
+        "cost_regular": 2.0,
+        "cost_100": 1.5773357904716758,
+        "time_regular": 0.9197716034350744,
+        "time_100": 0.692183331662941
+      },
+      "components": {
+        "accuracy": 0.9143686502177069,
+        "speed": 0.8059774675490077,
+        "cost": 1.788667895235838
+      },
+      "score": 1.1696713376675174
     },
     {
       "id": "perplexity_v11",
@@ -2633,14 +2934,44 @@
       "native_100": true,
       "workflow_calls": 1,
       "source": "data/exports/decision_perplexity_v11_v01/summary.json",
-      "components": {
-        "accuracy": 2.018881066038212,
-        "cost_regular": 1.2121738807698619,
-        "cost_100": 0.8076955963572646,
-        "time_regular": 1.0767492303426371,
-        "time_100": 0.8582190488536718
+      "metric_components": {
+        "accuracy": 1.02322206095791,
+        "cost_regular": 1.4353607510541428,
+        "cost_100": 0.8017323896150833,
+        "time_regular": 1.163981378880562,
+        "time_100": 0.7547682155903556
       },
-      "score": 5.973718822361648
+      "components": {
+        "accuracy": 1.02322206095791,
+        "speed": 0.9593747972354587,
+        "cost": 1.1185465703346131
+      },
+      "score": 1.0337144761759938
+    },
+    {
+      "id": "d1_ultra",
+      "name": "Liquid d1-ultra",
+      "accuracy": 0.9666666666666667,
+      "cost_regular": 0.00013962816,
+      "cost_100": 0.007603469999999999,
+      "time_regular": 0.4604162499890663,
+      "time_100": 1.1956261500017717,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.0522496371552976,
+        "cost_regular": 0.684582450989829,
+        "cost_100": 0.5,
+        "time_regular": 1.0589434778096996,
+        "time_100": 1.3360005424732744
+      },
+      "components": {
+        "accuracy": 1.0522496371552976,
+        "speed": 1.197472010141487,
+        "cost": 0.5922912254949144
+      },
+      "score": 0.9473376242638997
     },
     {
       "id": "d1",
@@ -2653,14 +2984,19 @@
       "native_100": true,
       "workflow_calls": 1,
       "source": "data/exports/decision_scaling_four_v01/summary.json",
-      "components": {
-        "accuracy": 1.9607715606153096,
-        "cost_regular": 0.8578116084238614,
-        "cost_100": 0.546913405835904,
-        "time_regular": 0.8412989784521859,
-        "time_100": 1.0754634945415567
+      "metric_components": {
+        "accuracy": 0.965166908563135,
+        "cost_regular": 0.7188115735393205,
+        "cost_100": 0.5,
+        "time_regular": 0.7105875854933033,
+        "time_100": 1.1852464141789543
       },
-      "score": 5.282259047868817
+      "components": {
+        "accuracy": 0.965166908563135,
+        "speed": 0.9479169998361288,
+        "cost": 0.6094057867696603
+      },
+      "score": 0.8408298983896413
     },
     {
       "id": "clef",
@@ -2673,14 +3009,19 @@
       "native_100": false,
       "workflow_calls": 2,
       "source": "data/exports/decision_clef_full_v01/summary.json",
-      "components": {
-        "accuracy": 1.9754591932991794,
-        "cost_regular": 0.5811167070032714,
-        "cost_100": 0.7961756176457973,
-        "time_regular": 0.8703819727228745,
-        "time_100": 0.9382098943160337
+      "metric_components": {
+        "accuracy": 0.9796806966618288,
+        "cost_regular": 0.5,
+        "cost_100": 0.7790256296795763,
+        "time_regular": 0.7605655803373449,
+        "time_100": 0.9020223964336131
       },
-      "score": 5.161343384987156
+      "components": {
+        "accuracy": 0.9796806966618288,
+        "speed": 0.8312939883854791,
+        "cost": 0.6395128148397882
+      },
+      "score": 0.816829166629032
     }
   ]
 }
