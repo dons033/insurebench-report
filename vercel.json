@@ -3,6 +3,10 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/decisions", "destination": "/decision-models", "permanent": true },
+    { "source": "/decisions.html", "destination": "/decision-models", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/data/(.*)",
