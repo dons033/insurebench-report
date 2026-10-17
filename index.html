@@ -71,14 +71,28 @@
   nav.top .ext-links a{ color:var(--mut); font-size:14px; font-weight:500; padding:7px 10px; border-radius:8px; transition:color .15s, background .15s; white-space:nowrap }
   nav.top .ext-links a:hover{ color:var(--ink); background:var(--accent-soft); text-decoration:none }
   /* nav back-links only fit on wide screens; the footer carries them everywhere */
-  @media (max-width:920px){ nav.top .ext-links{ display:none } }
+  @media (max-width:920px){
+    nav.top .ext-links{ display:none }
+    /* Below 920px the full label row is wider than the viewport. Scroll the row
+       instead of letting it push the page sideways (or hiding half the site). */
+    nav.top .brand{ flex:0 0 auto }
+    nav.top .links{ flex:1 1 auto; min-width:0; overflow-x:auto; overscroll-behavior-x:contain;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none;
+      -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent);
+      mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent) }
+    nav.top .links::-webkit-scrollbar{ display:none }
+  }
   @media (max-width:640px){
     nav.top .brand span.txt{ display:none }
     nav.top .links .nav-long{ display:none }
     nav.top .links .nav-short{ display:inline }
-    nav.top .links a[data-s]:not([data-s="leaderboard"]){ display:none }
     nav.top .links a{ padding:7px 9px; font-size:13px }
     nav.top .inner{ gap:10px }
+    /* The one call to action on the page stays legible in the scrolled row. */
+    nav.top .links a[data-s="contact"]{ color:var(--accent); background:var(--accent-soft) }
+  }
+  @media (prefers-reduced-motion:reduce){
+    nav.top .links{ scroll-behavior:auto }
   }
 
   section{ scroll-margin-top:74px }
@@ -433,7 +447,7 @@ function boot(){
   document.getElementById('ver').textContent = verLabel;
   document.getElementById('foot').innerHTML =
     '<div class="foot-brand">A project of <a href="https://insure-thing.com">InsureThing</a> — insurance consulting for the AI era. &copy; 2026 InsureThing.</div>'
-    + '<div class="foot-links"><a href="https://insure-thing.com">InsureThing</a> &middot; <a href="https://insure-thing.com/labs">Labs</a> &middot; <a href="https://insure-thing.com/blog">Blog</a></div>'
+    + '<div class="foot-links"><a href="#contact">Work with us</a> &middot; <a href="https://insure-thing.com">InsureThing</a> &middot; <a href="https://insure-thing.com/labs">Labs</a> &middot; <a href="https://insure-thing.com/blog">Blog</a></div>'
     + 'Aggregate results only — no private-bank prompts, keys, or outputs. '
     + 'Difficulty is empirical: mean score across the combos that tried each item. '
     + '<b>InsureBench ' + escapeHtml(verLabel) + '</b> &middot; generated ' + escapeHtml(DATA.meta.generated_at||'') + ' &middot; ' + DATA.meta.n_combos + ' combos &times; ' + DATA.meta.n_items + ' items';
