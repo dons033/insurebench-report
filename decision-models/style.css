@@ -20,3 +20,39 @@ body{background:#f3f6fa}.hero{padding:34px 0 26px}h1{font-size:clamp(40px,4.7vw,
 #scaling-section>.two{grid-template-columns:1fr;gap:34px}.scale-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.scale-heading span{font-size:11px;color:var(--muted)}.scale-direct-name{font-size:13px;fill:var(--ink);font-weight:600}.scale-direct-value{font-size:12px;fill:var(--muted);font-variant-numeric:tabular-nums}.scale-series{cursor:pointer;transition:opacity .15s}.scale-series.dimmed{opacity:.12}.scale-series:focus{outline:none}.scale-series:focus .scale-direct-name{text-decoration:underline}.scale-plot{overflow-x:auto}@media(max-width:700px){.scale-heading{align-items:flex-start;flex-direction:column;gap:0}.scale-plot svg{min-width:880px}}
 
 .scale-mobile-values{display:none}@media(max-width:700px){.scale-mobile-values{display:grid;gap:8px;margin-top:14px}.scale-mobile-values>div{display:grid;grid-template-columns:1fr auto;border-bottom:1px solid var(--line);padding:8px 0;font-size:12px}.scale-mobile-values strong{font-variant-numeric:tabular-nums}.scale-mobile-values small{grid-column:1/-1;color:var(--muted)}}
+
+/* ── Site nav + work-with-us CTA ──────────────────────────────────────────
+   This page had no route back to the rest of InsureBench and no way to reach
+   InsureThing; nine of its twelve links pointed off-site. ───────────────── */
+.site-nav{display:flex;align-items:center;gap:4px;min-width:0}
+.site-nav a{font-size:13px;font-weight:500;color:var(--muted);padding:6px 10px;border-radius:7px;white-space:nowrap}
+.site-nav a:hover{color:var(--ink);background:var(--warm);text-decoration:none}
+.site-nav a.here{color:var(--teal);background:var(--warm)}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:34px;background:var(--warm);border-color:#d2dfd7}
+.cta h2{margin:8px 0 10px}
+.cta p{margin:0;max-width:640px;font-size:14px}
+.cta-actions{display:grid;gap:10px;justify-items:end;text-align:right;flex-shrink:0}
+.cta-actions .btn{background:var(--teal);color:#fff;padding:12px 20px;border-radius:8px;font-size:14px;font-weight:600;white-space:nowrap}
+.cta-actions .btn:hover{background:#0f615d;text-decoration:none}
+.cta-actions a:not(.btn){font-size:12px;color:var(--muted)}
+.foot-links{display:flex;flex-wrap:wrap;gap:14px}
+.foot-links a{color:var(--muted)}
+.foot-links a:hover{color:var(--teal)}
+header .preview{white-space:nowrap;flex-shrink:0}
+/* the pill restates the eyebrow below it; the nav earns the room first */
+@media(max-width:1200px){header .preview{display:none}}
+@media(max-width:950px){
+  /* keep every nav item reachable: the nav drops to its own full-width row
+     and scrolls there, rather than being squeezed out by the brand. */
+  header{flex-wrap:wrap;gap:10px 14px;padding-bottom:12px}
+  header>a:last-child{margin-left:0}
+  .site-nav{order:3;flex:1 0 100%;margin:0 -4px;padding:0 4px;overflow-x:auto;
+    scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 18px),transparent);
+    mask-image:linear-gradient(to right,#000 calc(100% - 18px),transparent)}
+  .site-nav::-webkit-scrollbar{display:none}
+}
+@media(max-width:700px){
+  .cta{flex-direction:column;align-items:flex-start;gap:18px}
+  .cta-actions{justify-items:start;text-align:left}
+}
