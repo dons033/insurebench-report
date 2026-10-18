@@ -17,7 +17,7 @@ function reason(r){
  return dominates?'Lower accuracy, cost or speed trade-off than '+dominates.name+' on this workload':'';
 }
 function recommended(){selected=new Set(allRows().filter(r=>!reason(r)).map(r=>r.id));}
-function save(){const q=new URLSearchParams({view,workload:$('workload').value,availability:$('availability').value,deployment:$('deployment').value,models:[...selected].join(',')});history.replaceState(null,'','?'+q);}
+function save(){const q=new URLSearchParams({view,workload:$('workload').value,availability:$('availability').value,deployment:$('deployment').value,models:[...selected].join(','),floor:$('acc-floor').value});history.replaceState(null,'','?'+q);}
 function chooseView(next,wanted,models){view=next;const options=data.workloads.filter(w=>w.view===view);$('workload').innerHTML=options.map(w=>`<option value="${w.id}">${esc(w.label)}</option>`).join('');if(options.some(w=>w.id===wanted))$('workload').value=wanted;recommended();if(models!==undefined)selected=new Set(models.split(',').filter(Boolean));render();}
 function picker(){const search=$('model-search').value.toLowerCase();$('model-options').innerHTML=allRows().filter(r=>r.name.toLowerCase().includes(search)).map(r=>`<label><input type="checkbox" data-model="${esc(r.id)}" ${selected.has(r.id)?'checked':''}><span>${esc(r.name)}<small>${esc(r.deployment)}${r.open_weights?' · Open weights':''}${r.local_deployable?' · Local runtime':''}</small><small>${esc(reason(r)||'Available in recommended view')}${eligible(r)?'':' · Excluded by current filters'}</small></span></label>`).join('');}
 function bars(rows,key,title,subtitle){rows=[...rows].sort((a,b)=>{const av=key==='accuracy'?percent(a):a[key],bv=key==='accuracy'?percent(b):b[key];if(av==null)return bv==null?a.name.localeCompare(b.name):1;if(bv==null)return -1;return (key==='accuracy'?bv-av:av-bv)||a.name.localeCompare(b.name);});const maximum=key==='accuracy'?100:Math.max(...rows.map(r=>r[key]??0),.00001),valid=rows.filter(r=>key==='accuracy'||r[key]!=null),best=[...valid].sort((a,b)=>key==='accuracy'?percent(b)-percent(a):a[key]-b[key])[0],bestValue=best?(key==='accuracy'?percent(best).toFixed(1)+'%':key==='cost'?money(best.cost):time(best.seconds)):'Not measured';return `<article class="chart-card chart-${key}"><div class="chart-kicker">${key==='accuracy'?'01 · QUALITY':key==='cost'?'02 · ECONOMICS':'03 · SPEED'}</div><h3>${title}</h3><p class="fine">${subtitle}</p><div class="chart-highlight"><strong>${esc(bestValue)}</strong><span>${esc(best?.name||'No measurements')}<small>${key==='accuracy'?'Highest observed accuracy':key==='cost'?'Lowest measured charge':'Fastest observed median'}</small></span></div>${rows.map(r=>{const v=key==='accuracy'?percent(r):r[key],icon=data.models[r.id]?.icon;const label=key==='accuracy'?v.toFixed(1)+'%':key==='cost'?money(v):time(v);return `<div class="bar-row" data-model-id="${esc(r.id)}" title="${esc(r.name)}: ${esc(label)}"><span class="bar-label">${icon?`<img src="${esc(icon)}" alt="">`:`<i style="background:${modelColor(r.id)}"></i>`}${esc(r.name)}</span><span class="bar-value">${esc(label)}</span><div class="track"><div class="fill" style="background:${modelColor(r.id)};width:${v==null?0:100*v/maximum}%"></div></div></div>`;}).join('')}<div class="chart-axis"><span>0${key==='accuracy'?'%':''}</span><span>${key==='accuracy'?'100%':key==='cost'?money(maximum):time(maximum)}</span></div></article>`;}
@@ -50,7 +50,86 @@ function powerRanking(){
  const format=(k,v)=>k==='accuracy'?(100*v).toFixed(1)+'%':k.startsWith('cost')?'$'+v.toFixed(6):v.toFixed(3)+'s';
  $('power-results').innerHTML=`<div class="power-color-key"><span>Less favorable</span><i></i><span>More favorable</span></div><div class="table-wrap"><table><thead><tr><th>Rank / model</th>${labels.map(l=>`<th>${l}</th>`).join('')}</tr></thead><tbody>${rr.map((r,i)=>`<tr><td><div class="model-name"><b>#${i+1}</b>${data.models[r.id]?.icon?`<img src="${esc(data.models[r.id].icon)}" alt="">`:''}${esc(r.name)}</div></td>${keys.map(k=>`<td class="power-heat" style="background:${heat(r[k],rr.map(o=>o[k]),k==='accuracy')}">${format(k,r[k])}${k==='time_100'&&!r.native_100?`<small>${r.workflow_calls} sequential calls</small>`:''}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="fine">Green indicates higher accuracy or lower cost and time within each column. Values are actual measurements, not ranking points. Color shows relative standing, not statistical significance.</p>`;
 }
-function render(){const w=data.workloads.find(w=>w.id===$('workload').value);document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));$('view-label').textContent={image:'IMAGE INPUTS',text:'GENERAL TEXT',binary:'YES/NO · BOOLEAN OUTPUTS'}[view];$('workload-title').textContent=w.label;$('scope').textContent=w.note;$('timing').textContent=w.timing;const visible=allRows().filter(r=>selected.has(r.id)&&eligible(r)).sort((a,b)=>percent(b)-percent(a)||a.name.localeCompare(b.name));$('selected-count').textContent='('+selected.size+')';$('model-count').textContent=visible.length;$('filter-note').textContent=allRows().length+' saved measurements in this workload · '+(allRows().length-selected.size)+' deselected · '+allRows().filter(r=>selected.has(r.id)&&!eligible(r)).length+' excluded by availability/deployment filters';$('empty').hidden=visible.length!==0;$('overview').hidden=!visible.length;$('overview').innerHTML=bars(visible,'accuracy','Accuracy','Correct / scored findings · higher is better')+bars(visible,'cost','Measured cost','USD per 1,000 packets · lower is better')+bars(visible,'seconds','Completion time','Median seconds · lower is better');$('selection-summary').textContent=selected.size===allRows().length?'All '+allRows().length+' evaluated models selected':selected.size+' of '+allRows().length+' models selected';$('all-models').textContent='Show all '+allRows().length+' models';powerRanking();picker();scaling(visible);save();}
-document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>chooseView(b.dataset.view));$('workload').onchange=()=>{recommended();render();};$('availability').onchange=render;$('deployment').onchange=render;$('models-button').onclick=()=>{$('picker').hidden=!$('picker').hidden;$('models-button').setAttribute('aria-expanded',String(!$('picker').hidden));};$('model-search').oninput=picker;$('model-options').onchange=e=>{if(e.target.dataset.model){e.target.checked?selected.add(e.target.dataset.model):selected.delete(e.target.dataset.model);render();}};$('show-all').onclick=()=>{selected=new Set(allRows().map(r=>r.id));render();};$('all-models').onclick=()=>{selected=new Set(allRows().map(r=>r.id));$('availability').value='all';$('deployment').value='all';render();};$('clear').onclick=()=>{selected.clear();render();};$('reset').onclick=()=>{recommended();render();};document.querySelectorAll('[data-sort]').forEach(b=>b.onclick=()=>{if(sort===b.dataset.sort)direction*=-1;else{sort=b.dataset.sort;direction=sort==='accuracy'?-1:1;}render();});
-function restore(){const q=new URLSearchParams(location.search);$('availability').value=['all','open','local'].includes(q.get('availability'))?q.get('availability'):'all';$('deployment').value=['all','API','Local GPU'].includes(q.get('deployment'))?q.get('deployment'):'all';chooseView(['image','text','binary'].includes(q.get('view'))?q.get('view'):'text',q.get('workload'),q.has('models')?q.get('models'):undefined);}
+// Cost against completion time, both logarithmic, with accuracy as fill and a floor.
+// Position carries the two metrics the benchmark resolves sharply; accuracy — which at
+// n=150 cannot separate most of the field — gates rather than ranks.
+const accBand=p=>p>=95?'a3':p>=90?'a2':'a1';
+const accLabel=p=>p>=95?'95% and above':p>=90?'90–95%':'below 90%';
+function frontierSet(rows){
+ // Pareto-minimal on (cost, seconds). Free routes are plotted but never anchor the
+ // frontier: a promotional zero would dominate the cost axis on its own.
+ const c=rows.filter(r=>r.cost>0);
+ return c.filter(r=>!c.some(o=>o!==r&&o.cost<=r.cost&&o.seconds<=r.seconds&&(o.cost<r.cost||o.seconds<r.seconds)));
+}
+function frontier(rows){
+ const plot=rows.filter(r=>r.cost!=null&&r.seconds>0);
+ const section=$('frontier-section');
+ // Needs at least two priced models: the cost axis is logarithmic and free routes
+ // sit in their own lane outside it.
+ section.hidden=plot.length<3||plot.filter(r=>r.cost>0).length<2;
+ if(section.hidden)return;
+ const floor=+$('acc-floor').value;
+ $('acc-floor-value').textContent=floor?floor+'%':'off';
+ const passes=r=>percent(r)>=floor-1e-9;
+ const kept=plot.filter(passes), fr=frontierSet(kept), frIds=new Set(fr.map(r=>r.id));
+ const free=plot.filter(r=>r.cost===0);
+ const paid=plot.filter(r=>r.cost>0);
+ const W=1100,H=430,L=96,R=300,T=40,B=62,FREE=free.length?62:0;
+ const lo=Math.min(...paid.map(r=>r.cost))*.7,hi=Math.max(...paid.map(r=>r.cost))*1.4;
+ const tLo=Math.min(...plot.map(r=>r.seconds))*.7,tHi=Math.max(...plot.map(r=>r.seconds))*1.4;
+ const x0=L+FREE, x1=W-R;
+ const x=v=>x0+(Math.log(v)-Math.log(lo))/(Math.log(hi)-Math.log(lo))*(x1-x0);
+ const y=v=>H-B-(Math.log(v)-Math.log(tLo))/(Math.log(tHi)-Math.log(tLo))*(H-T-B);
+ const freeX=L+FREE/2;
+ // Dense ladders: a workload whose models sit inside one decade still needs gridlines.
+ const costTicks=[.00003,.0001,.0002,.0005,.001,.002,.005,.01,.02,.03,.05,.075,.1,.15,.2,.3,.5,.75,1,2,3,5,10].filter(v=>v>=lo&&v<=hi);
+ const timeTicks=[.1,.15,.2,.25,.3,.4,.5,.6,.75,1,1.5,2,3,4,6,8,12,16,24,32].filter(v=>v>=tLo&&v<=tHi);
+ let body='';
+ costTicks.forEach(v=>{body+=`<line x1="${x(v).toFixed(1)}" x2="${x(v).toFixed(1)}" y1="${T}" y2="${H-B}" stroke="#e7ecf1"/><text x="${x(v).toFixed(1)}" y="${H-B+24}" text-anchor="middle">$${v<.001?v.toFixed(5):v<1?v.toFixed(3):v}</text>`;});
+ timeTicks.forEach(v=>{body+=`<line x1="${L}" x2="${x1}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}" stroke="#e7ecf1"/><text x="${L-14}" y="${(y(v)+5).toFixed(1)}" text-anchor="end">${v}s</text>`;});
+ if(FREE){
+  body+=`<line x1="${x0-12}" x2="${x0-12}" y1="${T}" y2="${H-B}" stroke="#c9d6d4" stroke-dasharray="3 4"/>`
+   +`<text x="${freeX}" y="${H-B+24}" text-anchor="middle">$0</text>`;
+ }
+ body+=`<text x="${((x0+x1)/2).toFixed(1)}" y="${H-10}" text-anchor="middle" class="axis-title">Cost per 1,000 packets · logarithmic</text>`
+  +`<text transform="translate(26,${((T+H-B)/2).toFixed(1)}) rotate(-90)" text-anchor="middle" class="axis-title">Median completion time · logarithmic</text>`
+  +`<text x="${x0+8}" y="${H-B-10}" class="good-corner">cheaper and faster ↙</text>`;
+ if(fr.length>1){
+  const pts=[...fr].sort((a,b)=>a.cost-b.cost).map(r=>x(r.cost).toFixed(1)+','+y(r.seconds).toFixed(1)).join(' ');
+  body+=`<polyline points="${pts}" fill="none" stroke="#0a8f84" stroke-width="2" stroke-dasharray="7 5" stroke-linejoin="round"/>`;
+ }
+ // Direct labels only for the frontier; every mark carries a title, and the list below
+ // repeats all of them for small screens and screen readers.
+ const labelled=[...fr].sort((a,b)=>y(a.seconds)-y(b.seconds));
+ let prev=T-34;
+ labelled.forEach(e=>{e._ly=Math.max(y(e.seconds),prev+34);prev=e._ly;});
+ const over=Math.max(0,prev-(H-B-10));
+ if(over)labelled.forEach(e=>{e._ly-=over;});
+ for(let i=labelled.length-2;i>=0;i--)labelled[i]._ly=Math.min(labelled[i]._ly,labelled[i+1]._ly-34);
+ plot.forEach(r=>{
+  const cx=r.cost===0?freeX:x(r.cost),cy=y(r.seconds),p=percent(r),good=passes(r),onF=frIds.has(r.id);
+  const title=`${data.models[r.id]?.name||r.name}: ${p.toFixed(1)}% accuracy; ${money(r.cost)} per 1,000 packets; ${time(r.seconds)} median${r.cost===0?'; free route':''}${good?(onF?'; on the efficient frontier':''):'; below the accuracy floor'}`;
+  body+=`<circle class="fr-point ${good?'band-'+accBand(p):'fr-out'}" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${onF?8:6.5}"><title>${esc(title)}</title></circle>`;
+ });
+ labelled.forEach(r=>{
+  const cx=r.cost===0?freeX:x(r.cost),cy=y(r.seconds),icon=data.models[r.id]?.icon,name=data.models[r.id]?.name||r.name;
+  body+=`<path d="M ${(cx+10).toFixed(1)} ${cy.toFixed(1)} L ${x1+22} ${r._ly.toFixed(1)}" fill="none" stroke="#9bacb1" stroke-width="1" opacity=".7"/>`
+   +(icon?`<image href="${esc(icon)}" x="${x1+30}" y="${(r._ly-11).toFixed(1)}" width="18" height="18"/>`:'')
+   +`<text x="${x1+(icon?54:30)}" y="${(r._ly-1).toFixed(1)}" class="scale-direct-name">${esc(name)}</text>`
+   +`<text x="${x1+(icon?54:30)}" y="${(r._ly+15).toFixed(1)}" class="scale-direct-value">${money(r.cost)} · ${time(r.seconds)}</text>`;
+ });
+ const missing=rows.length-plot.length;
+ $('frontier').innerHTML=`<div class="scale-plot"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cost against median completion time, both logarithmic, with the efficient frontier among models meeting the accuracy floor">${body}</svg></div>`
+  +`<div class="fr-legend"><span><i class="band-a1"></i>below 90%</span><span><i class="band-a2"></i>90–95%</span><span><i class="band-a3"></i>95% and above</span><span><i class="fr-out"></i>below your floor</span><span><i class="fr-line"></i>efficient frontier</span></div>`
+  +`<div class="scale-mobile-values">${[...plot].sort((a,b)=>percent(b)-percent(a)).map(r=>`<div><span>${esc(data.models[r.id]?.name||r.name)}</span><strong>${percent(r).toFixed(1)}%</strong><small>${money(r.cost)} per 1,000 packets · ${time(r.seconds)} median${frIds.has(r.id)?' · on the frontier':''}</small></div>`).join('')}</div>`;
+ $('frontier-note').textContent=
+  `Three accuracy bands rather than a continuous ramp: at these sample sizes the benchmark cannot resolve finer differences, so a smooth gradient would imply precision the measurements do not carry. `
+  +(fr.length?`The frontier holds ${fr.length} model${fr.length===1?'':'s'} at this floor. `:`No model clears this floor. `)
+  +(free.length?`${free.length} free route${free.length===1?' is':'s are'} plotted in the $0 lane and excluded from the frontier, because a promotional zero would dominate the cost axis on its own. `:'')
+  +(missing?`${missing} selected model${missing===1?' has':'s have'} no cost or timing measurement in this workload and ${missing===1?'is':'are'} not plotted.`:'');
+}
+let frontierRows=[];
+function render(){const w=data.workloads.find(w=>w.id===$('workload').value);document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));$('view-label').textContent={image:'IMAGE INPUTS',text:'GENERAL TEXT',binary:'YES/NO · BOOLEAN OUTPUTS'}[view];$('workload-title').textContent=w.label;$('scope').textContent=w.note;$('timing').textContent=w.timing;const visible=allRows().filter(r=>selected.has(r.id)&&eligible(r)).sort((a,b)=>percent(b)-percent(a)||a.name.localeCompare(b.name));$('selected-count').textContent='('+selected.size+')';$('model-count').textContent=visible.length;$('filter-note').textContent=allRows().length+' saved measurements in this workload · '+(allRows().length-selected.size)+' deselected · '+allRows().filter(r=>selected.has(r.id)&&!eligible(r)).length+' excluded by availability/deployment filters';$('empty').hidden=visible.length!==0;$('overview').hidden=!visible.length;$('overview').innerHTML=bars(visible,'accuracy','Accuracy','Correct / scored findings · higher is better')+bars(visible,'cost','Measured cost','USD per 1,000 packets · lower is better')+bars(visible,'seconds','Completion time','Median seconds · lower is better');$('selection-summary').textContent=selected.size===allRows().length?'All '+allRows().length+' evaluated models selected':selected.size+' of '+allRows().length+' models selected';$('all-models').textContent='Show all '+allRows().length+' models';frontierRows=visible;frontier(visible);powerRanking();picker();scaling(visible);save();}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>chooseView(b.dataset.view));$('workload').onchange=()=>{recommended();render();};$('availability').onchange=render;$('deployment').onchange=render;$('acc-floor').oninput=()=>{frontier(frontierRows);save();};$('models-button').onclick=()=>{$('picker').hidden=!$('picker').hidden;$('models-button').setAttribute('aria-expanded',String(!$('picker').hidden));};$('model-search').oninput=picker;$('model-options').onchange=e=>{if(e.target.dataset.model){e.target.checked?selected.add(e.target.dataset.model):selected.delete(e.target.dataset.model);render();}};$('show-all').onclick=()=>{selected=new Set(allRows().map(r=>r.id));render();};$('all-models').onclick=()=>{selected=new Set(allRows().map(r=>r.id));$('availability').value='all';$('deployment').value='all';render();};$('clear').onclick=()=>{selected.clear();render();};$('reset').onclick=()=>{recommended();render();};document.querySelectorAll('[data-sort]').forEach(b=>b.onclick=()=>{if(sort===b.dataset.sort)direction*=-1;else{sort=b.dataset.sort;direction=sort==='accuracy'?-1:1;}render();});
+function restore(){const q=new URLSearchParams(location.search);$('availability').value=['all','open','local'].includes(q.get('availability'))?q.get('availability'):'all';$('deployment').value=['all','API','Local GPU'].includes(q.get('deployment'))?q.get('deployment'):'all';$('acc-floor').value=String(Math.min(100,Math.max(0,+q.get('floor')||0)));chooseView(['image','text','binary'].includes(q.get('view'))?q.get('view'):'text',q.get('workload'),q.has('models')?q.get('models'):undefined);}
 window.onpopstate=()=>{if(data)restore();};fetch('data.json').then(r=>{if(!r.ok)throw Error('Unable to load saved results');return r.json();}).then(d=>{data=d;$('entrant-status').innerHTML=data.candidates.map(c=>{const measured=data.rows.find(r=>r.model_id===c.requested_model_id);return `<article><h2>${esc(c.display_name)}</h2><p>${measured?measured.correct+'/'+measured.total+' primary findings correct · '+time(measured.seconds)+' median · '+money(measured.cost)+' per 1,000 packets. '+(measured.workload==='broader150_textstate'?'Select the separate Classify text-state workload; input formatting differs.':c.requested_model_id==='nace-ai/drex-v2.0'?'Broader text benchmark; native requests are limited to 16 questions.':'Broader text benchmark.'):'Awaiting evaluation. No InsureBench score, price, or timing yet.'}</p><a href="${esc(c.official_source)}" target="_blank" rel="noopener">Model details ↗</a></article>`;}).join('');restore();}).catch(e=>{$('scope').textContent=e.message+'. Please refresh the preview.';});
