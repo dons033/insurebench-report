@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://insurebench.insure-thing.com/</loc></url>
-  <url><loc>https://insurebench.insure-thing.com/decisions</loc></url>
+  <url><loc>https://insurebench.insure-thing.com/decision-models</loc></url>
   <url><loc>https://insurebench.insure-thing.com/benchmarks</loc></url>
+  <url><loc>https://insurebench.insure-thing.com/archived-decisions</loc></url>
 </urlset>

@@ -1,5 +1,19 @@
 <!doctype html>
-<html lang="en"><head><base href="/decision-models/"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Decision Models · InsureBench</title><meta name="description" content="Compare decision models on insurance evidence: accuracy, measured cost, completion time and question scaling."><link rel="stylesheet" href="style.css"></head><body>
+<html lang="en"><head><base href="/decision-models/"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Decision Models · InsureBench</title><meta name="description" content="Compare decision models on insurance evidence: accuracy, measured cost, completion time and question scaling."><link rel="canonical" href="https://insurebench.insure-thing.com/decision-models">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="InsureThing">
+<meta property="og:title" content="Decision Models — accuracy, cost and speed on insurance evidence">
+<meta property="og:description" content="Accuracy, measured cost, completion time and 1–100 question scaling for decision models on insurance evidence — image, text and yes/no workloads.">
+<meta property="og:url" content="https://insurebench.insure-thing.com/decision-models">
+<meta property="og:image" content="https://insurebench.insure-thing.com/og-decision-models.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="InsureBench Decision Models card: Liquid d1-ultra 96.7% accuracy, Mercury Decide $0.000032 per 100 questions, JEV 1.14 0.311s per regular packet.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Decision Models — accuracy, cost and speed on insurance evidence">
+<meta name="twitter:description" content="Accuracy, cost, completion time and question scaling for decision models on insurance evidence.">
+<meta name="twitter:image" content="https://insurebench.insure-thing.com/og-decision-models.png">
+<link rel="stylesheet" href="style.css"></head><body>
 <header><a class="brand" href="https://insurebench.insure-thing.com">Insure<span>Bench</span></a><nav class="site-nav" aria-label="InsureBench"><a href="https://insurebench.insure-thing.com/benchmarks">Benchmarks</a><a href="https://insurebench.insure-thing.com/#leaderboard">Multi-functional LLMs</a><a class="here" href="" aria-current="page">Decision Models</a></nav><span class="preview">Insurance evidence benchmarks</span><a href="data.json" download>Download results ↓</a><a href="#method">Methodology ↗</a></header>
 <main><section class="hero"><div class="eyebrow">INSURANCE EVIDENCE BENCHMARKS</div><h1>Decision Models<span>.</span></h1><p class="lead">Find the right model for the evidence, the workload, and the way you deploy.</p><div class="meta">Updated October 15, 2026 <span>·</span> Saved measurements <span>·</span> No pooled ranking across workloads</div></section>
 <section class="controls" aria-label="Comparison filters"><div class="tabs" role="group" aria-label="Benchmark view"><button data-view="image">Image Inputs</button><button data-view="text">General Text</button><button data-view="binary">Yes/No</button></div><div class="filter-row"><label>Workload<select id="workload"></select></label><label>Availability<select id="availability"><option value="all">Any availability</option><option value="open">Open weights</option><option value="local">Locally deployable</option></select></label><label>Measured deployment<select id="deployment"><option value="all">All deployments</option><option value="API">API</option><option value="Local GPU">Local</option></select></label><button id="models-button" aria-expanded="false" aria-controls="picker">Models <span id="selected-count"></span> ▾</button></div>
