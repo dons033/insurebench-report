@@ -32,11 +32,16 @@ outputs. The export is the privacy boundary; nothing private lives in this repo.
 
 `/decision-models` is the current comparison, built from the private checkout by `scripts/build_decision_page.py`. The superseded `/archived-decisions` page contains **General decisions** and **Yes/No binary models**, with separate full-benchmark and exploratory cohorts. Binary scores include only yes/no answers, even for general models. Cost and latency remain those of the entire measured request; the page labels request sizes explicitly. WC classification is a separate decisioning family in development, with no scores published here yet.
 
-Refresh its aggregate-only data from the private InsureBench checkout:
+Rebuild it from the private InsureBench checkout:
 
 ```bash
-python scripts/export_decision_report.py --out C:/AI/Projects/insurebench-report/data/decisions.json
+python scripts/build_decision_page.py --source . --out C:/AI/Projects/insurebench-report/decision-models
 ```
+
+That copies `index.html`, `style.css` and `app.js` from `app/web/decision-models/` verbatim and
+regenerates `decision-models/data.json` from saved aggregates. The `export_decision_report.py`
+this section used to name no longer exists; `data/decisions.json` belongs to the superseded
+`/archived-decisions` page and is not refreshed by the command above.
 
 The exporter publishes counts and source hashes, never prompts, labels per case, business evidence or raw model responses. Adapted Laya inputs remain a separate diagnostic. Local cost is unmeasured, not zero. To preview with Python's static server, open `/archived-decisions.html`; Vercel exposes the clean `/archived-decisions` URL. `/decisions` now 301-redirects to `/decision-models` (see `vercel.json`).
 
