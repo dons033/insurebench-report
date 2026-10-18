@@ -56,3 +56,38 @@ header .preview{white-space:nowrap;flex-shrink:0}
   .cta{flex-direction:column;align-items:flex-start;gap:18px}
   .cta-actions{justify-items:start;text-align:left}
 }
+
+
+/* ── Cost x time frontier ───────────────────────────────────────────────────
+   Position encodes cost and completion time; accuracy is a three-step fill and
+   a floor, because the benchmark cannot resolve it finely enough to rank on. */
+#frontier-section .section-head{align-items:flex-end;flex-wrap:wrap;gap:14px}
+.floor-ctl{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--muted);
+  letter-spacing:.06em;text-transform:uppercase;font-weight:600;white-space:nowrap}
+.floor-ctl input[type=range]{width:150px;accent-color:var(--teal)}
+.floor-ctl span{font-size:13px;font-weight:700;color:var(--ink);text-transform:none;
+  letter-spacing:0;min-width:34px;font-variant-numeric:tabular-nums}
+.fr-point{stroke:white;stroke-width:2}
+.fr-point.band-a1{fill:#44a398}
+.fr-point.band-a2{fill:#0a7169}
+.fr-point.band-a3{fill:#05534d}
+.fr-point.fr-out{fill:none;stroke:#9aa8ad;stroke-dasharray:3 2}
+.fr-legend{display:flex;flex-wrap:wrap;gap:9px 18px;font-size:11px;color:var(--muted);
+  margin-top:12px}
+.fr-legend span{display:inline-flex;align-items:center;gap:7px}
+.fr-legend i{width:11px;height:11px;border-radius:50%;display:inline-block;flex:0 0 auto}
+.fr-legend i.band-a1{background:#44a398}
+.fr-legend i.band-a2{background:#0a7169}
+.fr-legend i.band-a3{background:#05534d}
+.fr-legend i.fr-out{background:transparent;border:2px dashed #9aa8ad}
+.fr-legend i.fr-line{width:17px;height:0;border-top:2px dashed #0a8f84;border-radius:0}
+/* Pre-existing: the scaling charts are grid items with the default min-width:auto,
+   so their 880px svg could not shrink and .scale-plot's overflow-x never engaged.
+   That scrolled the whole page sideways by ~550px at phone width. */
+#scaling-section>.two>*{min-width:0}
+#frontier .scale-mobile-values{display:none}
+@media(max-width:700px){
+  #frontier .scale-plot svg{min-width:720px}
+  #frontier .scale-mobile-values{display:grid;gap:8px;margin-top:14px}
+  .floor-ctl input[type=range]{width:118px}
+}
