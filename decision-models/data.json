@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-21",
   "rows": [
     {
       "workload": "broader150",
@@ -262,7 +262,7 @@
         "accuracy": 0.96
       },
       "confident_errors": 5,
-      "hidden_reason": ""
+      "hidden_reason": "Earlier version; retained for comparison"
     },
     {
       "workload": "broader150",
@@ -424,7 +424,7 @@
         "accuracy": 0.9
       },
       "confident_errors": 0,
-      "hidden_reason": ""
+      "hidden_reason": "Earlier version; retained for comparison"
     },
     {
       "workload": "broader150_textstate",
@@ -1365,6 +1365,33 @@
       "abstentions": null,
       "incorrect": null,
       "failures": 0,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "drex_max",
+      "name": "Drex Max",
+      "correct": 143,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.5566926499595866,
+      "cost": 0.0719148,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-21",
+      "source": "current_run/decision_drex_max_accuracy_20261021_v01/summary.json",
+      "model_id": "nace-ai/drex-max",
+      "provider": "DeepInfra",
+      "diagnostics": {
+        "correct": 48,
+        "total": 50,
+        "accuracy": 0.96
+      },
+      "confident_errors": 4,
       "hidden_reason": ""
     }
   ],
@@ -2357,6 +2384,107 @@
         "total": 100
       },
       "unknown_charge_attempts": 0
+    },
+    {
+      "id": "drex_max",
+      "size": 1,
+      "seconds": 0.5178577500046231,
+      "cost": 0.0996384,
+      "requests": 50,
+      "native": true,
+      "correct": 48,
+      "total": 50,
+      "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
+      "fixed_ten_quality": null,
+      "workflow_calls": 1,
+      "api_calls": 50,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00498192
+    },
+    {
+      "id": "drex_max",
+      "size": 10,
+      "seconds": 0.7313347999588586,
+      "cost": 0.0166602,
+      "requests": 10,
+      "native": true,
+      "correct": 93,
+      "total": 100,
+      "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 93,
+        "total": 100
+      },
+      "workflow_calls": 1,
+      "api_calls": 10,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00166602
+    },
+    {
+      "id": "drex_max",
+      "size": 25,
+      "seconds": 1.3699983999831602,
+      "cost": 0.01480584,
+      "requests": 10,
+      "native": false,
+      "correct": 237,
+      "total": 250,
+      "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 92,
+        "total": 100
+      },
+      "workflow_calls": 2,
+      "api_calls": 20,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00370146
+    },
+    {
+      "id": "drex_max",
+      "size": 50,
+      "seconds": 3.358359950070735,
+      "cost": 0.01480164,
+      "requests": 10,
+      "native": false,
+      "correct": 469,
+      "total": 500,
+      "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 92,
+        "total": 100
+      },
+      "workflow_calls": 4,
+      "api_calls": 40,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00740082
+    },
+    {
+      "id": "drex_max",
+      "size": 100,
+      "seconds": 5.831524100038223,
+      "cost": 0.01388046,
+      "requests": 10,
+      "native": false,
+      "correct": 942,
+      "total": 1000,
+      "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 92,
+        "total": 100
+      },
+      "workflow_calls": 7,
+      "api_calls": 70,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.01388046
     }
   ],
   "models": {
@@ -2536,9 +2664,25 @@
       "name": "Span-01 Lite",
       "open_weights": false,
       "local_deployable": false
+    },
+    "drex_max": {
+      "name": "Drex Max",
+      "open_weights": false,
+      "local_deployable": false,
+      "icon": "assets/nace-ai.png"
     }
   },
   "candidates": [
+    {
+      "requested_model_id": "nace-ai/drex-max",
+      "display_name": "Drex Max",
+      "status": "evaluated",
+      "provider": "DeepInfra",
+      "input_usd_per_million": 0.06,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/nace-ai/drex-max"
+    },
     {
       "requested_model_id": "liquid/d1-ultra",
       "display_name": "Liquid d1-ultra",
@@ -2770,7 +2914,11 @@
     "current_run/decision_classify_textstate_scaling_20261013_v01/summary.json": "12c23469b56aedf1b9bd6339dbba50cbb05182c586422768c6bb17e75394526d",
     "current_run/decision_drex_split_scaling_20261013_v01/summary.json": "b77474c439ad1c38afd2b6e78a6f48a66a6c78e172322a3c361553e10047ca38",
     "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json": "eb467f59943bfdcd2ba3a5d5d4ce02f8a564b3bb75ca7f4bb563a18aa7d4cef8",
-    "derived/power-ranking-with-drex.json": "074985a546053238494181f97742c7bfa13a9408f43b593e2dbb9966fa221697"
+    "derived/power-ranking-with-drex.json": "074985a546053238494181f97742c7bfa13a9408f43b593e2dbb9966fa221697",
+    "current_run/decision_drex_max_accuracy_20261021_v01/summary.json": "8710525ac55cec359552bfb168a63b98b8c658c8b0fc896ec4058b858a64bf61",
+    "current_run/decision_drex_max_scaling_20261021_v01/summary.json": "b6515e182a9b2c1278490254f6fc0a3b13a700f3505918a34d084c454288eef7",
+    "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json": "0b35b30e032ccb047b4ff5e6935aa9a6dd5ad857ba2e561955ba6ce387d189ca",
+    "current_run/decision_drex_max_combined_20261021_v01/audit.json": "3436fd616fc09458d3699ba128e017f53d5c8a43272175f02db2afdef97c6526"
   },
   "power_ranking": [
     {
@@ -2785,18 +2933,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0449927431059507,
-        "cost_regular": 1.6926583169711034,
+        "accuracy": 1.0412147505422993,
+        "cost_regular": 1.72482178627386,
         "cost_100": 2.0,
-        "time_regular": 1.5653439524732689,
+        "time_regular": 1.6109419213061384,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0449927431059507,
-        "speed": 1.7826719762366343,
-        "cost": 1.8463291584855517
+        "accuracy": 1.0412147505422993,
+        "speed": 1.8054709606530692,
+        "cost": 1.8624108931369299
       },
-      "score": 1.5579979592760456
+      "score": 1.5696988681107662
     },
     {
       "id": "microsoft",
@@ -2810,18 +2958,18 @@
       "workflow_calls": 1,
       "source": "current_run/microsoft_scaling/summary.json",
       "metric_components": {
-        "accuracy": 1.0014513788098696,
+        "accuracy": 0.9978308026030369,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 0.9853038189063914,
-        "time_100": 1.3600432979366748
+        "time_regular": 1.0140054041103423,
+        "time_100": 1.522236644081099
       },
       "components": {
-        "accuracy": 1.0014513788098696,
-        "speed": 1.172673558421533,
+        "accuracy": 0.9978308026030369,
+        "speed": 1.2681210240957208,
         "cost": 2.0
       },
-      "score": 1.3913749790771341
+      "score": 1.4219839422329192
     },
     {
       "id": "mercury_paid",
@@ -2835,18 +2983,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0087082728592163,
+        "accuracy": 1.0050614605929138,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 0.828984969716256,
-        "time_100": 1.199857209860457
+        "time_regular": 0.8531330368246474,
+        "time_100": 1.3429474012227627
       },
       "components": {
-        "accuracy": 1.0087082728592163,
-        "speed": 1.0144210897883565,
+        "accuracy": 1.0050614605929138,
+        "speed": 1.098040219023705,
         "cost": 2.0
       },
-      "score": 1.3410431208825244
+      "score": 1.3677005598722063
     },
     {
       "id": "luna",
@@ -2860,43 +3008,18 @@
       "workflow_calls": 1,
       "source": "data/exports/decision_scaling_four_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0087082728592163,
-        "cost_regular": 0.7373718526289805,
-        "cost_100": 1.70657256058469,
-        "time_regular": 1.4778402224787122,
+        "accuracy": 1.0050614605929138,
+        "cost_regular": 0.7513832078499136,
+        "cost_100": 1.7338983715861005,
+        "time_regular": 1.5208892356352606,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0087082728592163,
-        "speed": 1.7389201112393562,
-        "cost": 1.2219722066068353
+        "accuracy": 1.0050614605929138,
+        "speed": 1.7604446178176303,
+        "cost": 1.2426407897180072
       },
-      "score": 1.3232001969018026
-    },
-    {
-      "id": "drex_v2",
-      "name": "Drex v2.0",
-      "accuracy": 0.92,
-      "cost_regular": 5.37516e-05,
-      "cost_100": 0.000961818,
-      "time_regular": 0.41466949999448843,
-      "time_100": 3.9265795499959495,
-      "native_100": false,
-      "workflow_calls": 7,
-      "source": "current_run/decision_drex_split_scaling_20261013_v01/summary.json",
-      "metric_components": {
-        "accuracy": 1.0014513788098696,
-        "cost_regular": 1.7783096317132885,
-        "cost_100": 2.0,
-        "time_regular": 1.1757671712291407,
-        "time_100": 0.5
-      },
-      "components": {
-        "accuracy": 1.0014513788098696,
-        "speed": 0.8378835856145703,
-        "cost": 1.8891548158566442
-      },
-      "score": 1.2428299267603613
+      "score": 1.3360489560428503
     },
     {
       "id": "span02",
@@ -2910,18 +3033,43 @@
       "workflow_calls": 1,
       "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9143686502177069,
+        "accuracy": 0.9110629067245118,
         "cost_regular": 2.0,
-        "cost_100": 1.5773357904716758,
-        "time_regular": 0.9197716034350744,
-        "time_100": 0.692183331662941
+        "cost_100": 1.602592249348187,
+        "time_regular": 0.9465642561555997,
+        "time_100": 0.7747303585687237
       },
       "components": {
-        "accuracy": 0.9143686502177069,
-        "speed": 0.8059774675490077,
-        "cost": 1.788667895235838
+        "accuracy": 0.9110629067245118,
+        "speed": 0.8606473073621617,
+        "cost": 1.8012961246740935
       },
-      "score": 1.1696713376675174
+      "score": 1.1910021129202557
+    },
+    {
+      "id": "drex_max",
+      "name": "Drex Max",
+      "accuracy": 0.9533333333333334,
+      "cost_regular": 7.19148e-05,
+      "cost_100": 0.001388046,
+      "time_regular": 0.5566926499595866,
+      "time_100": 5.831524100038223,
+      "native_100": false,
+      "workflow_calls": 7,
+      "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.0339840925524222,
+        "cost_regular": 1.3544264602001257,
+        "cost_100": 1.9484474433844412,
+        "time_regular": 0.9013179894443675,
+        "time_100": 0.5
+      },
+      "components": {
+        "accuracy": 1.0339840925524222,
+        "speed": 0.7006589947221837,
+        "cost": 1.6514369517922836
+      },
+      "score": 1.12869334635563
     },
     {
       "id": "perplexity_v11",
@@ -2935,18 +3083,18 @@
       "workflow_calls": 1,
       "source": "data/exports/decision_perplexity_v11_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.02322206095791,
-        "cost_regular": 1.4353607510541428,
-        "cost_100": 0.8017323896150833,
-        "time_regular": 1.163981378880562,
-        "time_100": 0.7547682155903556
+        "accuracy": 1.019522776572668,
+        "cost_regular": 1.4626351164662497,
+        "cost_100": 0.8145698090476478,
+        "time_regular": 1.197887784276243,
+        "time_100": 0.8447788664540282
       },
       "components": {
-        "accuracy": 1.02322206095791,
-        "speed": 0.9593747972354587,
-        "cost": 1.1185465703346131
+        "accuracy": 1.019522776572668,
+        "speed": 1.0213333253651355,
+        "cost": 1.1386024627569487
       },
-      "score": 1.0337144761759938
+      "score": 1.0598195215649173
     },
     {
       "id": "d1_ultra",
@@ -2960,18 +3108,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0522496371552976,
-        "cost_regular": 0.684582450989829,
+        "accuracy": 1.0484454085321764,
+        "cost_regular": 0.6975907152253529,
         "cost_100": 0.5,
-        "time_regular": 1.0589434778096996,
-        "time_100": 1.3360005424732744
+        "time_regular": 1.089790162731978,
+        "time_100": 1.4953266453725336
       },
       "components": {
-        "accuracy": 1.0522496371552976,
-        "speed": 1.197472010141487,
-        "cost": 0.5922912254949144
+        "accuracy": 1.0484454085321764,
+        "speed": 1.2925584040522557,
+        "cost": 0.5987953576126764
       },
-      "score": 0.9473376242638997
+      "score": 0.9799330567323695
     },
     {
       "id": "d1",
@@ -2985,18 +3133,18 @@
       "workflow_calls": 1,
       "source": "data/exports/decision_scaling_four_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.965166908563135,
-        "cost_regular": 0.7188115735393205,
+        "accuracy": 0.9616775126536515,
+        "cost_regular": 0.7324702509866206,
         "cost_100": 0.5,
-        "time_regular": 0.7105875854933033,
-        "time_100": 1.1852464141789543
+        "time_regular": 0.7312867746556295,
+        "time_100": 1.3265941802486163
       },
       "components": {
-        "accuracy": 0.965166908563135,
-        "speed": 0.9479169998361288,
-        "cost": 0.6094057867696603
+        "accuracy": 0.9616775126536515,
+        "speed": 1.028940477452123,
+        "cost": 0.6162351254933103
       },
-      "score": 0.8408298983896413
+      "score": 0.8689510385330282
     },
     {
       "id": "clef",
@@ -3010,18 +3158,18 @@
       "workflow_calls": 2,
       "source": "data/exports/decision_clef_full_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9796806966618288,
+        "accuracy": 0.9761388286334056,
         "cost_regular": 0.5,
-        "cost_100": 0.7790256296795763,
-        "time_regular": 0.7605655803373449,
-        "time_100": 0.9020223964336131
+        "cost_100": 0.7914994661946704,
+        "time_regular": 0.7827206125095267,
+        "time_100": 1.0095939943354855
       },
       "components": {
-        "accuracy": 0.9796806966618288,
-        "speed": 0.8312939883854791,
-        "cost": 0.6395128148397882
+        "accuracy": 0.9761388286334056,
+        "speed": 0.8961573034225061,
+        "cost": 0.6457497330973352
       },
-      "score": 0.816829166629032
+      "score": 0.8393486217177489
     }
   ]
 }
