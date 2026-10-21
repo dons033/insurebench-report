@@ -208,7 +208,7 @@
       "source": "data/exports/decision_perplexity_v11_v01/summary.json",
       "date": "2026-10-06 or later",
       "questions": 4,
-      "hidden_reason": ""
+      "hidden_reason": "Earlier version; retained for comparison"
     },
     {
       "workload": "broader150",
@@ -1393,6 +1393,60 @@
       },
       "confident_errors": 4,
       "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "pplx12",
+      "name": "Perplexity Decider v1.2",
+      "correct": 145,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.520771399998921,
+      "cost": 0.0205516,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 20,
+      "questions": 4,
+      "date": "2026-10-16",
+      "source": "current_run/decision_pplx12_accuracy_20261016_v01/summary.json",
+      "model_id": "perplexity/pplx-decider-v1.2",
+      "provider": "Perplexity",
+      "diagnostics": {
+        "correct": 47,
+        "total": 50,
+        "accuracy": 0.94
+      },
+      "confident_errors": 1,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "pplx_flash12",
+      "name": "Perplexity Decider Flash v1.2",
+      "correct": 137,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.39676580000377726,
+      "cost": 0.0102758,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-16",
+      "source": "current_run/decision_pplx_flash12_accuracy_20261016_v01/summary.json",
+      "model_id": "perplexity/pplx-decider-flash-v1.2",
+      "provider": "Perplexity",
+      "diagnostics": {
+        "correct": 44,
+        "total": 50,
+        "accuracy": 0.88
+      },
+      "confident_errors": 1,
+      "hidden_reason": ""
     }
   ],
   "workloads": [
@@ -2485,6 +2539,168 @@
       "failed_attempts": 0,
       "unknown_charge_attempts": 0,
       "accounted_usd": 0.01388046
+    },
+    {
+      "id": "pplx12",
+      "size": 1,
+      "seconds": 0.515017550002085,
+      "cost": 0.033152799999999996,
+      "requests": 50,
+      "native": true,
+      "correct": 49,
+      "total": 50,
+      "source": "current_run/decision_pplx12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 16
+    },
+    {
+      "id": "pplx12",
+      "size": 10,
+      "seconds": 3.304558949996135,
+      "cost": 0.0045394,
+      "requests": 10,
+      "native": true,
+      "correct": 99,
+      "total": 100,
+      "source": "current_run/decision_pplx12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 99,
+        "total": 100
+      },
+      "unknown_charge_attempts": 7
+    },
+    {
+      "id": "pplx12",
+      "size": 25,
+      "seconds": 6.493709649977973,
+      "cost": 0.00264064,
+      "requests": 10,
+      "native": true,
+      "correct": 250,
+      "total": 250,
+      "source": "current_run/decision_pplx12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 100,
+        "total": 100
+      },
+      "unknown_charge_attempts": 6
+    },
+    {
+      "id": "pplx12",
+      "size": 50,
+      "seconds": 4.270982100002584,
+      "cost": 0.00200752,
+      "requests": 10,
+      "native": true,
+      "correct": 495,
+      "total": 500,
+      "source": "current_run/decision_pplx12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 100,
+        "total": 100
+      },
+      "unknown_charge_attempts": 6
+    },
+    {
+      "id": "pplx12",
+      "size": 100,
+      "seconds": 26.200725200003944,
+      "cost": 0.0016918600000000001,
+      "requests": 10,
+      "native": true,
+      "correct": 985,
+      "total": 1000,
+      "source": "current_run/decision_pplx12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 100,
+        "total": 100
+      },
+      "unknown_charge_attempts": 6
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 1,
+      "seconds": 0.3980127499962691,
+      "cost": 0.016576399999999998,
+      "requests": 50,
+      "native": true,
+      "correct": 42,
+      "total": 50,
+      "source": "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 10,
+      "seconds": 0.49697105000086594,
+      "cost": 0.0022697,
+      "requests": 10,
+      "native": true,
+      "correct": 90,
+      "total": 100,
+      "source": "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 90,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 25,
+      "seconds": 0.9193230999953812,
+      "cost": 0.00132032,
+      "requests": 10,
+      "native": true,
+      "correct": 229,
+      "total": 250,
+      "source": "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 90,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 50,
+      "seconds": 2.9116619000124047,
+      "cost": 0.00100376,
+      "requests": 10,
+      "native": true,
+      "correct": 437,
+      "total": 500,
+      "source": "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 91,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 100,
+      "seconds": 17.411839100008365,
+      "cost": 0.0008459300000000001,
+      "requests": 10,
+      "native": true,
+      "correct": 874,
+      "total": 1000,
+      "source": "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 91,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
     }
   ],
   "models": {
@@ -2670,6 +2886,18 @@
       "open_weights": false,
       "local_deployable": false,
       "icon": "assets/nace-ai.png"
+    },
+    "pplx_flash12": {
+      "name": "Perplexity Decider Flash v1.2",
+      "open_weights": false,
+      "local_deployable": false,
+      "icon": "assets/perplexity.png"
+    },
+    "pplx12": {
+      "name": "Perplexity Decider v1.2",
+      "open_weights": false,
+      "local_deployable": false,
+      "icon": "assets/perplexity.png"
     }
   },
   "candidates": [
@@ -2887,6 +3115,26 @@
       "open_weights": null,
       "locally_deployable": null,
       "official_source": "https://openrouter.ai/nace-ai/drex-v2.0"
+    },
+    {
+      "requested_model_id": "perplexity/pplx-decider-flash-v1.2",
+      "display_name": "Perplexity Decider Flash v1.2",
+      "status": "evaluated",
+      "provider": "Perplexity",
+      "input_usd_per_million": 0.01,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/perplexity/pplx-decider-flash-v1.2"
+    },
+    {
+      "requested_model_id": "perplexity/pplx-decider-v1.2",
+      "display_name": "Perplexity Decider v1.2",
+      "status": "evaluated",
+      "provider": "Perplexity",
+      "input_usd_per_million": 0.02,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/perplexity/pplx-decider-v1.2"
     }
   ],
   "sources": {
@@ -2918,7 +3166,13 @@
     "current_run/decision_drex_max_accuracy_20261021_v01/summary.json": "8710525ac55cec359552bfb168a63b98b8c658c8b0fc896ec4058b858a64bf61",
     "current_run/decision_drex_max_scaling_20261021_v01/summary.json": "b6515e182a9b2c1278490254f6fc0a3b13a700f3505918a34d084c454288eef7",
     "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json": "0b35b30e032ccb047b4ff5e6935aa9a6dd5ad857ba2e561955ba6ce387d189ca",
-    "current_run/decision_drex_max_combined_20261021_v01/audit.json": "3436fd616fc09458d3699ba128e017f53d5c8a43272175f02db2afdef97c6526"
+    "current_run/decision_drex_max_combined_20261021_v01/audit.json": "3436fd616fc09458d3699ba128e017f53d5c8a43272175f02db2afdef97c6526",
+    "current_run/decision_pplx12_accuracy_20261016_v01/summary.json": "a3966d1e685442e9221b4773c9ccfef07e2fd166c69d4ae8747ccbb387d34bfa",
+    "current_run/decision_pplx_flash12_accuracy_20261016_v01/summary.json": "5b1ac86f195b8a3475f4633efdaeece490914cb2466a913336515a80d182c22d",
+    "current_run/decision_pplx12_scaling_20261016_v01/summary.json": "9e84eb37062354ad6fd6c3c75fa2aa8f8c15f8570076eadbce8328e0c41813ff",
+    "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json": "ea797788ca98dc5017eb1a8d9b1434f3e964200fc7ca9b180a1d0bdc4937791b",
+    "current_run/decision_pplx_flash12_combined_20261016_v01/audit.json": "28583088fea2c6da0756f8d4aac11312de20b78b661be9b86faafd19a0f4747a",
+    "current_run/decision_pplx12_combined_20261016_v01/audit.json": "38fd0ede4e8a499e92e7e1721af25079e5eb51b8ecb64124226984e0bfc4753a"
   },
   "power_ranking": [
     {
@@ -2933,18 +3187,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0412147505422993,
-        "cost_regular": 1.72482178627386,
+        "accuracy": 1.0393700787401574,
+        "cost_regular": 1.5104413049911949,
         "cost_100": 2.0,
-        "time_regular": 1.6109419213061384,
+        "time_regular": 1.6100405888159501,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0412147505422993,
-        "speed": 1.8054709606530692,
-        "cost": 1.8624108931369299
+        "accuracy": 1.0393700787401574,
+        "speed": 1.8050202944079752,
+        "cost": 1.7552206524955976
       },
-      "score": 1.5696988681107662
+      "score": 1.5332036752145768
     },
     {
       "id": "microsoft",
@@ -2958,18 +3212,18 @@
       "workflow_calls": 1,
       "source": "current_run/microsoft_scaling/summary.json",
       "metric_components": {
-        "accuracy": 0.9978308026030369,
+        "accuracy": 0.9960629921259844,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 1.0140054041103423,
-        "time_100": 1.522236644081099
+        "time_regular": 1.0134380614868355,
+        "time_100": 2.0
       },
       "components": {
-        "accuracy": 0.9978308026030369,
-        "speed": 1.2681210240957208,
+        "accuracy": 0.9960629921259844,
+        "speed": 1.5067190307434177,
         "cost": 2.0
       },
-      "score": 1.4219839422329192
+      "score": 1.5009273409564674
     },
     {
       "id": "mercury_paid",
@@ -2983,43 +3237,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0050614605929138,
+        "accuracy": 1.003280839895013,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 0.8531330368246474,
-        "time_100": 1.3429474012227627
-      },
-      "components": {
-        "accuracy": 1.0050614605929138,
-        "speed": 1.098040219023705,
-        "cost": 2.0
-      },
-      "score": 1.3677005598722063
-    },
-    {
-      "id": "luna",
-      "name": "Luna Decisions",
-      "accuracy": 0.9266666666666666,
-      "cost_regular": 0.000129632,
-      "cost_100": 0.0015598000000000003,
-      "time_regular": 0.3299103499739431,
-      "time_100": 0.3994669999810867,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "data/exports/decision_scaling_four_v01/summary.json",
-      "metric_components": {
-        "accuracy": 1.0050614605929138,
-        "cost_regular": 0.7513832078499136,
-        "cost_100": 1.7338983715861005,
-        "time_regular": 1.5208892356352606,
+        "time_regular": 0.8526557033377148,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0050614605929138,
-        "speed": 1.7604446178176303,
-        "cost": 1.2426407897180072
+        "accuracy": 1.003280839895013,
+        "speed": 1.4263278516688573,
+        "cost": 2.0
       },
-      "score": 1.3360489560428503
+      "score": 1.4765362305212901
     },
     {
       "id": "span02",
@@ -3033,18 +3262,93 @@
       "workflow_calls": 1,
       "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9110629067245118,
+        "accuracy": 0.9094488188976378,
         "cost_regular": 2.0,
-        "cost_100": 1.602592249348187,
-        "time_regular": 0.9465642561555997,
-        "time_100": 0.7747303585687237
+        "cost_100": 1.2917174362731367,
+        "time_regular": 0.946034647293331,
+        "time_100": 2.0
       },
       "components": {
-        "accuracy": 0.9110629067245118,
-        "speed": 0.8606473073621617,
-        "cost": 1.8012961246740935
+        "accuracy": 0.9094488188976378,
+        "speed": 1.4730173236466655,
+        "cost": 1.6458587181365685
       },
-      "score": 1.1910021129202557
+      "score": 1.3427749535602906
+    },
+    {
+      "id": "pplx_flash12",
+      "name": "Perplexity Decider Flash v1.2",
+      "accuracy": 0.9133333333333333,
+      "cost_regular": 1.0275799999999999e-05,
+      "cost_100": 8.459300000000001e-05,
+      "time_regular": 0.39676580000377726,
+      "time_100": 17.411839100008365,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json",
+      "metric_components": {
+        "accuracy": 0.9888451443569555,
+        "cost_regular": 2.0,
+        "cost_100": 2.0,
+        "time_regular": 1.263910255450435,
+        "time_100": 0.5
+      },
+      "components": {
+        "accuracy": 0.9888451443569555,
+        "speed": 0.8819551277252174,
+        "cost": 2.0
+      },
+      "score": 1.2902667573607243
+    },
+    {
+      "id": "luna",
+      "name": "Luna Decisions",
+      "accuracy": 0.9266666666666666,
+      "cost_regular": 0.000129632,
+      "cost_100": 0.0015598000000000003,
+      "time_regular": 0.3299103499739431,
+      "time_100": 0.3994669999810867,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "data/exports/decision_scaling_four_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.003280839895013,
+        "cost_regular": 0.6579927515091671,
+        "cost_100": 1.3975524717621137,
+        "time_regular": 1.5200382882088355,
+        "time_100": 2.0
+      },
+      "components": {
+        "accuracy": 1.003280839895013,
+        "speed": 1.7600191441044177,
+        "cost": 1.0277726116356405
+      },
+      "score": 1.2636908652116905
+    },
+    {
+      "id": "pplx12",
+      "name": "Perplexity Decider v1.2",
+      "accuracy": 0.9666666666666667,
+      "cost_regular": 2.0551599999999998e-05,
+      "cost_100": 0.00016918600000000002,
+      "time_regular": 0.520771399998921,
+      "time_100": 26.200725200003944,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_pplx12_scaling_20261016_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.0465879265091864,
+        "cost_regular": 2.0,
+        "cost_100": 2.0,
+        "time_regular": 0.9629491243908735,
+        "time_100": 0.5
+      },
+      "components": {
+        "accuracy": 1.0465879265091864,
+        "speed": 0.7314745621954368,
+        "cost": 2.0
+      },
+      "score": 1.259354162901541
     },
     {
       "id": "drex_max",
@@ -3058,43 +3362,18 @@
       "workflow_calls": 7,
       "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0339840925524222,
-        "cost_regular": 1.3544264602001257,
-        "cost_100": 1.9484474433844412,
-        "time_regular": 0.9013179894443675,
-        "time_100": 0.5
+        "accuracy": 1.0321522309711286,
+        "cost_regular": 1.1860829254011185,
+        "cost_100": 1.570482783318813,
+        "time_regular": 0.9008136961628203,
+        "time_100": 0.9256074878769299
       },
       "components": {
-        "accuracy": 1.0339840925524222,
-        "speed": 0.7006589947221837,
-        "cost": 1.6514369517922836
+        "accuracy": 1.0321522309711286,
+        "speed": 0.9132105920198751,
+        "cost": 1.378282854359966
       },
-      "score": 1.12869334635563
-    },
-    {
-      "id": "perplexity_v11",
-      "name": "Perplexity Decider v1.1",
-      "accuracy": 0.94,
-      "cost_regular": 6.65944e-05,
-      "cost_100": 0.0033202,
-      "time_regular": 0.41886819999854197,
-      "time_100": 2.1163545999988855,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "data/exports/decision_perplexity_v11_v01/summary.json",
-      "metric_components": {
-        "accuracy": 1.019522776572668,
-        "cost_regular": 1.4626351164662497,
-        "cost_100": 0.8145698090476478,
-        "time_regular": 1.197887784276243,
-        "time_100": 0.8447788664540282
-      },
-      "components": {
-        "accuracy": 1.019522776572668,
-        "speed": 1.0213333253651355,
-        "cost": 1.1386024627569487
-      },
-      "score": 1.0598195215649173
+      "score": 1.107881892450323
     },
     {
       "id": "d1_ultra",
@@ -3108,43 +3387,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0484454085321764,
-        "cost_regular": 0.6975907152253529,
+        "accuracy": 1.0465879265091864,
+        "cost_regular": 0.6108862020643713,
         "cost_100": 0.5,
-        "time_regular": 1.089790162731978,
-        "time_100": 1.4953266453725336
+        "time_regular": 1.0891804180427582,
+        "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0484454085321764,
-        "speed": 1.2925584040522557,
-        "cost": 0.5987953576126764
+        "accuracy": 1.0465879265091864,
+        "speed": 1.5445902090213792,
+        "cost": 0.5554431010321856
       },
-      "score": 0.9799330567323695
-    },
-    {
-      "id": "d1",
-      "name": "Liquid d1",
-      "accuracy": 0.8866666666666667,
-      "cost_regular": 0.0001329792,
-      "cost_100": 0.0072414,
-      "time_regular": 0.6861290500382893,
-      "time_100": 1.3477004999876954,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "data/exports/decision_scaling_four_v01/summary.json",
-      "metric_components": {
-        "accuracy": 0.9616775126536515,
-        "cost_regular": 0.7324702509866206,
-        "cost_100": 0.5,
-        "time_regular": 0.7312867746556295,
-        "time_100": 1.3265941802486163
-      },
-      "components": {
-        "accuracy": 0.9616775126536515,
-        "speed": 1.028940477452123,
-        "cost": 0.6162351254933103
-      },
-      "score": 0.8689510385330282
+      "score": 1.0488737455209172
     },
     {
       "id": "clef",
@@ -3158,18 +3412,43 @@
       "workflow_calls": 2,
       "source": "data/exports/decision_clef_full_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9761388286334056,
+        "accuracy": 0.9744094488188977,
         "cost_regular": 0.5,
-        "cost_100": 0.7914994661946704,
-        "time_regular": 0.7827206125095267,
-        "time_100": 1.0095939943354855
+        "cost_100": 0.6379624397287383,
+        "time_regular": 0.7822826752322952,
+        "time_100": 2.0
       },
       "components": {
-        "accuracy": 0.9761388286334056,
-        "speed": 0.8961573034225061,
-        "cost": 0.6457497330973352
+        "accuracy": 0.9744094488188977,
+        "speed": 1.3911413376161477,
+        "cost": 0.5689812198643691
       },
-      "score": 0.8393486217177489
+      "score": 0.9781773354331381
+    },
+    {
+      "id": "d1",
+      "name": "Liquid d1",
+      "accuracy": 0.8866666666666667,
+      "cost_regular": 0.0001329792,
+      "cost_100": 0.0072414,
+      "time_regular": 0.6861290500382893,
+      "time_100": 1.3477004999876954,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "data/exports/decision_scaling_four_v01/summary.json",
+      "metric_components": {
+        "accuracy": 0.95997375328084,
+        "cost_regular": 0.6414305121675898,
+        "cost_100": 0.5,
+        "time_regular": 0.7308776149454472,
+        "time_100": 2.0
+      },
+      "components": {
+        "accuracy": 0.95997375328084,
+        "speed": 1.3654388074727235,
+        "cost": 0.5707152560837949
+      },
+      "score": 0.9653759389457862
     }
   ]
 }
