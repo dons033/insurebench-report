@@ -1451,7 +1451,7 @@
     {
       "workload": "broader150",
       "id": "mammoth",
-      "name": "Mercury Decide \u00b7 Free",
+      "name": "Mammoth 1 (free)",
       "correct": 142,
       "total": 150,
       "packets": 50,
@@ -1478,7 +1478,7 @@
     {
       "workload": "broader150",
       "id": "elephant",
-      "name": "Mercury Decide \u00b7 Free",
+      "name": "Elephant 1 (free)",
       "correct": 140,
       "total": 150,
       "packets": 50,
@@ -3136,12 +3136,12 @@
       "icon": "assets/perplexity.png"
     },
     "mammoth": {
-      "name": "Mercury Decide \u00b7 Free",
+      "name": "Mammoth 1 (free)",
       "open_weights": false,
       "local_deployable": false
     },
     "elephant": {
-      "name": "Mercury Decide \u00b7 Free",
+      "name": "Elephant 1 (free)",
       "open_weights": false,
       "local_deployable": false
     }
