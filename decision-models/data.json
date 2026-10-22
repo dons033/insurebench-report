@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "rows": [
     {
       "workload": "broader150",
@@ -1447,6 +1447,60 @@
       },
       "confident_errors": 1,
       "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "mammoth",
+      "name": "Mercury Decide \u00b7 Free",
+      "correct": 142,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.357724400004372,
+      "cost": 0.0,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Promotional free route; availability and price can change",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-22",
+      "source": "current_run/decision_mammoth_accuracy_20261022_v01/summary.json",
+      "model_id": "baseten/mammoth-1:free",
+      "provider": "BaseTen",
+      "diagnostics": {
+        "correct": 49,
+        "total": 50,
+        "accuracy": 0.98
+      },
+      "confident_errors": 0,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "elephant",
+      "name": "Mercury Decide \u00b7 Free",
+      "correct": 140,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.2917194999754429,
+      "cost": 0.0,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Promotional free route; availability and price can change",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-22",
+      "source": "current_run/decision_elephant_accuracy_20261022_v01/summary.json",
+      "model_id": "baseten/elephant-1:free",
+      "provider": "BaseTen",
+      "diagnostics": {
+        "correct": 48,
+        "total": 50,
+        "accuracy": 0.96
+      },
+      "confident_errors": 1,
+      "hidden_reason": ""
     }
   ],
   "workloads": [
@@ -2701,6 +2755,188 @@
         "total": 100
       },
       "unknown_charge_attempts": 0
+    },
+    {
+      "id": "mammoth",
+      "size": 1,
+      "seconds": 0.38760414998978376,
+      "cost": 0.0,
+      "requests": 50,
+      "native": true,
+      "correct": 50,
+      "total": 50,
+      "source": "current_run/decision_mammoth_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 3,
+      "failed_attempts": 3,
+      "accounted_usd": 0.0
+    },
+    {
+      "id": "mammoth",
+      "size": 10,
+      "seconds": 0.5103509000036865,
+      "cost": 0.0,
+      "requests": 10,
+      "native": true,
+      "correct": 100,
+      "total": 100,
+      "source": "current_run/decision_mammoth_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 100,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0,
+      "failed_attempts": 0,
+      "accounted_usd": 0
+    },
+    {
+      "id": "mammoth",
+      "size": 25,
+      "seconds": 0.6758149999659508,
+      "cost": 0.0,
+      "requests": 10,
+      "native": true,
+      "correct": 246,
+      "total": 250,
+      "source": "current_run/decision_mammoth_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 100,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0,
+      "failed_attempts": 0,
+      "accounted_usd": 0
+    },
+    {
+      "id": "mammoth",
+      "size": 50,
+      "seconds": 0.9157023000298068,
+      "cost": 0.0,
+      "requests": 10,
+      "native": true,
+      "correct": 494,
+      "total": 500,
+      "source": "current_run/decision_mammoth_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 100,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0,
+      "failed_attempts": 0,
+      "accounted_usd": 0
+    },
+    {
+      "id": "mammoth",
+      "size": 100,
+      "seconds": 1.2101996500277892,
+      "cost": 0.0,
+      "requests": 10,
+      "native": true,
+      "correct": 988,
+      "total": 1000,
+      "source": "current_run/decision_mammoth_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 100,
+        "total": 100
+      },
+      "unknown_charge_attempts": 1,
+      "failed_attempts": 1,
+      "accounted_usd": 0.0
+    },
+    {
+      "id": "elephant",
+      "size": 1,
+      "seconds": 0.29438649996882305,
+      "cost": 0.0,
+      "requests": 50,
+      "native": true,
+      "correct": 47,
+      "total": 50,
+      "source": "current_run/decision_elephant_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 2,
+      "failed_attempts": 2,
+      "accounted_usd": 0.0
+    },
+    {
+      "id": "elephant",
+      "size": 10,
+      "seconds": 0.36422960000345483,
+      "cost": 0.0,
+      "requests": 10,
+      "native": true,
+      "correct": 95,
+      "total": 100,
+      "source": "current_run/decision_elephant_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 95,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0,
+      "failed_attempts": 0,
+      "accounted_usd": 0
+    },
+    {
+      "id": "elephant",
+      "size": 25,
+      "seconds": 0.4706807000329718,
+      "cost": 0.0,
+      "requests": 10,
+      "native": true,
+      "correct": 240,
+      "total": 250,
+      "source": "current_run/decision_elephant_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 95,
+        "total": 100
+      },
+      "unknown_charge_attempts": 1,
+      "failed_attempts": 1,
+      "accounted_usd": 0.0
+    },
+    {
+      "id": "elephant",
+      "size": 50,
+      "seconds": 0.6489472500397824,
+      "cost": 0.0,
+      "requests": 10,
+      "native": true,
+      "correct": 478,
+      "total": 500,
+      "source": "current_run/decision_elephant_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 95,
+        "total": 100
+      },
+      "unknown_charge_attempts": 2,
+      "failed_attempts": 2,
+      "accounted_usd": 0.0
+    },
+    {
+      "id": "elephant",
+      "size": 100,
+      "seconds": 0.742261849984061,
+      "cost": 0.0,
+      "requests": 10,
+      "native": true,
+      "correct": 958,
+      "total": 1000,
+      "source": "current_run/decision_elephant_scaling_20261022_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 95,
+        "total": 100
+      },
+      "unknown_charge_attempts": 1,
+      "failed_attempts": 1,
+      "accounted_usd": 0.0
     }
   ],
   "models": {
@@ -2898,6 +3134,16 @@
       "open_weights": false,
       "local_deployable": false,
       "icon": "assets/perplexity.png"
+    },
+    "mammoth": {
+      "name": "Mercury Decide \u00b7 Free",
+      "open_weights": false,
+      "local_deployable": false
+    },
+    "elephant": {
+      "name": "Mercury Decide \u00b7 Free",
+      "open_weights": false,
+      "local_deployable": false
     }
   },
   "candidates": [
@@ -3135,6 +3381,26 @@
       "open_weights": null,
       "locally_deployable": null,
       "official_source": "https://openrouter.ai/perplexity/pplx-decider-v1.2"
+    },
+    {
+      "requested_model_id": "baseten/elephant-1:free",
+      "display_name": "Elephant 1 (free)",
+      "status": "evaluated",
+      "provider": "BaseTen",
+      "input_usd_per_million": 0,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/baseten/elephant-1:free"
+    },
+    {
+      "requested_model_id": "baseten/mammoth-1:free",
+      "display_name": "Mammoth 1 (free)",
+      "status": "evaluated",
+      "provider": "BaseTen",
+      "input_usd_per_million": 0,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/baseten/mammoth-1:free"
     }
   ],
   "sources": {
@@ -3172,7 +3438,13 @@
     "current_run/decision_pplx12_scaling_20261016_v01/summary.json": "9e84eb37062354ad6fd6c3c75fa2aa8f8c15f8570076eadbce8328e0c41813ff",
     "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json": "ea797788ca98dc5017eb1a8d9b1434f3e964200fc7ca9b180a1d0bdc4937791b",
     "current_run/decision_pplx_flash12_combined_20261016_v01/audit.json": "28583088fea2c6da0756f8d4aac11312de20b78b661be9b86faafd19a0f4747a",
-    "current_run/decision_pplx12_combined_20261016_v01/audit.json": "38fd0ede4e8a499e92e7e1721af25079e5eb51b8ecb64124226984e0bfc4753a"
+    "current_run/decision_pplx12_combined_20261016_v01/audit.json": "38fd0ede4e8a499e92e7e1721af25079e5eb51b8ecb64124226984e0bfc4753a",
+    "current_run/decision_mammoth_accuracy_20261022_v01/summary.json": "4a302d842ca8ef890d2ab2a8cbe34a1b9825b36a818a5751e351cbab36b2e171",
+    "current_run/decision_mammoth_scaling_20261022_v01/summary.json": "5fb1a0e8acc9e8ce02d962550c0c4e51de2089bf8188d335726c136d7a8db645",
+    "current_run/decision_mammoth_combined_20261022_v01/audit.json": "585f2e683c24e88261d8b49049fcc2f361182454c7cddb0e0b8a2f2bc0b50bfc",
+    "current_run/decision_elephant_accuracy_20261022_v01/summary.json": "6d41cf164c2d842e34329508e6b3b011dca3894366a3701d6be1d1b2dd318e1d",
+    "current_run/decision_elephant_scaling_20261022_v01/summary.json": "a767214bd6eab2fe3ae802c906e08ef63a9a1a6bacd0a928859004b271c68d4e",
+    "current_run/decision_elephant_combined_20261022_v01/audit.json": "9aa8dfbad71c8b9c15b9c8dc285d5551eebaf3e469de77860f4028b20acee604"
   },
   "power_ranking": [
     {
