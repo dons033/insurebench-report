@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22",
+  "updated": "2026-10-27",
   "rows": [
     {
       "workload": "broader150",
@@ -75,7 +75,7 @@
       "source": "data/exports/decision_new_three_150_v01/summary.json",
       "date": "2026-10-06 or earlier",
       "questions": 4,
-      "hidden_reason": ""
+      "hidden_reason": "Earlier version; retained for comparison"
     },
     {
       "workload": "broader150",
@@ -1498,6 +1498,33 @@
         "correct": 48,
         "total": 50,
         "accuracy": 0.96
+      },
+      "confident_errors": 1,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "d11",
+      "name": "Liquid d1.1",
+      "correct": 143,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.42826334992423654,
+      "cost": 0.020078399999999996,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-27",
+      "source": "current_run/decision_d11_accuracy_20261027_v01/summary.json",
+      "model_id": "liquid/d1.1",
+      "provider": "Liquid",
+      "diagnostics": {
+        "correct": 47,
+        "total": 50,
+        "accuracy": 0.94
       },
       "confident_errors": 1,
       "hidden_reason": ""
@@ -2937,6 +2964,87 @@
       "unknown_charge_attempts": 1,
       "failed_attempts": 1,
       "accounted_usd": 0.0
+    },
+    {
+      "id": "d11",
+      "size": 1,
+      "seconds": 0.4212757999775931,
+      "cost": 0.036218,
+      "requests": 50,
+      "native": true,
+      "correct": 48,
+      "total": 50,
+      "source": "current_run/decision_d11_scaling_20261027_v01/summary.json",
+      "fixed_ten_quality": null,
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d11",
+      "size": 10,
+      "seconds": 0.4919400499202311,
+      "cost": 0.0047954,
+      "requests": 10,
+      "native": true,
+      "correct": 96,
+      "total": 100,
+      "source": "current_run/decision_d11_scaling_20261027_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 96,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d11",
+      "size": 25,
+      "seconds": 0.5841214498504996,
+      "cost": 0.0026965599999999998,
+      "requests": 10,
+      "native": true,
+      "correct": 246,
+      "total": 250,
+      "source": "current_run/decision_d11_scaling_20261027_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 98,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d11",
+      "size": 50,
+      "seconds": 0.7191612001042813,
+      "cost": 0.0019968,
+      "requests": 10,
+      "native": true,
+      "correct": 491,
+      "total": 500,
+      "source": "current_run/decision_d11_scaling_20261027_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 97,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
+    },
+    {
+      "id": "d11",
+      "size": 100,
+      "seconds": 1.0770310499938205,
+      "cost": 0.00164808,
+      "requests": 10,
+      "native": true,
+      "correct": 987,
+      "total": 1000,
+      "source": "current_run/decision_d11_scaling_20261027_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 98,
+        "total": 100
+      },
+      "unknown_charge_attempts": 0
     }
   ],
   "models": {
@@ -3144,6 +3252,12 @@
       "name": "Elephant 1 (free)",
       "open_weights": false,
       "local_deployable": false
+    },
+    "d11": {
+      "name": "Liquid d1.1",
+      "open_weights": false,
+      "local_deployable": false,
+      "icon": "assets/liquid.png"
     }
   },
   "candidates": [
@@ -3401,6 +3515,16 @@
       "open_weights": null,
       "locally_deployable": null,
       "official_source": "https://openrouter.ai/baseten/mammoth-1:free"
+    },
+    {
+      "requested_model_id": "liquid/d1.1",
+      "display_name": "Liquid d1.1",
+      "status": "evaluated",
+      "provider": "Liquid",
+      "input_usd_per_million": 0.02,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/liquid/d1.1"
     }
   ],
   "sources": {
@@ -3444,33 +3568,36 @@
     "current_run/decision_mammoth_combined_20261022_v01/audit.json": "585f2e683c24e88261d8b49049fcc2f361182454c7cddb0e0b8a2f2bc0b50bfc",
     "current_run/decision_elephant_accuracy_20261022_v01/summary.json": "6d41cf164c2d842e34329508e6b3b011dca3894366a3701d6be1d1b2dd318e1d",
     "current_run/decision_elephant_scaling_20261022_v01/summary.json": "a767214bd6eab2fe3ae802c906e08ef63a9a1a6bacd0a928859004b271c68d4e",
-    "current_run/decision_elephant_combined_20261022_v01/audit.json": "9aa8dfbad71c8b9c15b9c8dc285d5551eebaf3e469de77860f4028b20acee604"
+    "current_run/decision_elephant_combined_20261022_v01/audit.json": "9aa8dfbad71c8b9c15b9c8dc285d5551eebaf3e469de77860f4028b20acee604",
+    "current_run/decision_d11_accuracy_20261027_v01/summary.json": "fb780ba935fb28288ba7e15a3057619195eeb663a686ae815800aaf8ac70e1d4",
+    "current_run/decision_d11_scaling_20261027_v01/summary.json": "a1c192864fce8934b706c4bb80cc33294fa3da815ad3896bbb7eba726d4b4a6f",
+    "current_run/decision_d11_combined_20261027_v01/audit.json": "6781d2b71994053d6f8cdaa19f61c6f1ab93a7a8bc6d41f02e596a32fe0ec185"
   },
   "power_ranking": [
     {
-      "id": "jev114",
-      "name": "JEV 1.14",
-      "accuracy": 0.96,
-      "cost_regular": 5.647152e-05,
-      "cost_100": 0.00047278140000000005,
-      "time_regular": 0.3114681500082952,
-      "time_100": 0.4034944499944686,
+      "id": "d11",
+      "name": "Liquid d1.1",
+      "accuracy": 0.9533333333333334,
+      "cost_regular": 2.0078399999999997e-05,
+      "cost_100": 0.00016480799999999998,
+      "time_regular": 0.42826334992423654,
+      "time_100": 1.0770310499938205,
       "native_100": true,
       "workflow_calls": 1,
-      "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
+      "source": "current_run/decision_d11_scaling_20261027_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0393700787401574,
-        "cost_regular": 1.5104413049911949,
+        "accuracy": 1.0254237288135595,
+        "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 1.6100405888159501,
+        "time_regular": 1.1162151217173586,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0393700787401574,
-        "speed": 1.8050202944079752,
-        "cost": 1.7552206524955976
+        "accuracy": 1.0254237288135595,
+        "speed": 1.5581075608586792,
+        "cost": 2.0
       },
-      "score": 1.5332036752145768
+      "score": 1.5278437632240796
     },
     {
       "id": "microsoft",
@@ -3484,18 +3611,43 @@
       "workflow_calls": 1,
       "source": "current_run/microsoft_scaling/summary.json",
       "metric_components": {
-        "accuracy": 0.9960629921259844,
-        "cost_regular": 2.0,
+        "accuracy": 0.9895697522816167,
+        "cost_regular": 1.990534746590457,
         "cost_100": 2.0,
-        "time_regular": 1.0134380614868355,
+        "time_regular": 0.9660632345671728,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 0.9960629921259844,
-        "speed": 1.5067190307434177,
-        "cost": 2.0
+        "accuracy": 0.9895697522816167,
+        "speed": 1.4830316172835865,
+        "cost": 1.9952673732952286
       },
-      "score": 1.5009273409564674
+      "score": 1.4892895809534774
+    },
+    {
+      "id": "jev114",
+      "name": "JEV 1.14",
+      "accuracy": 0.96,
+      "cost_regular": 5.647152e-05,
+      "cost_100": 0.00047278140000000005,
+      "time_regular": 0.3114681500082952,
+      "time_100": 0.4034944499944686,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.032594524119948,
+        "cost_regular": 1.3286911220510316,
+        "cost_100": 2.0,
+        "time_regular": 1.5347765967404186,
+        "time_100": 2.0
+      },
+      "components": {
+        "accuracy": 1.032594524119948,
+        "speed": 1.7673882983702094,
+        "cost": 1.6643455610255158
+      },
+      "score": 1.4881094611718908
     },
     {
       "id": "mercury_paid",
@@ -3509,43 +3661,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.003280839895013,
+        "accuracy": 0.9967405475880052,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 0.8526557033377148,
+        "time_regular": 0.8127969118606866,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.003280839895013,
-        "speed": 1.4263278516688573,
+        "accuracy": 0.9967405475880052,
+        "speed": 1.4063984559303433,
         "cost": 2.0
       },
-      "score": 1.4765362305212901
-    },
-    {
-      "id": "span02",
-      "name": "Span-02",
-      "accuracy": 0.84,
-      "cost_regular": 3.3429599999999996e-05,
-      "cost_100": 0.0016875999999999998,
-      "time_regular": 0.5300824500154704,
-      "time_100": 2.307708250009455,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
-      "metric_components": {
-        "accuracy": 0.9094488188976378,
-        "cost_regular": 2.0,
-        "cost_100": 1.2917174362731367,
-        "time_regular": 0.946034647293331,
-        "time_100": 2.0
-      },
-      "components": {
-        "accuracy": 0.9094488188976378,
-        "speed": 1.4730173236466655,
-        "cost": 1.6458587181365685
-      },
-      "score": 1.3427749535602906
+      "score": 1.4677130011727828
     },
     {
       "id": "pplx_flash12",
@@ -3559,43 +3686,43 @@
       "workflow_calls": 1,
       "source": "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9888451443569555,
+        "accuracy": 0.9823989569752282,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 1.263910255450435,
+        "time_regular": 1.2048266943829697,
         "time_100": 0.5
       },
       "components": {
-        "accuracy": 0.9888451443569555,
-        "speed": 0.8819551277252174,
+        "accuracy": 0.9823989569752282,
+        "speed": 0.8524133471914849,
         "cost": 2.0
       },
-      "score": 1.2902667573607243
+      "score": 1.278270768055571
     },
     {
-      "id": "luna",
-      "name": "Luna Decisions",
-      "accuracy": 0.9266666666666666,
-      "cost_regular": 0.000129632,
-      "cost_100": 0.0015598000000000003,
-      "time_regular": 0.3299103499739431,
-      "time_100": 0.3994669999810867,
+      "id": "span02",
+      "name": "Span-02",
+      "accuracy": 0.84,
+      "cost_regular": 3.3429599999999996e-05,
+      "cost_100": 0.0016875999999999998,
+      "time_regular": 0.5300824500154704,
+      "time_100": 2.307708250009455,
       "native_100": true,
       "workflow_calls": 1,
-      "source": "data/exports/decision_scaling_four_v01/summary.json",
+      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.003280839895013,
-        "cost_regular": 0.6579927515091671,
-        "cost_100": 1.3975524717621137,
-        "time_regular": 1.5200382882088355,
+        "accuracy": 0.9035202086049543,
+        "cost_regular": 2.0,
+        "cost_100": 0.9105094809196492,
+        "time_regular": 0.9018107036911222,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.003280839895013,
-        "speed": 1.7600191441044177,
-        "cost": 1.0277726116356405
+        "accuracy": 0.9035202086049543,
+        "speed": 1.450905351845561,
+        "cost": 1.4552547404598246
       },
-      "score": 1.2636908652116905
+      "score": 1.26989343363678
     },
     {
       "id": "pplx12",
@@ -3609,43 +3736,43 @@
       "workflow_calls": 1,
       "source": "current_run/decision_pplx12_scaling_20261016_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0465879265091864,
+        "accuracy": 1.0397653194263363,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 0.9629491243908735,
+        "time_regular": 0.9179344857719834,
         "time_100": 0.5
       },
       "components": {
-        "accuracy": 1.0465879265091864,
-        "speed": 0.7314745621954368,
+        "accuracy": 1.0397653194263363,
+        "speed": 0.7089672428859917,
         "cost": 2.0
       },
-      "score": 1.259354162901541
+      "score": 1.249577520770776
     },
     {
-      "id": "drex_max",
-      "name": "Drex Max",
-      "accuracy": 0.9533333333333334,
-      "cost_regular": 7.19148e-05,
-      "cost_100": 0.001388046,
-      "time_regular": 0.5566926499595866,
-      "time_100": 5.831524100038223,
-      "native_100": false,
-      "workflow_calls": 7,
-      "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
+      "id": "luna",
+      "name": "Luna Decisions",
+      "accuracy": 0.9266666666666666,
+      "cost_regular": 0.000129632,
+      "cost_100": 0.0015598000000000003,
+      "time_regular": 0.3299103499739431,
+      "time_100": 0.3994669999810867,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "data/exports/decision_scaling_four_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0321522309711286,
-        "cost_regular": 1.1860829254011185,
-        "cost_100": 1.570482783318813,
-        "time_regular": 0.9008136961628203,
-        "time_100": 0.9256074878769299
+        "accuracy": 0.9967405475880052,
+        "cost_regular": 0.5788170148784813,
+        "cost_100": 0.9851107834337733,
+        "time_regular": 1.4489816015184775,
+        "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0321522309711286,
-        "speed": 0.9132105920198751,
-        "cost": 1.378282854359966
+        "accuracy": 0.9967405475880052,
+        "speed": 1.7244908007592388,
+        "cost": 0.7819638991561273
       },
-      "score": 1.107881892450323
+      "score": 1.1677317491677905
     },
     {
       "id": "d1_ultra",
@@ -3659,18 +3786,43 @@
       "workflow_calls": 1,
       "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0465879265091864,
-        "cost_regular": 0.6108862020643713,
+        "accuracy": 1.0397653194263363,
+        "cost_regular": 0.537378758502062,
         "cost_100": 0.5,
-        "time_regular": 1.0891804180427582,
+        "time_regular": 1.0382648902468528,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0465879265091864,
-        "speed": 1.5445902090213792,
-        "cost": 0.5554431010321856
+        "accuracy": 1.0397653194263363,
+        "speed": 1.5191324451234265,
+        "cost": 0.518689379251031
       },
-      "score": 1.0488737455209172
+      "score": 1.0258623812669312
+    },
+    {
+      "id": "drex_max",
+      "name": "Drex Max",
+      "accuracy": 0.9533333333333334,
+      "cost_regular": 7.19148e-05,
+      "cost_100": 0.001388046,
+      "time_regular": 0.5566926499595866,
+      "time_100": 5.831524100038223,
+      "native_100": false,
+      "workflow_calls": 7,
+      "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.0254237288135595,
+        "cost_regular": 1.0433625244418014,
+        "cost_100": 1.1070063960416296,
+        "time_regular": 0.8587036802039125,
+        "time_100": 0.9213879539757247
+      },
+      "components": {
+        "accuracy": 1.0254237288135595,
+        "speed": 0.8900458170898187,
+        "cost": 1.0751844602417155
+      },
+      "score": 0.9968846687150311
     },
     {
       "id": "clef",
@@ -3684,43 +3836,228 @@
       "workflow_calls": 2,
       "source": "data/exports/decision_clef_full_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9744094488188977,
+        "accuracy": 0.9680573663624511,
         "cost_regular": 0.5,
-        "cost_100": 0.6379624397287383,
-        "time_regular": 0.7822826752322952,
+        "cost_100": 0.5,
+        "time_regular": 0.745713586553103,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 0.9744094488188977,
-        "speed": 1.3911413376161477,
-        "cost": 0.5689812198643691
+        "accuracy": 0.9680573663624511,
+        "speed": 1.3728567932765516,
+        "cost": 0.5
       },
-      "score": 0.9781773354331381
-    },
+      "score": 0.9469713865463342
+    }
+  ],
+  "performance_ranking": [
     {
-      "id": "d1",
-      "name": "Liquid d1",
-      "accuracy": 0.8866666666666667,
-      "cost_regular": 0.0001329792,
-      "cost_100": 0.0072414,
-      "time_regular": 0.6861290500382893,
-      "time_100": 1.3477004999876954,
+      "id": "jev114",
+      "name": "JEV 1.14",
+      "accuracy": 0.96,
+      "time_regular": 0.3114681500082952,
+      "time_100": 0.4034944499944686,
       "native_100": true,
       "workflow_calls": 1,
-      "source": "data/exports/decision_scaling_four_v01/summary.json",
-      "metric_components": {
-        "accuracy": 0.95997375328084,
-        "cost_regular": 0.6414305121675898,
-        "cost_100": 0.5,
-        "time_regular": 0.7308776149454472,
-        "time_100": 2.0
+      "free": false,
+      "performance_components": {
+        "accuracy": 1.0308370044052864,
+        "regular_speed": 0.9365949615319372,
+        "batch_speed": 0.9900185739520405
       },
-      "components": {
-        "accuracy": 0.95997375328084,
-        "speed": 1.3654388074727235,
-        "cost": 0.5707152560837949
+      "performance_score": 0.9970718860736376
+    },
+    {
+      "id": "luna",
+      "name": "Luna Decisions",
+      "accuracy": 0.9266666666666666,
+      "time_regular": 0.3299103499739431,
+      "time_100": 0.3994669999810867,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": false,
+      "performance_components": {
+        "accuracy": 0.995044052863436,
+        "regular_speed": 0.8842387030248776,
+        "batch_speed": 1.0
       },
-      "score": 0.9653759389457862
+      "performance_score": 0.9685817021879374
+    },
+    {
+      "id": "elephant",
+      "name": "Elephant 1 (free)",
+      "accuracy": 0.9333333333333333,
+      "time_regular": 0.2917194999754429,
+      "time_100": 0.742261849984061,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": true,
+      "performance_components": {
+        "accuracy": 1.002202643171806,
+        "regular_speed": 1.0,
+        "batch_speed": 0.538175308335818
+      },
+      "performance_score": 0.8856451486698576
+    },
+    {
+      "id": "mammoth",
+      "name": "Mammoth 1 (free)",
+      "accuracy": 0.9466666666666667,
+      "time_regular": 0.357724400004372,
+      "time_100": 1.2101996500277892,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": true,
+      "performance_components": {
+        "accuracy": 1.0165198237885462,
+        "regular_speed": 0.8154867265746412,
+        "batch_speed": 0.3300835527195153
+      },
+      "performance_score": 0.7946524817178122
+    },
+    {
+      "id": "d11",
+      "name": "Liquid d1.1",
+      "accuracy": 0.9533333333333334,
+      "time_regular": 0.42826334992423654,
+      "time_100": 1.0770310499938205,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": false,
+      "performance_components": {
+        "accuracy": 1.0236784140969162,
+        "regular_speed": 0.6811684913664701,
+        "batch_speed": 0.3708964564980542
+      },
+      "performance_score": 0.7748554440145892
+    },
+    {
+      "id": "d1_ultra",
+      "name": "Liquid d1-ultra",
+      "accuracy": 0.9666666666666667,
+      "time_regular": 0.4604162499890663,
+      "time_100": 1.1956261500017717,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": false,
+      "performance_components": {
+        "accuracy": 1.0379955947136563,
+        "regular_speed": 0.6335994873820603,
+        "batch_speed": 0.3341069447004774
+      },
+      "performance_score": 0.7609244053774626
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft Decision-1",
+      "accuracy": 0.92,
+      "time_regular": 0.49482685000111815,
+      "time_100": 1.1744899500044994,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": false,
+      "performance_components": {
+        "accuracy": 0.987885462555066,
+        "regular_speed": 0.5895385425725861,
+        "batch_speed": 0.3401195557097414
+      },
+      "performance_score": 0.726357255848115
+    },
+    {
+      "id": "mercury_paid",
+      "name": "Mercury Decide",
+      "accuracy": 0.9266666666666666,
+      "time_regular": 0.5881346499809297,
+      "time_100": 1.3312893999973312,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": false,
+      "performance_components": {
+        "accuracy": 0.995044052863436,
+        "regular_speed": 0.49600801446556825,
+        "batch_speed": 0.3000602273118734
+      },
+      "performance_score": 0.6965390868760785
+    },
+    {
+      "id": "pplx_flash12",
+      "name": "Perplexity Decider Flash v1.2",
+      "accuracy": 0.9133333333333333,
+      "time_regular": 0.39676580000377726,
+      "time_100": 17.411839100008365,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": false,
+      "performance_components": {
+        "accuracy": 0.980726872246696,
+        "regular_speed": 0.7352435617501955,
+        "batch_speed": 0.022942263461468285
+      },
+      "performance_score": 0.6799098924262639
+    },
+    {
+      "id": "pplx12",
+      "name": "Perplexity Decider v1.2",
+      "accuracy": 0.9666666666666667,
+      "time_regular": 0.520771399998921,
+      "time_100": 26.200725200003944,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": false,
+      "performance_components": {
+        "accuracy": 1.0379955947136563,
+        "regular_speed": 0.5601680506572506,
+        "batch_speed": 0.015246410049025154
+      },
+      "performance_score": 0.6628514125333971
+    },
+    {
+      "id": "drex_max",
+      "name": "Drex Max",
+      "accuracy": 0.9533333333333334,
+      "time_regular": 0.5566926499595866,
+      "time_100": 5.831524100038223,
+      "native_100": false,
+      "workflow_calls": 7,
+      "free": false,
+      "performance_components": {
+        "accuracy": 1.0236784140969162,
+        "regular_speed": 0.5240225463666899,
+        "batch_speed": 0.06850130311190318
+      },
+      "performance_score": 0.6599701694181064
+    },
+    {
+      "id": "clef",
+      "name": "Clef",
+      "accuracy": 0.9,
+      "time_regular": 0.6410424000350758,
+      "time_100": 1.770862000004854,
+      "native_100": false,
+      "workflow_calls": 2,
+      "free": false,
+      "performance_components": {
+        "accuracy": 0.9664096916299559,
+        "regular_speed": 0.4550705225730481,
+        "batch_speed": 0.2255777129894886
+      },
+      "performance_score": 0.6533669047056122
+    },
+    {
+      "id": "span02",
+      "name": "Span-02",
+      "accuracy": 0.84,
+      "time_regular": 0.5300824500154704,
+      "time_100": 2.307708250009455,
+      "native_100": true,
+      "workflow_calls": 1,
+      "free": false,
+      "performance_components": {
+        "accuracy": 0.9019823788546255,
+        "regular_speed": 0.5503285384508185,
+        "batch_speed": 0.1731011708171733
+      },
+      "performance_score": 0.6318486167443107
     }
   ]
 }
