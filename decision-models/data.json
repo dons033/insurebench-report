@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-29",
   "rows": [
     {
       "workload": "broader150",
@@ -1396,8 +1396,8 @@
     },
     {
       "workload": "broader150",
-      "id": "pplx12",
-      "name": "Perplexity Decider v1.2",
+      "id": "pplx12_20261016",
+      "name": "Perplexity Decider v1.2 \u00b7 Oct16",
       "correct": 145,
       "total": 150,
       "packets": 50,
@@ -1419,12 +1419,12 @@
         "accuracy": 0.94
       },
       "confident_errors": 1,
-      "hidden_reason": ""
+      "hidden_reason": "Historical October16 run; retained for comparison"
     },
     {
       "workload": "broader150",
-      "id": "pplx_flash12",
-      "name": "Perplexity Decider Flash v1.2",
+      "id": "pplx_flash12_20261016",
+      "name": "Perplexity Decider Flash v1.2 \u00b7 Oct16",
       "correct": 137,
       "total": 150,
       "packets": 50,
@@ -1446,7 +1446,7 @@
         "accuracy": 0.88
       },
       "confident_errors": 1,
-      "hidden_reason": ""
+      "hidden_reason": "Historical October16 billing; retained for comparison"
     },
     {
       "workload": "broader150",
@@ -1473,7 +1473,7 @@
         "accuracy": 0.98
       },
       "confident_errors": 0,
-      "hidden_reason": ""
+      "hidden_reason": "Historical free route; latest paid route evaluated separately"
     },
     {
       "workload": "broader150",
@@ -1500,7 +1500,7 @@
         "accuracy": 0.96
       },
       "confident_errors": 1,
-      "hidden_reason": ""
+      "hidden_reason": "Historical free route; latest paid route evaluated separately"
     },
     {
       "workload": "broader150",
@@ -1525,6 +1525,141 @@
         "correct": 47,
         "total": 50,
         "accuracy": 0.94
+      },
+      "confident_errors": 1,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "pplx_flash12",
+      "name": "Perplexity Decider Flash v1.2",
+      "correct": 132,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.41009635000955313,
+      "cost": 0.0331772,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-28",
+      "source": "current_run/decision_pplx_flash12_accuracy_20261028_v01/summary.json",
+      "model_id": "perplexity/pplx-decider-flash-v1.2",
+      "provider": "Perplexity",
+      "diagnostics": {
+        "correct": 46,
+        "total": 50,
+        "accuracy": 0.92
+      },
+      "confident_errors": 4,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "pplx12",
+      "name": "Perplexity Decider v1.2",
+      "correct": 144,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.4512655498692766,
+      "cost": 0.0205516,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-28",
+      "source": "current_run/decision_pplx12_accuracy_20261028_v01/summary.json",
+      "model_id": "perplexity/pplx-decider-v1.2",
+      "provider": "Perplexity",
+      "diagnostics": {
+        "correct": 47,
+        "total": 50,
+        "accuracy": 0.94
+      },
+      "confident_errors": 2,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "joey_paid",
+      "name": "Joey 1",
+      "correct": 108,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.46135484986007214,
+      "cost": 0.0111526,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-29",
+      "source": "current_run/decision_joey_paid_accuracy_20261029_v01/summary.json",
+      "model_id": "baseten/joey-1",
+      "provider": "BaseTen",
+      "diagnostics": {
+        "correct": 43,
+        "total": 50,
+        "accuracy": 0.86
+      },
+      "confident_errors": 2,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "mammoth_paid",
+      "name": "Mammoth 1",
+      "correct": 142,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.5365364000899717,
+      "cost": 0.111526,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-29",
+      "source": "current_run/decision_mammoth_paid_accuracy_20261029_v01/summary.json",
+      "model_id": "baseten/mammoth-1",
+      "provider": "BaseTen",
+      "diagnostics": {
+        "correct": 49,
+        "total": 50,
+        "accuracy": 0.98
+      },
+      "confident_errors": 0,
+      "hidden_reason": ""
+    },
+    {
+      "workload": "broader150",
+      "id": "elephant_paid",
+      "name": "Elephant 1",
+      "correct": 140,
+      "total": 150,
+      "packets": 50,
+      "seconds": 0.34851804992649704,
+      "cost": 0.0390341,
+      "deployment": "API",
+      "open_weights": false,
+      "local_deployable": false,
+      "cost_basis": "Reported charges",
+      "unknown_charges": 0,
+      "questions": 4,
+      "date": "2026-10-29",
+      "source": "current_run/decision_elephant_paid_accuracy_20261029_v01/summary.json",
+      "model_id": "baseten/elephant-1",
+      "provider": "BaseTen",
+      "diagnostics": {
+        "correct": 48,
+        "total": 50,
+        "accuracy": 0.96
       },
       "confident_errors": 1,
       "hidden_reason": ""
@@ -2622,7 +2757,7 @@
       "accounted_usd": 0.01388046
     },
     {
-      "id": "pplx12",
+      "id": "pplx12_20261016",
       "size": 1,
       "seconds": 0.515017550002085,
       "cost": 0.033152799999999996,
@@ -2635,7 +2770,7 @@
       "unknown_charge_attempts": 16
     },
     {
-      "id": "pplx12",
+      "id": "pplx12_20261016",
       "size": 10,
       "seconds": 3.304558949996135,
       "cost": 0.0045394,
@@ -2652,7 +2787,7 @@
       "unknown_charge_attempts": 7
     },
     {
-      "id": "pplx12",
+      "id": "pplx12_20261016",
       "size": 25,
       "seconds": 6.493709649977973,
       "cost": 0.00264064,
@@ -2669,7 +2804,7 @@
       "unknown_charge_attempts": 6
     },
     {
-      "id": "pplx12",
+      "id": "pplx12_20261016",
       "size": 50,
       "seconds": 4.270982100002584,
       "cost": 0.00200752,
@@ -2686,7 +2821,7 @@
       "unknown_charge_attempts": 6
     },
     {
-      "id": "pplx12",
+      "id": "pplx12_20261016",
       "size": 100,
       "seconds": 26.200725200003944,
       "cost": 0.0016918600000000001,
@@ -2703,7 +2838,7 @@
       "unknown_charge_attempts": 6
     },
     {
-      "id": "pplx_flash12",
+      "id": "pplx_flash12_20261016",
       "size": 1,
       "seconds": 0.3980127499962691,
       "cost": 0.016576399999999998,
@@ -2716,7 +2851,7 @@
       "unknown_charge_attempts": 0
     },
     {
-      "id": "pplx_flash12",
+      "id": "pplx_flash12_20261016",
       "size": 10,
       "seconds": 0.49697105000086594,
       "cost": 0.0022697,
@@ -2733,7 +2868,7 @@
       "unknown_charge_attempts": 0
     },
     {
-      "id": "pplx_flash12",
+      "id": "pplx_flash12_20261016",
       "size": 25,
       "seconds": 0.9193230999953812,
       "cost": 0.00132032,
@@ -2750,7 +2885,7 @@
       "unknown_charge_attempts": 0
     },
     {
-      "id": "pplx_flash12",
+      "id": "pplx_flash12_20261016",
       "size": 50,
       "seconds": 2.9116619000124047,
       "cost": 0.00100376,
@@ -2767,7 +2902,7 @@
       "unknown_charge_attempts": 0
     },
     {
-      "id": "pplx_flash12",
+      "id": "pplx_flash12_20261016",
       "size": 100,
       "seconds": 17.411839100008365,
       "cost": 0.0008459300000000001,
@@ -3045,6 +3180,461 @@
         "total": 100
       },
       "unknown_charge_attempts": 0
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 1,
+      "seconds": 0.3687413999577984,
+      "cost": 0.016576399999999998,
+      "requests": 50,
+      "native": true,
+      "correct": 42,
+      "total": 50,
+      "source": "current_run/decision_pplx_flash12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": null,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00082882
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 10,
+      "seconds": 0.6002041499596089,
+      "cost": 0.0165734,
+      "requests": 10,
+      "native": true,
+      "correct": 89,
+      "total": 100,
+      "source": "current_run/decision_pplx_flash12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 89,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00165734
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 25,
+      "seconds": 0.9734368500066921,
+      "cost": 0.0165716,
+      "requests": 10,
+      "native": true,
+      "correct": 225,
+      "total": 250,
+      "source": "current_run/decision_pplx_flash12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 89,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.0041429
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 50,
+      "seconds": 1.5520181000465527,
+      "cost": 0.0165709,
+      "requests": 10,
+      "native": true,
+      "correct": 455,
+      "total": 500,
+      "source": "current_run/decision_pplx_flash12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 89,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00828545
+    },
+    {
+      "id": "pplx_flash12",
+      "size": 100,
+      "seconds": 2.757508550072089,
+      "cost": 0.016571,
+      "requests": 10,
+      "native": true,
+      "correct": 902,
+      "total": 1000,
+      "source": "current_run/decision_pplx_flash12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 89,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.016571
+    },
+    {
+      "id": "pplx12",
+      "size": 1,
+      "seconds": 0.4507247500587255,
+      "cost": 0.033152799999999996,
+      "requests": 50,
+      "native": true,
+      "correct": 49,
+      "total": 50,
+      "source": "current_run/decision_pplx12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": null,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00165764
+    },
+    {
+      "id": "pplx12",
+      "size": 10,
+      "seconds": 0.4580280500231311,
+      "cost": 0.0045394,
+      "requests": 10,
+      "native": true,
+      "correct": 99,
+      "total": 100,
+      "source": "current_run/decision_pplx12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 99,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00045394
+    },
+    {
+      "id": "pplx12",
+      "size": 25,
+      "seconds": 0.5116172999842092,
+      "cost": 0.00264064,
+      "requests": 10,
+      "native": true,
+      "correct": 250,
+      "total": 250,
+      "source": "current_run/decision_pplx12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 100,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00066016
+    },
+    {
+      "id": "pplx12",
+      "size": 50,
+      "seconds": 0.5528608000604436,
+      "cost": 0.00200752,
+      "requests": 10,
+      "native": true,
+      "correct": 497,
+      "total": 500,
+      "source": "current_run/decision_pplx12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 100,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00100376
+    },
+    {
+      "id": "pplx12",
+      "size": 100,
+      "seconds": 0.6406240500509739,
+      "cost": 0.0016918600000000001,
+      "requests": 10,
+      "native": true,
+      "correct": 987,
+      "total": 1000,
+      "source": "current_run/decision_pplx12_scaling_20261028_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 100,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.0016918600000000001
+    },
+    {
+      "id": "joey_paid",
+      "size": 1,
+      "seconds": 0.43884145002812147,
+      "cost": 0.0166464,
+      "requests": 50,
+      "native": true,
+      "correct": 37,
+      "total": 50,
+      "source": "current_run/decision_joey_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": null,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00083232
+    },
+    {
+      "id": "joey_paid",
+      "size": 10,
+      "seconds": 0.49048939999192953,
+      "cost": 0.0024117,
+      "requests": 10,
+      "native": true,
+      "correct": 67,
+      "total": 100,
+      "source": "current_run/decision_joey_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 67,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00024117
+    },
+    {
+      "id": "joey_paid",
+      "size": 25,
+      "seconds": 0.6444763001054525,
+      "cost": 0.00146112,
+      "requests": 10,
+      "native": true,
+      "correct": 186,
+      "total": 250,
+      "source": "current_run/decision_joey_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 67,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00036528
+    },
+    {
+      "id": "joey_paid",
+      "size": 50,
+      "seconds": 0.750819850130938,
+      "cost": 0.00114416,
+      "requests": 10,
+      "native": true,
+      "correct": 370,
+      "total": 500,
+      "source": "current_run/decision_joey_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 67,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00057208
+    },
+    {
+      "id": "joey_paid",
+      "size": 100,
+      "seconds": 0.9758292000042275,
+      "cost": 0.00098613,
+      "requests": 10,
+      "native": true,
+      "correct": 733,
+      "total": 1000,
+      "source": "current_run/decision_joey_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 67,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00098613
+    },
+    {
+      "id": "mammoth_paid",
+      "size": 1,
+      "seconds": 0.4279116499237716,
+      "cost": 0.16646399999999997,
+      "requests": 50,
+      "native": true,
+      "correct": 50,
+      "total": 50,
+      "source": "current_run/decision_mammoth_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": null,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.0083232
+    },
+    {
+      "id": "mammoth_paid",
+      "size": 10,
+      "seconds": 0.47660220006946474,
+      "cost": 0.024117,
+      "requests": 10,
+      "native": true,
+      "correct": 100,
+      "total": 100,
+      "source": "current_run/decision_mammoth_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 100,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.0024117
+    },
+    {
+      "id": "mammoth_paid",
+      "size": 25,
+      "seconds": 0.7279077499406412,
+      "cost": 0.0146112,
+      "requests": 10,
+      "native": true,
+      "correct": 246,
+      "total": 250,
+      "source": "current_run/decision_mammoth_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 100,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.0036528
+    },
+    {
+      "id": "mammoth_paid",
+      "size": 50,
+      "seconds": 0.8873985499376431,
+      "cost": 0.0114416,
+      "requests": 10,
+      "native": true,
+      "correct": 494,
+      "total": 500,
+      "source": "current_run/decision_mammoth_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 100,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.0057208
+    },
+    {
+      "id": "mammoth_paid",
+      "size": 100,
+      "seconds": 1.104191950056702,
+      "cost": 0.0098613,
+      "requests": 10,
+      "native": true,
+      "correct": 988,
+      "total": 1000,
+      "source": "current_run/decision_mammoth_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 100,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.0098613
+    },
+    {
+      "id": "elephant_paid",
+      "size": 1,
+      "seconds": 0.38748604990541935,
+      "cost": 0.0582624,
+      "requests": 50,
+      "native": true,
+      "correct": 47,
+      "total": 50,
+      "source": "current_run/decision_elephant_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": null,
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00291312
+    },
+    {
+      "id": "elephant_paid",
+      "size": 10,
+      "seconds": 0.46171705005690455,
+      "cost": 0.00844095,
+      "requests": 10,
+      "native": true,
+      "correct": 94,
+      "total": 100,
+      "source": "current_run/decision_elephant_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 10,
+        "correct": 94,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.000844095
+    },
+    {
+      "id": "elephant_paid",
+      "size": 25,
+      "seconds": 0.5939769999822602,
+      "cost": 0.00511392,
+      "requests": 10,
+      "native": true,
+      "correct": 240,
+      "total": 250,
+      "source": "current_run/decision_elephant_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 25,
+        "correct": 94,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00127848
+    },
+    {
+      "id": "elephant_paid",
+      "size": 50,
+      "seconds": 0.7164879499468952,
+      "cost": 0.00400456,
+      "requests": 10,
+      "native": true,
+      "correct": 477,
+      "total": 500,
+      "source": "current_run/decision_elephant_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 50,
+        "correct": 94,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.00200228
+    },
+    {
+      "id": "elephant_paid",
+      "size": 100,
+      "seconds": 0.9876933499472216,
+      "cost": 0.003451455,
+      "requests": 10,
+      "native": true,
+      "correct": 957,
+      "total": 1000,
+      "source": "current_run/decision_elephant_paid_scaling_20261029_v01/summary.json",
+      "fixed_ten_quality": {
+        "size": 100,
+        "correct": 94,
+        "total": 100
+      },
+      "failed_attempts": 0,
+      "unknown_charge_attempts": 0,
+      "accounted_usd": 0.003451455
     }
   ],
   "models": {
@@ -3258,6 +3848,33 @@
       "open_weights": false,
       "local_deployable": false,
       "icon": "assets/liquid.png"
+    },
+    "pplx_flash12_20261016": {
+      "name": "Perplexity Decider Flash v1.2 \u00b7 Oct16",
+      "open_weights": false,
+      "local_deployable": false,
+      "icon": "assets/perplexity.png"
+    },
+    "pplx12_20261016": {
+      "name": "Perplexity Decider v1.2 \u00b7 Oct16",
+      "open_weights": false,
+      "local_deployable": false,
+      "icon": "assets/perplexity.png"
+    },
+    "joey_paid": {
+      "name": "Joey 1",
+      "open_weights": false,
+      "local_deployable": false
+    },
+    "mammoth_paid": {
+      "name": "Mammoth 1",
+      "open_weights": false,
+      "local_deployable": false
+    },
+    "elephant_paid": {
+      "name": "Elephant 1",
+      "open_weights": false,
+      "local_deployable": false
     }
   },
   "candidates": [
@@ -3497,26 +4114,6 @@
       "official_source": "https://openrouter.ai/perplexity/pplx-decider-v1.2"
     },
     {
-      "requested_model_id": "baseten/elephant-1:free",
-      "display_name": "Elephant 1 (free)",
-      "status": "evaluated",
-      "provider": "BaseTen",
-      "input_usd_per_million": 0,
-      "open_weights": null,
-      "locally_deployable": null,
-      "official_source": "https://openrouter.ai/baseten/elephant-1:free"
-    },
-    {
-      "requested_model_id": "baseten/mammoth-1:free",
-      "display_name": "Mammoth 1 (free)",
-      "status": "evaluated",
-      "provider": "BaseTen",
-      "input_usd_per_million": 0,
-      "open_weights": null,
-      "locally_deployable": null,
-      "official_source": "https://openrouter.ai/baseten/mammoth-1:free"
-    },
-    {
       "requested_model_id": "liquid/d1.1",
       "display_name": "Liquid d1.1",
       "status": "evaluated",
@@ -3525,6 +4122,36 @@
       "open_weights": null,
       "locally_deployable": null,
       "official_source": "https://openrouter.ai/liquid/d1.1"
+    },
+    {
+      "requested_model_id": "baseten/joey-1",
+      "display_name": "Joey 1",
+      "status": "evaluated",
+      "provider": "BaseTen",
+      "input_usd_per_million": 0.01,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/baseten/joey-1"
+    },
+    {
+      "requested_model_id": "baseten/mammoth-1",
+      "display_name": "Mammoth 1",
+      "status": "evaluated",
+      "provider": "BaseTen",
+      "input_usd_per_million": 0.1,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/baseten/mammoth-1"
+    },
+    {
+      "requested_model_id": "baseten/elephant-1",
+      "display_name": "Elephant 1",
+      "status": "evaluated",
+      "provider": "BaseTen",
+      "input_usd_per_million": 0.035,
+      "open_weights": null,
+      "locally_deployable": null,
+      "official_source": "https://openrouter.ai/baseten/elephant-1"
     }
   ],
   "sources": {
@@ -3571,58 +4198,48 @@
     "current_run/decision_elephant_combined_20261022_v01/audit.json": "9aa8dfbad71c8b9c15b9c8dc285d5551eebaf3e469de77860f4028b20acee604",
     "current_run/decision_d11_accuracy_20261027_v01/summary.json": "fb780ba935fb28288ba7e15a3057619195eeb663a686ae815800aaf8ac70e1d4",
     "current_run/decision_d11_scaling_20261027_v01/summary.json": "a1c192864fce8934b706c4bb80cc33294fa3da815ad3896bbb7eba726d4b4a6f",
-    "current_run/decision_d11_combined_20261027_v01/audit.json": "6781d2b71994053d6f8cdaa19f61c6f1ab93a7a8bc6d41f02e596a32fe0ec185"
+    "current_run/decision_d11_combined_20261027_v01/audit.json": "6781d2b71994053d6f8cdaa19f61c6f1ab93a7a8bc6d41f02e596a32fe0ec185",
+    "current_run/decision_pplx_flash12_accuracy_20261028_v01/summary.json": "6a086569a05748b9d11dc0555697368475d9f6f2e375d664ce7e6c0816398aa9",
+    "current_run/decision_pplx_flash12_scaling_20261028_v01/summary.json": "eb73eb04fc7ccb80f701cc4c4101bc4f6f218f6a2af4c7e1468dde9c96b4f7f9",
+    "current_run/decision_pplx_flash12_combined_20261028_v01/audit.json": "41e3c1905caf3f6c454b006c4bc6e8ac539a9718c2cbfa9157f45bebe571dc1c",
+    "current_run/decision_pplx12_accuracy_20261028_v01/summary.json": "9ea791095bb352f3c3df18fab9d47f904cf7e4db29df425563f06e190a6e2c2e",
+    "current_run/decision_pplx12_scaling_20261028_v01/summary.json": "478398be6a3824fd673fed3de07da6fbdc0ebc9468a5eabcc99df096fa9e3571",
+    "current_run/decision_pplx12_combined_20261028_v01/audit.json": "fd7136fc190356c173894df31d2dc18608e79f516c71d488f78ef92e91be24ea",
+    "current_run/decision_joey_paid_accuracy_20261029_v01/summary.json": "5f70b09832412da52881c0b82070a4f7d974d0cecfb8d5380a998b7c58c03172",
+    "current_run/decision_joey_paid_scaling_20261029_v01/summary.json": "5df76d4c3ac51e8e2f521a0090f55341acf87be0b7ee18dbbd0cc9da6646af78",
+    "current_run/decision_joey_paid_combined_20261029_v01/audit.json": "f0cb9c8814ee62796a808aff65e82a53f811392c6c67f50c118252b7ef6f6565",
+    "current_run/decision_mammoth_paid_accuracy_20261029_v01/summary.json": "c61227b685229937648a13dfb0f0cb7b4c62751ec4d8cce3438966d069ccf54d",
+    "current_run/decision_mammoth_paid_scaling_20261029_v01/summary.json": "afd82e14570760f6e1249ae1eafb061267ac00bbb1e30fbfb563bba012d1a00e",
+    "current_run/decision_mammoth_paid_combined_20261029_v01/audit.json": "9e52569dde9590f1ca43b4004ee0956df42cff9b9d913d293152f649d8749323",
+    "current_run/decision_elephant_paid_accuracy_20261029_v01/summary.json": "38968ae86b58cf15c32ddab2afff5523cf5f6d05163eeabc180c5a5148d9f8dc",
+    "current_run/decision_elephant_paid_scaling_20261029_v01/summary.json": "ad7e59e7c434ab202ae03d0fb2c10c6b4b49849f430c713f3e35c83fc22bcf95",
+    "current_run/decision_elephant_paid_combined_20261029_v01/audit.json": "e5ba551875c119bdefe9a112cccfe390f57e31405bb7f5ce8aa7799cc726f846"
   },
   "power_ranking": [
     {
-      "id": "d11",
-      "name": "Liquid d1.1",
-      "accuracy": 0.9533333333333334,
-      "cost_regular": 2.0078399999999997e-05,
-      "cost_100": 0.00016480799999999998,
-      "time_regular": 0.42826334992423654,
-      "time_100": 1.0770310499938205,
+      "id": "pplx12",
+      "name": "Perplexity Decider v1.2",
+      "accuracy": 0.96,
+      "cost_regular": 2.0551599999999998e-05,
+      "cost_100": 0.00016918600000000002,
+      "time_regular": 0.4512655498692766,
+      "time_100": 0.6406240500509739,
       "native_100": true,
       "workflow_calls": 1,
-      "source": "current_run/decision_d11_scaling_20261027_v01/summary.json",
+      "source": "current_run/decision_pplx12_scaling_20261028_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0254237288135595,
+        "accuracy": 1.051094890510949,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 1.1162151217173586,
+        "time_regular": 1.0365465208330067,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.0254237288135595,
-        "speed": 1.5581075608586792,
+        "accuracy": 1.051094890510949,
+        "speed": 1.5182732604165032,
         "cost": 2.0
       },
-      "score": 1.5278437632240796
-    },
-    {
-      "id": "microsoft",
-      "name": "Microsoft Decision-1",
-      "accuracy": 0.92,
-      "cost_regular": 3.7695e-05,
-      "cost_100": 0.0003230514,
-      "time_regular": 0.49482685000111815,
-      "time_100": 1.1744899500044994,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "current_run/microsoft_scaling/summary.json",
-      "metric_components": {
-        "accuracy": 0.9895697522816167,
-        "cost_regular": 1.990534746590457,
-        "cost_100": 2.0,
-        "time_regular": 0.9660632345671728,
-        "time_100": 2.0
-      },
-      "components": {
-        "accuracy": 0.9895697522816167,
-        "speed": 1.4830316172835865,
-        "cost": 1.9952673732952286
-      },
-      "score": 1.4892895809534774
+      "score": 1.5231227169758175
     },
     {
       "id": "jev114",
@@ -3636,18 +4253,118 @@
       "workflow_calls": 1,
       "source": "current_run/decision_jev114_scaling_20261014_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.032594524119948,
-        "cost_regular": 1.3286911220510316,
+        "accuracy": 1.051094890510949,
+        "cost_regular": 1.2774826015965977,
         "cost_100": 2.0,
-        "time_regular": 1.5347765967404186,
+        "time_regular": 1.5017835232152459,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 1.032594524119948,
-        "speed": 1.7673882983702094,
-        "cost": 1.6643455610255158
+        "accuracy": 1.051094890510949,
+        "speed": 1.750891761607623,
+        "cost": 1.6387413007982987
       },
-      "score": 1.4881094611718908
+      "score": 1.4802426509722901
+    },
+    {
+      "id": "elephant_paid",
+      "name": "Elephant 1",
+      "accuracy": 0.9333333333333333,
+      "cost_regular": 3.90341e-05,
+      "cost_100": 0.0003451455,
+      "time_regular": 0.34851804992649704,
+      "time_100": 0.9876933499472216,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_elephant_paid_scaling_20261029_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.0218978102189782,
+        "cost_regular": 1.8481631262335827,
+        "cost_100": 2.0,
+        "time_regular": 1.342133458474943,
+        "time_100": 1.5879234069771926
+      },
+      "components": {
+        "accuracy": 1.0218978102189782,
+        "speed": 1.4650284327260676,
+        "cost": 1.9240815631167913
+      },
+      "score": 1.4703359353539458
+    },
+    {
+      "id": "d11",
+      "name": "Liquid d1.1",
+      "accuracy": 0.9533333333333334,
+      "cost_regular": 2.0078399999999997e-05,
+      "cost_100": 0.00016480799999999998,
+      "time_regular": 0.42826334992423654,
+      "time_100": 1.0770310499938205,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_d11_scaling_20261027_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.0437956204379562,
+        "cost_regular": 2.0,
+        "cost_100": 2.0,
+        "time_regular": 1.0922198590459413,
+        "time_100": 1.4562081467436871
+      },
+      "components": {
+        "accuracy": 1.0437956204379562,
+        "speed": 1.2742140028948143,
+        "cost": 2.0
+      },
+      "score": 1.4393365411109234
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft Decision-1",
+      "accuracy": 0.92,
+      "cost_regular": 3.7695e-05,
+      "cost_100": 0.0003230514,
+      "time_regular": 0.49482685000111815,
+      "time_100": 1.1744899500044994,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/microsoft_scaling/summary.json",
+      "metric_components": {
+        "accuracy": 1.0072992700729928,
+        "cost_regular": 1.913818391980748,
+        "cost_100": 2.0,
+        "time_regular": 0.9452957851574452,
+        "time_100": 1.3353723369798953
+      },
+      "components": {
+        "accuracy": 1.0072992700729928,
+        "speed": 1.1403340610686703,
+        "cost": 1.9569091959903742
+      },
+      "score": 1.3681808423773456
+    },
+    {
+      "id": "joey_paid",
+      "name": "Joey 1",
+      "accuracy": 0.72,
+      "cost_regular": 1.11526e-05,
+      "cost_100": 9.8613e-05,
+      "time_regular": 0.46135484986007214,
+      "time_100": 0.9758292000042275,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_joey_paid_scaling_20261029_v01/summary.json",
+      "metric_components": {
+        "accuracy": 0.7883211678832116,
+        "cost_regular": 2.0,
+        "cost_100": 2.0,
+        "time_regular": 1.013878440490356,
+        "time_100": 1.6072294099111957
+      },
+      "components": {
+        "accuracy": 0.7883211678832116,
+        "speed": 1.3105539252007758,
+        "cost": 2.0
+      },
+      "score": 1.3662916976946624
     },
     {
       "id": "mercury_paid",
@@ -3661,93 +4378,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_mercury_scaling_replication_20261013_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9967405475880052,
+        "accuracy": 1.0145985401459854,
         "cost_regular": 2.0,
         "cost_100": 2.0,
-        "time_regular": 0.8127969118606866,
-        "time_100": 2.0
+        "time_regular": 0.7953242266952975,
+        "time_100": 1.1780919981035325
       },
       "components": {
-        "accuracy": 0.9967405475880052,
-        "speed": 1.4063984559303433,
+        "accuracy": 1.0145985401459854,
+        "speed": 0.986708112399415,
         "cost": 2.0
       },
-      "score": 1.4677130011727828
-    },
-    {
-      "id": "pplx_flash12",
-      "name": "Perplexity Decider Flash v1.2",
-      "accuracy": 0.9133333333333333,
-      "cost_regular": 1.0275799999999999e-05,
-      "cost_100": 8.459300000000001e-05,
-      "time_regular": 0.39676580000377726,
-      "time_100": 17.411839100008365,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "current_run/decision_pplx_flash12_scaling_20261016_v01/summary.json",
-      "metric_components": {
-        "accuracy": 0.9823989569752282,
-        "cost_regular": 2.0,
-        "cost_100": 2.0,
-        "time_regular": 1.2048266943829697,
-        "time_100": 0.5
-      },
-      "components": {
-        "accuracy": 0.9823989569752282,
-        "speed": 0.8524133471914849,
-        "cost": 2.0
-      },
-      "score": 1.278270768055571
-    },
-    {
-      "id": "span02",
-      "name": "Span-02",
-      "accuracy": 0.84,
-      "cost_regular": 3.3429599999999996e-05,
-      "cost_100": 0.0016875999999999998,
-      "time_regular": 0.5300824500154704,
-      "time_100": 2.307708250009455,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
-      "metric_components": {
-        "accuracy": 0.9035202086049543,
-        "cost_regular": 2.0,
-        "cost_100": 0.9105094809196492,
-        "time_regular": 0.9018107036911222,
-        "time_100": 2.0
-      },
-      "components": {
-        "accuracy": 0.9035202086049543,
-        "speed": 1.450905351845561,
-        "cost": 1.4552547404598246
-      },
-      "score": 1.26989343363678
-    },
-    {
-      "id": "pplx12",
-      "name": "Perplexity Decider v1.2",
-      "accuracy": 0.9666666666666667,
-      "cost_regular": 2.0551599999999998e-05,
-      "cost_100": 0.00016918600000000002,
-      "time_regular": 0.520771399998921,
-      "time_100": 26.200725200003944,
-      "native_100": true,
-      "workflow_calls": 1,
-      "source": "current_run/decision_pplx12_scaling_20261016_v01/summary.json",
-      "metric_components": {
-        "accuracy": 1.0397653194263363,
-        "cost_regular": 2.0,
-        "cost_100": 2.0,
-        "time_regular": 0.9179344857719834,
-        "time_100": 0.5
-      },
-      "components": {
-        "accuracy": 1.0397653194263363,
-        "speed": 0.7089672428859917,
-        "cost": 2.0
-      },
-      "score": 1.249577520770776
+      "score": 1.3337688841818
     },
     {
       "id": "luna",
@@ -3761,18 +4403,93 @@
       "workflow_calls": 1,
       "source": "data/exports/decision_scaling_four_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9967405475880052,
-        "cost_regular": 0.5788170148784813,
-        "cost_100": 0.9851107834337733,
-        "time_regular": 1.4489816015184775,
+        "accuracy": 1.0145985401459854,
+        "cost_regular": 0.5565090740381564,
+        "cost_100": 0.9115055639001335,
+        "time_regular": 1.4178328619448788,
         "time_100": 2.0
       },
       "components": {
-        "accuracy": 0.9967405475880052,
-        "speed": 1.7244908007592388,
-        "cost": 0.7819638991561273
+        "accuracy": 1.0145985401459854,
+        "speed": 1.7089164309724394,
+        "cost": 0.734007318969145
       },
-      "score": 1.1677317491677905
+      "score": 1.15250743002919
+    },
+    {
+      "id": "pplx_flash12",
+      "name": "Perplexity Decider Flash v1.2",
+      "accuracy": 0.88,
+      "cost_regular": 3.31772e-05,
+      "cost_100": 0.0016571,
+      "time_regular": 0.41009635000955313,
+      "time_100": 2.757508550072089,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_pplx_flash12_scaling_20261028_v01/summary.json",
+      "metric_components": {
+        "accuracy": 0.9635036496350365,
+        "cost_regular": 2.0,
+        "cost_100": 0.8579846590860108,
+        "time_regular": 1.140604483989911,
+        "time_100": 0.5687675525995765
+      },
+      "components": {
+        "accuracy": 0.9635036496350365,
+        "speed": 0.8546860182947438,
+        "cost": 1.4289923295430054
+      },
+      "score": 1.0823939991575953
+    },
+    {
+      "id": "mammoth_paid",
+      "name": "Mammoth 1",
+      "accuracy": 0.9466666666666667,
+      "cost_regular": 0.000111526,
+      "cost_100": 0.00098613,
+      "time_regular": 0.5365364000899717,
+      "time_100": 1.104191950056702,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_mammoth_paid_scaling_20261029_v01/summary.json",
+      "metric_components": {
+        "accuracy": 1.0364963503649636,
+        "cost_regular": 0.646857094181754,
+        "cost_100": 1.4417636402618603,
+        "time_regular": 0.871809882070171,
+        "time_100": 1.4203883565863435
+      },
+      "components": {
+        "accuracy": 1.0364963503649636,
+        "speed": 1.1460991193282573,
+        "cost": 1.044310367221807
+      },
+      "score": 1.0756352789716759
+    },
+    {
+      "id": "span02",
+      "name": "Span-02",
+      "accuracy": 0.84,
+      "cost_regular": 3.3429599999999996e-05,
+      "cost_100": 0.0016875999999999998,
+      "time_regular": 0.5300824500154704,
+      "time_100": 2.307708250009455,
+      "native_100": true,
+      "workflow_calls": 1,
+      "source": "current_run/decision_span02_scaling_20261015_v01/summary.json",
+      "metric_components": {
+        "accuracy": 0.9197080291970803,
+        "cost_regular": 2.0,
+        "cost_100": 0.8424782996986422,
+        "time_regular": 0.8824244901432614,
+        "time_100": 0.6796272402676912
+      },
+      "components": {
+        "accuracy": 0.9197080291970803,
+        "speed": 0.7810258652054762,
+        "cost": 1.421239149849321
+      },
+      "score": 1.0406576814172925
     },
     {
       "id": "d1_ultra",
@@ -3786,18 +4503,18 @@
       "workflow_calls": 1,
       "source": "current_run/decision_d1_ultra_scaling_20261015_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0397653194263363,
-        "cost_regular": 0.537378758502062,
+        "accuracy": 1.0583941605839415,
+        "cost_regular": 0.5166678719086056,
         "cost_100": 0.5,
-        "time_regular": 1.0382648902468528,
-        "time_100": 2.0
+        "time_regular": 1.0159453227376323,
+        "time_100": 1.3117657131324743
       },
       "components": {
-        "accuracy": 1.0397653194263363,
-        "speed": 1.5191324451234265,
-        "cost": 0.518689379251031
+        "accuracy": 1.0583941605839415,
+        "speed": 1.1638555179350534,
+        "cost": 0.5083339359543029
       },
-      "score": 1.0258623812669312
+      "score": 0.910194538157766
     },
     {
       "id": "drex_max",
@@ -3811,18 +4528,18 @@
       "workflow_calls": 7,
       "source": "current_run/decision_drex_max_split_scaling_20261021_v01/summary.json",
       "metric_components": {
-        "accuracy": 1.0254237288135595,
-        "cost_regular": 1.0433625244418014,
-        "cost_100": 1.1070063960416296,
-        "time_regular": 0.8587036802039125,
-        "time_100": 0.9213879539757247
+        "accuracy": 1.0437956204379562,
+        "cost_regular": 1.0031507323348503,
+        "cost_100": 1.0242934157595847,
+        "time_regular": 0.8402441378070098,
+        "time_100": 0.5
       },
       "components": {
-        "accuracy": 1.0254237288135595,
-        "speed": 0.8900458170898187,
-        "cost": 1.0751844602417155
+        "accuracy": 1.0437956204379562,
+        "speed": 0.6701220689035049,
+        "cost": 1.0137220740472175
       },
-      "score": 0.9968846687150311
+      "score": 0.9092132544628928
     },
     {
       "id": "clef",
@@ -3836,18 +4553,18 @@
       "workflow_calls": 2,
       "source": "data/exports/decision_clef_full_v01/summary.json",
       "metric_components": {
-        "accuracy": 0.9680573663624511,
+        "accuracy": 0.9854014598540146,
         "cost_regular": 0.5,
         "cost_100": 0.5,
-        "time_regular": 0.745713586553103,
-        "time_100": 2.0
+        "time_regular": 0.7296829908024774,
+        "time_100": 0.8856598590362262
       },
       "components": {
-        "accuracy": 0.9680573663624511,
-        "speed": 1.3728567932765516,
+        "accuracy": 0.9854014598540146,
+        "speed": 0.8076714249193518,
         "cost": 0.5
       },
-      "score": 0.9469713865463342
+      "score": 0.7643576282577889
     }
   ],
   "performance_ranking": [
@@ -3859,13 +4576,13 @@
       "time_100": 0.4034944499944686,
       "native_100": true,
       "workflow_calls": 1,
-      "free": false,
       "performance_components": {
-        "accuracy": 1.0308370044052864,
-        "regular_speed": 0.9365949615319372,
+        "accuracy": 1.051094890510949,
+        "regular_speed": 1.0,
         "batch_speed": 0.9900185739520405
       },
-      "performance_score": 0.9970718860736376
+      "performance_score": 1.0230520887434846,
+      "free": false
     },
     {
       "id": "luna",
@@ -3875,45 +4592,45 @@
       "time_100": 0.3994669999810867,
       "native_100": true,
       "workflow_calls": 1,
-      "free": false,
       "performance_components": {
-        "accuracy": 0.995044052863436,
-        "regular_speed": 0.8842387030248776,
+        "accuracy": 1.0145985401459854,
+        "regular_speed": 0.9440993592134819,
         "batch_speed": 1.0
       },
-      "performance_score": 0.9685817021879374
+      "performance_score": 0.9933241098763632,
+      "free": false
     },
     {
-      "id": "elephant",
-      "name": "Elephant 1 (free)",
+      "id": "pplx12",
+      "name": "Perplexity Decider v1.2",
+      "accuracy": 0.96,
+      "time_regular": 0.4512655498692766,
+      "time_100": 0.6406240500509739,
+      "native_100": true,
+      "workflow_calls": 1,
+      "performance_components": {
+        "accuracy": 1.051094890510949,
+        "regular_speed": 0.6902103431084465,
+        "batch_speed": 0.6235591685159205
+      },
+      "performance_score": 0.8539898231615662,
+      "free": false
+    },
+    {
+      "id": "elephant_paid",
+      "name": "Elephant 1",
       "accuracy": 0.9333333333333333,
-      "time_regular": 0.2917194999754429,
-      "time_100": 0.742261849984061,
+      "time_regular": 0.34851804992649704,
+      "time_100": 0.9876933499472216,
       "native_100": true,
       "workflow_calls": 1,
-      "free": true,
       "performance_components": {
-        "accuracy": 1.002202643171806,
-        "regular_speed": 1.0,
-        "batch_speed": 0.538175308335818
+        "accuracy": 1.0218978102189782,
+        "regular_speed": 0.89369302414605,
+        "batch_speed": 0.4044443551254371
       },
-      "performance_score": 0.8856451486698576
-    },
-    {
-      "id": "mammoth",
-      "name": "Mammoth 1 (free)",
-      "accuracy": 0.9466666666666667,
-      "time_regular": 0.357724400004372,
-      "time_100": 1.2101996500277892,
-      "native_100": true,
-      "workflow_calls": 1,
-      "free": true,
-      "performance_components": {
-        "accuracy": 1.0165198237885462,
-        "regular_speed": 0.8154867265746412,
-        "batch_speed": 0.3300835527195153
-      },
-      "performance_score": 0.7946524817178122
+      "performance_score": 0.8354832499273608,
+      "free": false
     },
     {
       "id": "d11",
@@ -3923,13 +4640,13 @@
       "time_100": 1.0770310499938205,
       "native_100": true,
       "workflow_calls": 1,
-      "free": false,
       "performance_components": {
-        "accuracy": 1.0236784140969162,
-        "regular_speed": 0.6811684913664701,
+        "accuracy": 1.0437956204379562,
+        "regular_speed": 0.7272818233533096,
         "batch_speed": 0.3708964564980542
       },
-      "performance_score": 0.7748554440145892
+      "performance_score": 0.796442380181819,
+      "free": false
     },
     {
       "id": "d1_ultra",
@@ -3939,13 +4656,29 @@
       "time_100": 1.1956261500017717,
       "native_100": true,
       "workflow_calls": 1,
-      "free": false,
       "performance_components": {
-        "accuracy": 1.0379955947136563,
-        "regular_speed": 0.6335994873820603,
+        "accuracy": 1.0583941605839415,
+        "regular_speed": 0.6764925217467711,
         "batch_speed": 0.3341069447004774
       },
-      "performance_score": 0.7609244053774626
+      "performance_score": 0.781846946903783,
+      "free": false
+    },
+    {
+      "id": "mammoth_paid",
+      "name": "Mammoth 1",
+      "accuracy": 0.9466666666666667,
+      "time_regular": 0.5365364000899717,
+      "time_100": 1.104191950056702,
+      "native_100": true,
+      "workflow_calls": 1,
+      "performance_components": {
+        "accuracy": 1.0364963503649636,
+        "regular_speed": 0.5805163451278704,
+        "batch_speed": 0.3617731500040129
+      },
+      "performance_score": 0.7538205489654526,
+      "free": false
     },
     {
       "id": "microsoft",
@@ -3955,13 +4688,13 @@
       "time_100": 1.1744899500044994,
       "native_100": true,
       "workflow_calls": 1,
-      "free": false,
       "performance_components": {
-        "accuracy": 0.987885462555066,
-        "regular_speed": 0.5895385425725861,
+        "accuracy": 1.0072992700729928,
+        "regular_speed": 0.6294487657805784,
         "batch_speed": 0.3401195557097414
       },
-      "performance_score": 0.726357255848115
+      "performance_score": 0.7460417154090764,
+      "free": false
     },
     {
       "id": "mercury_paid",
@@ -3971,45 +4704,29 @@
       "time_100": 1.3312893999973312,
       "native_100": true,
       "workflow_calls": 1,
-      "free": false,
       "performance_components": {
-        "accuracy": 0.995044052863436,
-        "regular_speed": 0.49600801446556825,
+        "accuracy": 1.0145985401459854,
+        "regular_speed": 0.5295864646274362,
         "batch_speed": 0.3000602273118734
       },
-      "performance_score": 0.6965390868760785
+      "performance_score": 0.7147109430578201,
+      "free": false
     },
     {
       "id": "pplx_flash12",
       "name": "Perplexity Decider Flash v1.2",
-      "accuracy": 0.9133333333333333,
-      "time_regular": 0.39676580000377726,
-      "time_100": 17.411839100008365,
+      "accuracy": 0.88,
+      "time_regular": 0.41009635000955313,
+      "time_100": 2.757508550072089,
       "native_100": true,
       "workflow_calls": 1,
-      "free": false,
       "performance_components": {
-        "accuracy": 0.980726872246696,
-        "regular_speed": 0.7352435617501955,
-        "batch_speed": 0.022942263461468285
+        "accuracy": 0.9635036496350365,
+        "regular_speed": 0.759499932152626,
+        "batch_speed": 0.14486518998123996
       },
-      "performance_score": 0.6799098924262639
-    },
-    {
-      "id": "pplx12",
-      "name": "Perplexity Decider v1.2",
-      "accuracy": 0.9666666666666667,
-      "time_regular": 0.520771399998921,
-      "time_100": 26.200725200003944,
-      "native_100": true,
-      "workflow_calls": 1,
-      "free": false,
-      "performance_components": {
-        "accuracy": 1.0379955947136563,
-        "regular_speed": 0.5601680506572506,
-        "batch_speed": 0.015246410049025154
-      },
-      "performance_score": 0.6628514125333971
+      "performance_score": 0.7078431053509847,
+      "free": false
     },
     {
       "id": "drex_max",
@@ -4019,13 +4736,13 @@
       "time_100": 5.831524100038223,
       "native_100": false,
       "workflow_calls": 7,
-      "free": false,
       "performance_components": {
-        "accuracy": 1.0236784140969162,
-        "regular_speed": 0.5240225463666899,
+        "accuracy": 1.0437956204379562,
+        "regular_speed": 0.5594975073425281,
         "batch_speed": 0.06850130311190318
       },
-      "performance_score": 0.6599701694181064
+      "performance_score": 0.6788975128325858,
+      "free": false
     },
     {
       "id": "clef",
@@ -4035,13 +4752,29 @@
       "time_100": 1.770862000004854,
       "native_100": false,
       "workflow_calls": 2,
-      "free": false,
       "performance_components": {
-        "accuracy": 0.9664096916299559,
-        "regular_speed": 0.4550705225730481,
+        "accuracy": 0.9854014598540146,
+        "regular_speed": 0.48587761120208683,
         "batch_speed": 0.2255777129894886
       },
-      "performance_score": 0.6533669047056122
+      "performance_score": 0.6705645609749012,
+      "free": false
+    },
+    {
+      "id": "joey_paid",
+      "name": "Joey 1",
+      "accuracy": 0.72,
+      "time_regular": 0.46135484986007214,
+      "time_100": 0.9758292000042275,
+      "native_100": true,
+      "workflow_calls": 1,
+      "performance_components": {
+        "accuracy": 0.7883211678832116,
+        "regular_speed": 0.6751162366728404,
+        "batch_speed": 0.409361597274765
+      },
+      "performance_score": 0.6652800424285071,
+      "free": false
     },
     {
       "id": "span02",
@@ -4051,13 +4784,13 @@
       "time_100": 2.307708250009455,
       "native_100": true,
       "workflow_calls": 1,
-      "free": false,
       "performance_components": {
-        "accuracy": 0.9019823788546255,
-        "regular_speed": 0.5503285384508185,
+        "accuracy": 0.9197080291970803,
+        "regular_speed": 0.5875843465468533,
         "batch_speed": 0.1731011708171733
       },
-      "performance_score": 0.6318486167443107
+      "performance_score": 0.6500253939395467,
+      "free": false
     }
   ]
 }
